@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Image Source="/fon.png"></Image>
-        <Image Source="/logotip_shkoly.png" Width="124" HorizontalAlignment="Left" VerticalAlignment="Top" ></Image>
+        <Image Source="/logotip_shkoly.png" Width="124" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="64,10,0,0" ></Image>
         <TextBlock Text="Школа превосходства" VerticalAlignment="Top"></TextBlock>
         <Frame x:Name="mainFrame" Margin="64,10,445,10"></Frame>
     </Grid>
