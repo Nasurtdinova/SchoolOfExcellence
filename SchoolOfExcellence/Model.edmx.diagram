@@ -8,21 +8,21 @@
         <EntityTypeShape EntityType="SchoolOfExcellenceModel.Activity" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolOfExcellenceModel.Cabinet" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolOfExcellenceModel.Grade" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SchoolOfExcellenceModel.Headmaster" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolOfExcellenceModel.Role" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolOfExcellenceModel.Student" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolOfExcellenceModel.StudentActivity" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SchoolOfExcellenceModel.Teacher" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SchoolOfExcellenceModel.User" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
         <AssociationConnector Association="SchoolOfExcellenceModel.FK_Activity_Cabinet" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolOfExcellenceModel.FK_StudentActivity_Activity" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolOfExcellenceModel.FK_Student_Grade" ManuallyRouted="false" />
-        <AssociationConnector Association="SchoolOfExcellenceModel.FK_Headmaster_User" ManuallyRouted="false" />
-        <AssociationConnector Association="SchoolOfExcellenceModel.FK_User_Role" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolOfExcellenceModel.FK_StudentActivity_Student" ManuallyRouted="false" />
-        <AssociationConnector Association="SchoolOfExcellenceModel.FK_Teacher_User" ManuallyRouted="false" />
-        <AssociationConnector Association="SchoolOfExcellenceModel.TeacherActivity" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="SchoolOfExcellenceModel.Headmaster" Width="1.5" PointX="5.25" PointY="3.75" />
+        <EntityTypeShape EntityType="SchoolOfExcellenceModel.Teacher" Width="1.5" PointX="8.25" PointY="5.75" />
+        <EntityTypeShape EntityType="SchoolOfExcellenceModel.User" Width="1.5" PointX="3" PointY="3.625" />
+        <AssociationConnector Association="SchoolOfExcellenceModel.FK_Headmaster_User" />
+        <AssociationConnector Association="SchoolOfExcellenceModel.FK_User_Role" />
+        <AssociationConnector Association="SchoolOfExcellenceModel.FK_Teacher_User" />
+        <AssociationConnector Association="SchoolOfExcellenceModel.TeacherActivity" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

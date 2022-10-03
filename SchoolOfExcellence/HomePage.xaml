@@ -9,6 +9,22 @@
       Title="HomePage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Image x:Name="imgUser" Grid.Row="0" Grid.RowSpan="3" Width="300"></Image>
+        <TextBlock Text="{Binding FullName}" Grid.Row="4"></TextBlock>
+        <TextBlock Text="{Binding User.Role.Name}" Grid.Row="3"></TextBlock>
+        <Button x:Name="btnMyStudents" Content="Мои ученики" Width="400" Grid.Column="1" Grid.Row="2" Click="btnMyStudents_Click"></Button>
+        <Button x:Name="btnMyActivity" Content="Мои кружки" Width="400" Grid.Column="1" Grid.Row="1"></Button>
+        <Button x:Name="btnActivityToday" Content="Мои кружки на сегодня" Width="450" Grid.Column="1" Grid.Row="3"></Button>
     </Grid>
 </Page>

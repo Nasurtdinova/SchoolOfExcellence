@@ -24,5 +24,17 @@ namespace SchoolOfExcellence
         {
             InitializeComponent();
         }
+
+        private void btnOk_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataAccess.IsCorrectUser(tbLogin.Text, tbPassword.Password))
+            {
+                NavigationService.Navigate(new HomePage());
+            }
+            else
+            {
+                MessageBox.Show("Incorrect login or password");
+            }
+        }
     }
 }

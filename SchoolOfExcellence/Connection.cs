@@ -8,5 +8,6 @@ namespace SchoolOfExcellence
 {
     public static class Connection
     {
+        public static SchoolOfExcellenceEntities BdConnection = new SchoolOfExcellenceEntities();
     }
 }
