@@ -53,11 +53,34 @@ namespace SchoolOfExcellence
                 }
                 DataContext = CurrentUser.Headmaster;
             }
+
+            if (CurrentUser.Headmaster != null)
+            {
+                btnMyActivities.Visibility = Visibility.Collapsed;
+                btnMyStudents.Visibility = Visibility.Collapsed;
+                btnMyActivitiesToday.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                btnActivities.Visibility = Visibility.Collapsed;
+                btnStudents.Visibility = Visibility.Collapsed;
+                btnActivitiesToday.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void btnMyStudents_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnStudents_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnActivities_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ActivitiesPage());
         }
     }
 }

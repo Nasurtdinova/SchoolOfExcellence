@@ -17,21 +17,22 @@ namespace SchoolOfExcellence
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Activity()
         {
+            this.Schedule = new HashSet<Schedule>();
             this.StudentActivity = new HashSet<StudentActivity>();
-            this.Teacher = new HashSet<Teacher>();
+            this.TeacherActivity = new HashSet<TeacherActivity>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Schedule { get; set; }
+        public string Description { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public Nullable<int> MaxCount { get; set; }
-        public Nullable<int> IdCabinet { get; set; }
     
-        public virtual Cabinet Cabinet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Schedule> Schedule { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentActivity> StudentActivity { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Teacher> Teacher { get; set; }
+        public virtual ICollection<TeacherActivity> TeacherActivity { get; set; }
     }
 }

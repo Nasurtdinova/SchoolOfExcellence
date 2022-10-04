@@ -13,6 +13,21 @@ namespace SchoolOfExcellence
             return new List<User>(Connection.BdConnection.User).ToList();
         }
 
+        public static List<Activity> GetActivities()
+        {
+            return new List<Activity>(Connection.BdConnection.Activity).ToList();
+        }
+
+        public static List<TeacherActivity> GetTeachersActivities()
+        {
+            return new List<TeacherActivity>(Connection.BdConnection.TeacherActivity).ToList();
+        }
+
+        public static List<TeacherActivity> GetTeachersInActivities(int idActivity)
+        {
+            return GetTeachersActivities().Where(a => a.IdActivity == idActivity).ToList();
+        }
+
         public static List<Teacher> GetTeachers()
         {
             return new List<Teacher>(Connection.BdConnection.Teacher).ToList();

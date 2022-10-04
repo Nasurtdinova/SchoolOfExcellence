@@ -10,7 +10,7 @@
         <Image Source="/fon.png"></Image>
         <Image Source="/logotip_shkoly.png" Width="97" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="114,10,0,0" Height="82" ></Image>
         <TextBlock Text="Школа превосходства" Margin="20" VerticalAlignment="Top"></TextBlock>
-        <Frame x:Name="mainFrame" Margin="81,126,445,10"></Frame>
+        <Frame x:Name="mainFrame" Margin="102,126,445,10" ContentRendered="mainFrame_ContentRendered"></Frame>
       
     </Grid>
 </Window>
