@@ -18,6 +18,7 @@ namespace SchoolOfExcellence
         public Teacher()
         {
             this.TeacherActivity = new HashSet<TeacherActivity>();
+            this.Schedule = new HashSet<Schedule>();
         }
     
         public int Id { get; set; }
@@ -29,5 +30,7 @@ namespace SchoolOfExcellence
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TeacherActivity> TeacherActivity { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Schedule> Schedule { get; set; }
     }
 }

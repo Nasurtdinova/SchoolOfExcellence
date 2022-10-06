@@ -1,0 +1,43 @@
+﻿<Page x:Class="SchoolOfExcellence.AddSchedulePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SchoolOfExcellence"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddSchedulePage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Кружок"></TextBlock>
+        <TextBlock Text="Учитель" Grid.Row="1"></TextBlock>
+        <TextBlock Text="День недели" Grid.Row="2"></TextBlock>
+        <TextBlock Text="Начало" Grid.Row="3"></TextBlock>
+        <TextBlock Text="Конец" Grid.Row="4"></TextBlock>
+        <TextBlock Text="Кабинет" Grid.Row="5"></TextBlock>
+        <ComboBox Grid.Column="1" x:Name="comboActivity" DisplayMemberPath="Name" SelectionChanged="comboActivity_SelectionChanged"></ComboBox>
+        <ComboBox Grid.Column="1" Grid.Row="1" x:Name="comboTeachers" DisplayMemberPath="FullName" SelectionChanged="comboTeachers_SelectionChanged"></ComboBox>
+        <ComboBox Grid.Column="1" Grid.Row="2" x:Name="comboDayOfWeek" DisplayMemberPath="Name"></ComboBox>
+        <DatePicker Grid.Column="1" Grid.Row="4" Name="tbLessonEnd"></DatePicker>
+        <DatePickerTextBox  Grid.Column="1" Grid.Row="3" Name="tbLessonStart"></DatePickerTextBox>
+        <ComboBox Grid.Column="1" Grid.Row="5" x:Name="comboCabinet" DisplayMemberPath="Name"></ComboBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <Button x:Name="btnBack" Content="Назад" Click="btnBack_Click"></Button>
+            <Button x:Name="btnAdd" Content="Добавить" Click="btnAdd_Click"></Button>
+        </StackPanel>
+        
+    </Grid>
+</Page>

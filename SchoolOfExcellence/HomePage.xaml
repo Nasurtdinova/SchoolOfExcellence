@@ -29,5 +29,6 @@
         <Button x:Name="btnStudents" Content="Ученики" Width="400" Grid.Column="1" Grid.Row="2" Click="btnStudents_Click"></Button>
         <Button x:Name="btnActivities" Content="Кружки" Width="400" Grid.Column="1" Grid.Row="1" Click="btnActivities_Click"></Button>
         <Button x:Name="btnActivitiesToday" Content="Кружки на сегодня" Width="450" Grid.Column="1" Grid.Row="3"></Button>
+        <Button x:Name="btnSchedule" Content="Расписание" Width="400" Grid.Column="1" Grid.Row="4" Click="btnSchedule_Click"></Button>
     </Grid>
 </Page>

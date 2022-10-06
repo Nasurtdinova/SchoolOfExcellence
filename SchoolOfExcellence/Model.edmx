@@ -62,6 +62,7 @@
           <Property Name="IsSkipped" Type="bit" />
           <Property Name="LessonStartTime" Type="time" Precision="7" />
           <Property Name="LessonEndTime" Type="time" Precision="7" />
+          <Property Name="IdTeacher" Type="int" />
           <Property Name="IdCabinet" Type="int" />
         </EntityType>
         <EntityType Name="SkipVisit">
@@ -72,6 +73,7 @@
           <Property Name="IdSchedule" Type="int" />
           <Property Name="IdStudent" Type="int" />
           <Property Name="Reason" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date" Type="datetime" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -173,6 +175,18 @@
             </Principal>
             <Dependent Role="Schedule">
               <PropertyRef Name="IdDayOfWeek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="IdTeacher" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -315,6 +329,10 @@
             <End Role="DayOfWeek" EntitySet="DayOfWeek" />
             <End Role="Schedule" EntitySet="Schedule" />
           </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Teacher" Association="Self.FK_Schedule_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
           <AssociationSet Name="FK_SkipVisit_Schedule" Association="Self.FK_SkipVisit_Schedule">
             <End Role="Schedule" EntitySet="Schedule" />
             <End Role="SkipVisit" EntitySet="SkipVisit" />
@@ -363,27 +381,14 @@
           <EntitySet Name="Grade" EntityType="SchoolOfExcellenceModel.Grade" />
           <EntitySet Name="Headmaster" EntityType="SchoolOfExcellenceModel.Headmaster" />
           <EntitySet Name="Role" EntityType="SchoolOfExcellenceModel.Role" />
-          <EntitySet Name="Schedule" EntityType="SchoolOfExcellenceModel.Schedule" />
           <EntitySet Name="SkipVisit" EntityType="SchoolOfExcellenceModel.SkipVisit" />
           <EntitySet Name="Student" EntityType="SchoolOfExcellenceModel.Student" />
           <EntitySet Name="StudentActivity" EntityType="SchoolOfExcellenceModel.StudentActivity" />
           <EntitySet Name="sysdiagrams" EntityType="SchoolOfExcellenceModel.sysdiagrams" />
           <EntitySet Name="User" EntityType="SchoolOfExcellenceModel.User" />
-          <AssociationSet Name="FK_Schedule_Activity" Association="SchoolOfExcellenceModel.FK_Schedule_Activity">
-            <End Role="Activity" EntitySet="Activity" />
-            <End Role="Schedule" EntitySet="Schedule" />
-          </AssociationSet>
           <AssociationSet Name="FK_StudentActivity_Activity" Association="SchoolOfExcellenceModel.FK_StudentActivity_Activity">
             <End Role="Activity" EntitySet="Activity" />
             <End Role="StudentActivity" EntitySet="StudentActivity" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Schedule_Cabinet" Association="SchoolOfExcellenceModel.FK_Schedule_Cabinet">
-            <End Role="Cabinet" EntitySet="Cabinet" />
-            <End Role="Schedule" EntitySet="Schedule" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Schedule_DayOfWeek" Association="SchoolOfExcellenceModel.FK_Schedule_DayOfWeek">
-            <End Role="DayOfWeek" EntitySet="DayOfWeek" />
-            <End Role="Schedule" EntitySet="Schedule" />
           </AssociationSet>
           <AssociationSet Name="FK_Student_Grade" Association="SchoolOfExcellenceModel.FK_Student_Grade">
             <End Role="Grade" EntitySet="Grade" />
@@ -396,10 +401,6 @@
           <AssociationSet Name="FK_User_Role" Association="SchoolOfExcellenceModel.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SkipVisit_Schedule" Association="SchoolOfExcellenceModel.FK_SkipVisit_Schedule">
-            <End Role="Schedule" EntitySet="Schedule" />
-            <End Role="SkipVisit" EntitySet="SkipVisit" />
           </AssociationSet>
           <AssociationSet Name="FK_SkipVisit_Student" Association="SchoolOfExcellenceModel.FK_SkipVisit_Student">
             <End Role="Student" EntitySet="Student" />
@@ -423,6 +424,27 @@
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="TeacherActivity" EntitySet="TeacherActivity" />
           </AssociationSet>
+          <EntitySet Name="Schedule" EntityType="SchoolOfExcellenceModel.Schedule" />
+          <AssociationSet Name="FK_Schedule_Activity" Association="SchoolOfExcellenceModel.FK_Schedule_Activity">
+            <End Role="Activity" EntitySet="Activity" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Cabinet" Association="SchoolOfExcellenceModel.FK_Schedule_Cabinet">
+            <End Role="Cabinet" EntitySet="Cabinet" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_DayOfWeek" Association="SchoolOfExcellenceModel.FK_Schedule_DayOfWeek">
+            <End Role="DayOfWeek" EntitySet="DayOfWeek" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Teacher" Association="SchoolOfExcellenceModel.FK_Schedule_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SkipVisit_Schedule" Association="SchoolOfExcellenceModel.FK_SkipVisit_Schedule">
+            <End Role="Schedule" EntitySet="Schedule" />
+            <End Role="SkipVisit" EntitySet="SkipVisit" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Activity">
           <Key>
@@ -433,9 +455,9 @@
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="MaxCount" Type="Int32" />
-          <NavigationProperty Name="Schedule" Relationship="SchoolOfExcellenceModel.FK_Schedule_Activity" FromRole="Activity" ToRole="Schedule" />
           <NavigationProperty Name="StudentActivity" Relationship="SchoolOfExcellenceModel.FK_StudentActivity_Activity" FromRole="Activity" ToRole="StudentActivity" />
           <NavigationProperty Name="TeacherActivity" Relationship="SchoolOfExcellenceModel.FK_TeacherActivity_Activity" FromRole="Activity" ToRole="TeacherActivity" />
+          <NavigationProperty Name="Schedule" Relationship="SchoolOfExcellenceModel.FK_Schedule_Activity" FromRole="Activity" ToRole="Schedule" />
         </EntityType>
         <EntityType Name="Cabinet">
           <Key>
@@ -479,22 +501,6 @@
           <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="User" Relationship="SchoolOfExcellenceModel.FK_User_Role" FromRole="Role" ToRole="User" />
         </EntityType>
-        <EntityType Name="Schedule">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="IdActivity" Type="Int32" />
-          <Property Name="IdDayOfWeek" Type="Int32" />
-          <Property Name="IsSkipped" Type="Boolean" />
-          <Property Name="LessonStartTime" Type="Time" Precision="7" />
-          <Property Name="LessonEndTime" Type="Time" Precision="7" />
-          <Property Name="IdCabinet" Type="Int32" />
-          <NavigationProperty Name="Activity" Relationship="SchoolOfExcellenceModel.FK_Schedule_Activity" FromRole="Schedule" ToRole="Activity" />
-          <NavigationProperty Name="Cabinet" Relationship="SchoolOfExcellenceModel.FK_Schedule_Cabinet" FromRole="Schedule" ToRole="Cabinet" />
-          <NavigationProperty Name="DayOfWeek" Relationship="SchoolOfExcellenceModel.FK_Schedule_DayOfWeek" FromRole="Schedule" ToRole="DayOfWeek" />
-          <NavigationProperty Name="SkipVisit" Relationship="SchoolOfExcellenceModel.FK_SkipVisit_Schedule" FromRole="Schedule" ToRole="SkipVisit" />
-        </EntityType>
         <EntityType Name="SkipVisit">
           <Key>
             <PropertyRef Name="Id" />
@@ -503,8 +509,9 @@
           <Property Name="IdSchedule" Type="Int32" />
           <Property Name="IdStudent" Type="Int32" />
           <Property Name="Reason" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Schedule" Relationship="SchoolOfExcellenceModel.FK_SkipVisit_Schedule" FromRole="SkipVisit" ToRole="Schedule" />
           <NavigationProperty Name="Student" Relationship="SchoolOfExcellenceModel.FK_SkipVisit_Student" FromRole="SkipVisit" ToRole="Student" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Schedule" Relationship="SchoolOfExcellenceModel.FK_SkipVisit_Schedule" FromRole="SkipVisit" ToRole="Schedule" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -550,18 +557,6 @@
           <NavigationProperty Name="Role" Relationship="SchoolOfExcellenceModel.FK_User_Role" FromRole="User" ToRole="Role" />
           <NavigationProperty Name="Teacher" Relationship="SchoolOfExcellenceModel.FK_Teacher_User" FromRole="User" ToRole="Teacher" />
         </EntityType>
-        <Association Name="FK_Schedule_Activity">
-          <End Type="SchoolOfExcellenceModel.Activity" Role="Activity" Multiplicity="0..1" />
-          <End Type="SchoolOfExcellenceModel.Schedule" Role="Schedule" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Activity">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Schedule">
-              <PropertyRef Name="IdActivity" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_StudentActivity_Activity">
           <End Type="SchoolOfExcellenceModel.Activity" Role="Activity" Multiplicity="1" />
           <End Type="SchoolOfExcellenceModel.StudentActivity" Role="StudentActivity" Multiplicity="*" />
@@ -571,30 +566,6 @@
             </Principal>
             <Dependent Role="StudentActivity">
               <PropertyRef Name="IdActivity" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Schedule_Cabinet">
-          <End Type="SchoolOfExcellenceModel.Cabinet" Role="Cabinet" Multiplicity="0..1" />
-          <End Type="SchoolOfExcellenceModel.Schedule" Role="Schedule" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cabinet">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Schedule">
-              <PropertyRef Name="IdCabinet" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Schedule_DayOfWeek">
-          <End Type="SchoolOfExcellenceModel.DayOfWeek" Role="DayOfWeek" Multiplicity="0..1" />
-          <End Type="SchoolOfExcellenceModel.Schedule" Role="Schedule" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DayOfWeek">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Schedule">
-              <PropertyRef Name="IdDayOfWeek" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -634,18 +605,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SkipVisit_Schedule">
-          <End Type="SchoolOfExcellenceModel.Schedule" Role="Schedule" Multiplicity="0..1" />
-          <End Type="SchoolOfExcellenceModel.SkipVisit" Role="SkipVisit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Schedule">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="SkipVisit">
-              <PropertyRef Name="IdSchedule" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SkipVisit_Student">
           <End Type="SchoolOfExcellenceModel.Student" Role="Student" Multiplicity="0..1" />
           <End Type="SchoolOfExcellenceModel.SkipVisit" Role="SkipVisit" Multiplicity="*" />
@@ -681,6 +640,7 @@
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="User" Relationship="SchoolOfExcellenceModel.FK_Teacher_User" FromRole="Teacher" ToRole="User" />
           <NavigationProperty Name="TeacherActivity" Relationship="SchoolOfExcellenceModel.FK_TeacherActivity_Teacher" FromRole="Teacher" ToRole="TeacherActivity" />
+          <NavigationProperty Name="Schedule" Relationship="SchoolOfExcellenceModel.FK_Schedule_Teacher" FromRole="Teacher" ToRole="Schedule" />
         </EntityType>
         <EntityType Name="TeacherActivity">
           <Key>
@@ -726,6 +686,84 @@
             </Principal>
             <Dependent Role="TeacherActivity">
               <PropertyRef Name="IdTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdActivity" Type="Int32" />
+          <Property Name="IdDayOfWeek" Type="Int32" />
+          <Property Name="IsSkipped" Type="Boolean" />
+          <Property Name="LessonStartTime" Type="Time" Precision="7" />
+          <Property Name="LessonEndTime" Type="Time" Precision="7" />
+          <Property Name="IdTeacher" Type="Int32" />
+          <Property Name="IdCabinet" Type="Int32" />
+          <NavigationProperty Name="Activity" Relationship="SchoolOfExcellenceModel.FK_Schedule_Activity" FromRole="Schedule" ToRole="Activity" />
+          <NavigationProperty Name="Cabinet" Relationship="SchoolOfExcellenceModel.FK_Schedule_Cabinet" FromRole="Schedule" ToRole="Cabinet" />
+          <NavigationProperty Name="DayOfWeek" Relationship="SchoolOfExcellenceModel.FK_Schedule_DayOfWeek" FromRole="Schedule" ToRole="DayOfWeek" />
+          <NavigationProperty Name="Teacher" Relationship="SchoolOfExcellenceModel.FK_Schedule_Teacher" FromRole="Schedule" ToRole="Teacher" />
+          <NavigationProperty Name="SkipVisit" Relationship="SchoolOfExcellenceModel.FK_SkipVisit_Schedule" FromRole="Schedule" ToRole="SkipVisit" />
+        </EntityType>
+        <Association Name="FK_Schedule_Activity">
+          <End Type="SchoolOfExcellenceModel.Activity" Role="Activity" Multiplicity="0..1" />
+          <End Type="SchoolOfExcellenceModel.Schedule" Role="Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="IdActivity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Cabinet">
+          <End Type="SchoolOfExcellenceModel.Cabinet" Role="Cabinet" Multiplicity="0..1" />
+          <End Type="SchoolOfExcellenceModel.Schedule" Role="Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cabinet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="IdCabinet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_DayOfWeek">
+          <End Type="SchoolOfExcellenceModel.DayOfWeek" Role="DayOfWeek" Multiplicity="0..1" />
+          <End Type="SchoolOfExcellenceModel.Schedule" Role="Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DayOfWeek">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="IdDayOfWeek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Teacher">
+          <End Type="SchoolOfExcellenceModel.Teacher" Role="Teacher" Multiplicity="0..1" />
+          <End Type="SchoolOfExcellenceModel.Schedule" Role="Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="IdTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SkipVisit_Schedule">
+          <End Type="SchoolOfExcellenceModel.Schedule" Role="Schedule" Multiplicity="0..1" />
+          <End Type="SchoolOfExcellenceModel.SkipVisit" Role="SkipVisit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedule">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SkipVisit">
+              <PropertyRef Name="IdSchedule" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -788,22 +826,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Schedule">
-            <EntityTypeMapping TypeName="SchoolOfExcellenceModel.Schedule">
-              <MappingFragment StoreEntitySet="Schedule">
-                <ScalarProperty Name="IdCabinet" ColumnName="IdCabinet" />
-                <ScalarProperty Name="LessonEndTime" ColumnName="LessonEndTime" />
-                <ScalarProperty Name="LessonStartTime" ColumnName="LessonStartTime" />
-                <ScalarProperty Name="IsSkipped" ColumnName="IsSkipped" />
-                <ScalarProperty Name="IdDayOfWeek" ColumnName="IdDayOfWeek" />
-                <ScalarProperty Name="IdActivity" ColumnName="IdActivity" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SkipVisit">
             <EntityTypeMapping TypeName="SchoolOfExcellenceModel.SkipVisit">
               <MappingFragment StoreEntitySet="SkipVisit">
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
                 <ScalarProperty Name="IdSchedule" ColumnName="IdSchedule" />
@@ -867,6 +893,20 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="IdActivity" ColumnName="IdActivity" />
                 <ScalarProperty Name="IdTeacher" ColumnName="IdTeacher" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedule">
+            <EntityTypeMapping TypeName="SchoolOfExcellenceModel.Schedule">
+              <MappingFragment StoreEntitySet="Schedule">
+                <ScalarProperty Name="IdCabinet" ColumnName="IdCabinet" />
+                <ScalarProperty Name="IdTeacher" ColumnName="IdTeacher" />
+                <ScalarProperty Name="LessonEndTime" ColumnName="LessonEndTime" />
+                <ScalarProperty Name="LessonStartTime" ColumnName="LessonStartTime" />
+                <ScalarProperty Name="IsSkipped" ColumnName="IsSkipped" />
+                <ScalarProperty Name="IdDayOfWeek" ColumnName="IdDayOfWeek" />
+                <ScalarProperty Name="IdActivity" ColumnName="IdActivity" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -8,14 +8,47 @@ namespace SchoolOfExcellence
 {
     public static class DataAccess
     {
-        public static List<User> GetUsers()
+        public static List<Cabinet> GetCabinets()
         {
-            return new List<User>(Connection.BdConnection.User).ToList();
+            return new List<Cabinet>(Connection.BdConnection.Cabinet).ToList();
         }
 
+        public static List<DayOfWeek> GetDaysOfWeek()
+        {
+            return new List<DayOfWeek>(Connection.BdConnection.DayOfWeek).ToList();
+        }
+        // schedule
+        public static List<Schedule> GetSchedules()
+        {
+            return new List<Schedule>(Connection.BdConnection.Schedule).ToList();
+        }
+
+        public static List<Schedule> GetSchedule(string week)
+        {
+            return GetSchedules().Where(a => a.DayOfWeek.Name == week).ToList();
+        }
+
+        public static void AddSchedule(Schedule schedule)
+        {
+            Connection.BdConnection.Schedule.Add(schedule);
+            Connection.BdConnection.SaveChanges();
+        }
+        
+        // teachers
+        public static List<Teacher> GetTeachers()
+        {
+            return new List<Teacher>(Connection.BdConnection.Teacher.Where(a=>a.IsActive == true)).ToList();
+        }
+
+        public static Teacher GetTeacher(int idUser)
+        {
+            return GetTeachers().Where(a => a.IdUser == idUser).FirstOrDefault();
+        }
+
+        // activities
         public static List<Activity> GetActivities()
         {
-            return new List<Activity>(Connection.BdConnection.Activity).ToList();
+            return new List<Activity>(Connection.BdConnection.Activity.Where(a=>a.IsActive == true)).ToList();
         }
 
         public static List<TeacherActivity> GetTeachersActivities()
@@ -28,16 +61,22 @@ namespace SchoolOfExcellence
             return GetTeachersActivities().Where(a => a.IdActivity == idActivity).ToList();
         }
 
-        public static List<Teacher> GetTeachers()
+        public static List<TeacherActivity> GetActivitiesInTeacher(int idTeacher)
         {
-            return new List<Teacher>(Connection.BdConnection.Teacher).ToList();
+            return GetTeachersActivities().Where(a => a.IdTeacher == idTeacher).ToList();
         }
 
-        public static Teacher GetTeacher(int idUser)
+        public static List<StudentActivity> GetStudentsActivities()
         {
-            return GetTeachers().Where(a => a.IdUser == idUser).FirstOrDefault();
+            return new List<StudentActivity>(Connection.BdConnection.StudentActivity.Where(a=>a.IsActive == true)).ToList();
         }
 
+        public static List<StudentActivity> GetStudentsInActivities(int idActivity)
+        {
+            return GetStudentsActivities().Where(a => a.IdActivity == idActivity).ToList();
+        }       
+
+        // headmaster
         public static List<Headmaster> GetHeadmasters()
         {
             return new List<Headmaster>(Connection.BdConnection.Headmaster).ToList();
@@ -46,6 +85,12 @@ namespace SchoolOfExcellence
         public static Headmaster GetHeadmaster(int idUser)
         {
             return GetHeadmasters().Where(a => a.IdUser == idUser).FirstOrDefault();
+        }
+
+        // users
+        public static List<User> GetUsers()
+        {
+            return new List<User>(Connection.BdConnection.User).ToList();
         }
 
         public static bool IsCorrectUser(string email, string password)

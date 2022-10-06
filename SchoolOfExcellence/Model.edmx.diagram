@@ -11,20 +11,15 @@
         <EntityTypeShape EntityType="SchoolOfExcellenceModel.Grade" Width="1.5" PointX="1.5" PointY="8" />
         <EntityTypeShape EntityType="SchoolOfExcellenceModel.Headmaster" Width="1.5" PointX="3" PointY="17.875" />
         <EntityTypeShape EntityType="SchoolOfExcellenceModel.Role" Width="1.5" PointX="1.5" PointY="15" />
-        <EntityTypeShape EntityType="SchoolOfExcellenceModel.Schedule" Width="1.5" PointX="6" PointY="4.25" />
         <EntityTypeShape EntityType="SchoolOfExcellenceModel.SkipVisit" Width="1.5" PointX="8.25" PointY="4.75" />
         <EntityTypeShape EntityType="SchoolOfExcellenceModel.Student" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="SchoolOfExcellenceModel.StudentActivity" Width="1.5" PointX="3" PointY="1.875" />
         <EntityTypeShape EntityType="SchoolOfExcellenceModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.875" />
         <EntityTypeShape EntityType="SchoolOfExcellenceModel.User" Width="1.5" PointX="0.75" PointY="11.625" />
-        <AssociationConnector Association="SchoolOfExcellenceModel.FK_Schedule_Activity" />
         <AssociationConnector Association="SchoolOfExcellenceModel.FK_StudentActivity_Activity" />
-        <AssociationConnector Association="SchoolOfExcellenceModel.FK_Schedule_Cabinet" />
-        <AssociationConnector Association="SchoolOfExcellenceModel.FK_Schedule_DayOfWeek" />
         <AssociationConnector Association="SchoolOfExcellenceModel.FK_Student_Grade" />
         <AssociationConnector Association="SchoolOfExcellenceModel.FK_Headmaster_User" />
         <AssociationConnector Association="SchoolOfExcellenceModel.FK_User_Role" />
-        <AssociationConnector Association="SchoolOfExcellenceModel.FK_SkipVisit_Schedule" />
         <AssociationConnector Association="SchoolOfExcellenceModel.FK_SkipVisit_Student" />
         <AssociationConnector Association="SchoolOfExcellenceModel.FK_StudentActivity_Student" />
         <EntityTypeShape EntityType="SchoolOfExcellenceModel.Teacher" Width="1.5" PointX="0.75" PointY="17.625" />
@@ -32,6 +27,12 @@
         <AssociationConnector Association="SchoolOfExcellenceModel.FK_TeacherActivity_Activity" />
         <AssociationConnector Association="SchoolOfExcellenceModel.FK_Teacher_User" />
         <AssociationConnector Association="SchoolOfExcellenceModel.FK_TeacherActivity_Teacher" />
+        <EntityTypeShape EntityType="SchoolOfExcellenceModel.Schedule" Width="1.5" PointX="6" PointY="10.625" />
+        <AssociationConnector Association="SchoolOfExcellenceModel.FK_Schedule_Activity" />
+        <AssociationConnector Association="SchoolOfExcellenceModel.FK_Schedule_Cabinet" />
+        <AssociationConnector Association="SchoolOfExcellenceModel.FK_Schedule_DayOfWeek" />
+        <AssociationConnector Association="SchoolOfExcellenceModel.FK_Schedule_Teacher" />
+        <AssociationConnector Association="SchoolOfExcellenceModel.FK_SkipVisit_Schedule" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

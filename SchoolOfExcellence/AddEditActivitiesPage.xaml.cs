@@ -25,20 +25,16 @@ namespace SchoolOfExcellence
             {
                 CurrentActivity = act;
                 lvTeachers.ItemsSource = DataAccess.GetTeachersInActivities(act.Id);
+                lvStudents.ItemsSource = DataAccess.GetStudentsInActivities(act.Id);
             }
 
             DataContext = CurrentActivity;
             
         }
 
-        private void btnLoadImage_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void btnAddTeacher_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new SelectTeacherPage(CurrentActivity));
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -48,7 +44,7 @@ namespace SchoolOfExcellence
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.GoBack();
         }
     }
 }

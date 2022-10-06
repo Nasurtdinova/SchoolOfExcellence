@@ -73,6 +73,9 @@
     <Compile Include="AddEditActivitiesPage.xaml.cs">
       <DependentUpon>AddEditActivitiesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddSchedulePage.xaml.cs">
+      <DependentUpon>AddSchedulePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Cabinet.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -91,6 +94,12 @@
     </Compile>
     <Compile Include="Schedule.cs">
       <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SchedulePage.xaml.cs">
+      <DependentUpon>SchedulePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SelectTeacherPage.xaml.cs">
+      <DependentUpon>SelectTeacherPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="SkipVisit.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -118,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddEditActivitiesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddSchedulePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -149,6 +162,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SchedulePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectTeacherPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model.Context.cs">

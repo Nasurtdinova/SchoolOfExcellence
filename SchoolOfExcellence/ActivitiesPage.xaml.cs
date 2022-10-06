@@ -33,5 +33,10 @@ namespace SchoolOfExcellence
             var i = (sender as Button).DataContext as Activity;
             NavigationService.Navigate(new AddEditActivitiesPage(i));
         }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

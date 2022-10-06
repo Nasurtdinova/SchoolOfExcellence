@@ -40,7 +40,7 @@ namespace SchoolOfExcellence
             else
             {
                 if (CurrentUser.Headmaster.Image == null)
-                    imgUser.Source = new BitmapImage(new Uri("C:\\Users\\201914\\source\\repos\\SchoolOfExcellence\\SchoolOfExcellence\\ProfileIcon.png"));
+                    imgUser.Source = new BitmapImage(new Uri("C:\\Users\\nasur\\Source\\Repos\\SchoolOfExcellence\\SchoolOfExcellence\\ProfileIcon.png"));
                 else
                 {
                     var stream = new MemoryStream(CurrentUser.Headmaster.Image);
@@ -81,6 +81,11 @@ namespace SchoolOfExcellence
         private void btnActivities_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ActivitiesPage());
+        }
+
+        private void btnSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new SchedulePage());
         }
     }
 }
