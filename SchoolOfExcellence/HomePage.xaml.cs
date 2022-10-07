@@ -63,17 +63,12 @@ namespace SchoolOfExcellence
             else
             {
                 btnActivities.Visibility = Visibility.Collapsed;
-                btnStudents.Visibility = Visibility.Collapsed;
+                btnStudentsTeachers.Visibility = Visibility.Collapsed;
                 btnActivitiesToday.Visibility = Visibility.Collapsed;
             }
         }
 
         private void btnMyStudents_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnStudents_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -86,6 +81,16 @@ namespace SchoolOfExcellence
         private void btnSchedule_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new SchedulePage());
+        }
+
+        private void btnReports_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnStudentsTeachers_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new StudentsTeachersPage());
         }
     }
 }

@@ -74,7 +74,12 @@ namespace SchoolOfExcellence
         public static List<StudentActivity> GetStudentsInActivities(int idActivity)
         {
             return GetStudentsActivities().Where(a => a.IdActivity == idActivity).ToList();
-        }       
+        }
+
+        public static List<Student> GetStudents()
+        {
+            return new List<Student>(Connection.BdConnection.Student).ToList();
+        }
 
         // headmaster
         public static List<Headmaster> GetHeadmasters()

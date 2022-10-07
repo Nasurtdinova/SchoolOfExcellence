@@ -23,10 +23,11 @@
         <Image x:Name="imgUser" Grid.Row="0" Grid.RowSpan="3" Width="300"></Image>
         <TextBlock Text="{Binding FullName}" Grid.Row="4"></TextBlock>
         <TextBlock Text="{Binding User.Role.Name}" Grid.Row="3"></TextBlock>
+        <Button x:Name="btnReports" Content="Отчеты" Width="400" Grid.Column="1" Grid.Row="0" Click="btnReports_Click"></Button>
         <Button x:Name="btnMyStudents" Content="Мои ученики" Width="400" Grid.Column="1" Grid.Row="2" Click="btnMyStudents_Click"></Button>
         <Button x:Name="btnMyActivities" Content="Мои кружки" Width="400" Grid.Column="1" Grid.Row="1"></Button>
         <Button x:Name="btnMyActivitiesToday" Content="Мои кружки на сегодня" Width="450" Grid.Column="1" Grid.Row="3"></Button>
-        <Button x:Name="btnStudents" Content="Ученики" Width="400" Grid.Column="1" Grid.Row="2" Click="btnStudents_Click"></Button>
+        <Button x:Name="btnStudentsTeachers" Content="Ученики и учителя" Width="400" Grid.Column="1" Grid.Row="2" Click="btnStudentsTeachers_Click"></Button>
         <Button x:Name="btnActivities" Content="Кружки" Width="400" Grid.Column="1" Grid.Row="1" Click="btnActivities_Click"></Button>
         <Button x:Name="btnActivitiesToday" Content="Кружки на сегодня" Width="450" Grid.Column="1" Grid.Row="3"></Button>
         <Button x:Name="btnSchedule" Content="Расписание" Width="400" Grid.Column="1" Grid.Row="4" Click="btnSchedule_Click"></Button>

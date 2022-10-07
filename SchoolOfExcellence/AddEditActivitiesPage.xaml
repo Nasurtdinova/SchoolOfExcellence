@@ -20,18 +20,17 @@
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
-                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="75*"></ColumnDefinition>
-                            <ColumnDefinition Width="322*"/>
-                            <ColumnDefinition Width="397*"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Название кружка" Grid.Column="1"></TextBlock>
-                        <TextBlock Text="Описание" Grid.Row="1" Grid.Column="1"></TextBlock>
+                        <TextBlock Text="Название кружка"></TextBlock>
+                        <TextBlock Text="Описание" Grid.Row="1"></TextBlock>
                         <TextBox Grid.Column="2" Text="{Binding Name}"></TextBox>
                         <TextBox Grid.Column="2" Grid.Row="1" Height="200" Text="{Binding Description}"></TextBox>
-                        <Button x:Name="btnSave" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Content="Сохранить" Click="btnSave_Click"></Button>
+                        <Button x:Name="btnSave" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Сохранить" Click="btnSave_Click"></Button>
                     </Grid>
                 </TabItem.Content>
             </TabItem>
@@ -39,7 +38,7 @@
                 <TabItem.Content>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="9*"></RowDefinition>
+                            <RowDefinition Height="8*"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
                         <DataGrid Name="lvTeachers" AutoGenerateColumns="False" CanUserAddRows="false">
@@ -54,7 +53,7 @@
                                 </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
-                        <Button Grid.Row="1" Width="100" Content="Добавить" Name="btnAddTeacher" Click="btnAddTeacher_Click"></Button>
+                        <Button Grid.Row="1" Content="Добавить" Name="btnAddTeacher" Click="btnAddTeacher_Click"></Button>
                     </Grid>
                 </TabItem.Content>
             </TabItem>
