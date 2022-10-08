@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,38 +22,22 @@ namespace SchoolOfExcellence
         public HomePage()
         {
             InitializeComponent();
-            if (CurrentUser.Teacher != null)
+            if (CurrentUser.User != null)
             {
-                if (CurrentUser.Teacher.Image == null)
-                    imgUser.Source = new BitmapImage(new Uri("C:\\Users\\201914\\source\\repos\\SchoolOfExcellence\\SchoolOfExcellence\\ProfileIcon.png"));
-                else
-                {
-                    var stream = new MemoryStream(CurrentUser.Teacher.Image);
-                    stream.Seek(0, SeekOrigin.Begin);
-                    var image = new BitmapImage();
-                    image.BeginInit();
-                    image.StreamSource = stream;
-                    image.EndInit();
-                    imgUser.Source = image;
-                }
-                DataContext = CurrentUser.Teacher;
-            }
-            else
-            {
-                if (CurrentUser.Headmaster.Image == null)
+                if (CurrentUser.User.Image == null)
                     imgUser.Source = new BitmapImage(new Uri("C:\\Users\\nasur\\Source\\Repos\\SchoolOfExcellence\\SchoolOfExcellence\\ProfileIcon.png"));
                 else
                 {
-                    var stream = new MemoryStream(CurrentUser.Headmaster.Image);
+                    var stream = new MemoryStream(CurrentUser.User.Image);
                     stream.Seek(0, SeekOrigin.Begin);
                     var image = new BitmapImage();
                     image.BeginInit();
                     image.StreamSource = stream;
                     image.EndInit();
                     imgUser.Source = image;
-                }
-                DataContext = CurrentUser.Headmaster;
+                }              
             }
+            DataContext = CurrentUser.User;          
 
             if (CurrentUser.Headmaster != null)
             {
@@ -70,7 +55,12 @@ namespace SchoolOfExcellence
 
         private void btnMyStudents_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenFileDialog openFile = new OpenFileDialog();
+            if (openFile.ShowDialog() == true)
+            {
+                imgUser.Source = new BitmapImage(new Uri(openFile.FileName));
+                CurrentUser.User.Image = File.ReadAllBytes(openFile.FileName);
+            }
         }
 
         private void btnActivities_Click(object sender, RoutedEventArgs e)
@@ -91,6 +81,11 @@ namespace SchoolOfExcellence
         private void btnStudentsTeachers_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new StudentsTeachersPage());
+        }
+
+        private void btnEditImage_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

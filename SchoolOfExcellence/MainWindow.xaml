@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SchoolOfExcellence"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Школа превосходства" Icon="/logotip_shkoly.png" Height="450" Width="800">
     <Grid>
         <Image Source="/fon.png"></Image>
         <Image Source="/logotip_shkoly.png" Width="97" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="114,10,0,0" Height="82" ></Image>

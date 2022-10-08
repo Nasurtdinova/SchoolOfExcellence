@@ -36,8 +36,8 @@
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
-            <Button x:Name="btnAdd" Content="Добавить"  Click="btnAdd_Click"></Button>
             <Button x:Name="btnBack" Content="Назад" Click="btnBack_Click"></Button>
+            <Button x:Name="btnAdd" Content="Добавить"  Click="btnAdd_Click"></Button>
         </StackPanel>
     </Grid>
 </Page>

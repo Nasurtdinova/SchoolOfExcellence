@@ -46,19 +46,13 @@ namespace SchoolOfExcellence
         private void comboTeachers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var a = (sender as ComboBox).SelectedItem as Teacher;
-            List<Activity> act = new List<Activity>();
-            foreach (var i in DataAccess.GetActivitiesInTeacher(a.Id))
-                act.Add(i.Activity);
-            comboActivity.ItemsSource = act;
+            comboActivity.ItemsSource = DataAccess.GetActivitiesInTeacher(a.Id).Select(b=>b.Activity);
         }
 
         private void comboActivity_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var a = (sender as ComboBox).SelectedItem as Activity;
-            List<Teacher> teac = new List<Teacher>();
-            foreach (var i in DataAccess.GetTeachersInActivities(a.Id))
-                teac.Add(i.Teacher);
-            comboTeachers.ItemsSource = teac;
+            comboTeachers.ItemsSource = DataAccess.GetTeachersInActivities(a.Id).Select(b=>b.Teacher);
         }
     }
 }

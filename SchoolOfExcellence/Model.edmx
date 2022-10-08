@@ -10,7 +10,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Description" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="MaxCount" Type="int" />
@@ -41,9 +41,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="FullName" Type="nvarchar" MaxLength="100" />
           <Property Name="IdUser" Type="int" />
-          <Property Name="Image" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -107,10 +105,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="FullName" Type="nvarchar" MaxLength="100" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="IdUser" Type="int" />
-          <Property Name="Image" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="TeacherActivity">
           <Key>
@@ -129,6 +125,8 @@
           <Property Name="Login" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="30" />
           <Property Name="IdRole" Type="int" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Image" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_Headmaster_User">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
@@ -379,49 +377,17 @@
           <EntitySet Name="Cabinet" EntityType="SchoolOfExcellenceModel.Cabinet" />
           <EntitySet Name="DayOfWeek" EntityType="SchoolOfExcellenceModel.DayOfWeek" />
           <EntitySet Name="Grade" EntityType="SchoolOfExcellenceModel.Grade" />
-          <EntitySet Name="Headmaster" EntityType="SchoolOfExcellenceModel.Headmaster" />
           <EntitySet Name="Role" EntityType="SchoolOfExcellenceModel.Role" />
           <EntitySet Name="SkipVisit" EntityType="SchoolOfExcellenceModel.SkipVisit" />
-          <EntitySet Name="Student" EntityType="SchoolOfExcellenceModel.Student" />
           <EntitySet Name="StudentActivity" EntityType="SchoolOfExcellenceModel.StudentActivity" />
           <EntitySet Name="sysdiagrams" EntityType="SchoolOfExcellenceModel.sysdiagrams" />
-          <EntitySet Name="User" EntityType="SchoolOfExcellenceModel.User" />
           <AssociationSet Name="FK_StudentActivity_Activity" Association="SchoolOfExcellenceModel.FK_StudentActivity_Activity">
             <End Role="Activity" EntitySet="Activity" />
             <End Role="StudentActivity" EntitySet="StudentActivity" />
           </AssociationSet>
-          <AssociationSet Name="FK_Student_Grade" Association="SchoolOfExcellenceModel.FK_Student_Grade">
-            <End Role="Grade" EntitySet="Grade" />
-            <End Role="Student" EntitySet="Student" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Headmaster_User" Association="SchoolOfExcellenceModel.FK_Headmaster_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Headmaster" EntitySet="Headmaster" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Role" Association="SchoolOfExcellenceModel.FK_User_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SkipVisit_Student" Association="SchoolOfExcellenceModel.FK_SkipVisit_Student">
-            <End Role="Student" EntitySet="Student" />
-            <End Role="SkipVisit" EntitySet="SkipVisit" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StudentActivity_Student" Association="SchoolOfExcellenceModel.FK_StudentActivity_Student">
-            <End Role="Student" EntitySet="Student" />
-            <End Role="StudentActivity" EntitySet="StudentActivity" />
-          </AssociationSet>
-          <EntitySet Name="Teacher" EntityType="SchoolOfExcellenceModel.Teacher" />
           <EntitySet Name="TeacherActivity" EntityType="SchoolOfExcellenceModel.TeacherActivity" />
           <AssociationSet Name="FK_TeacherActivity_Activity" Association="SchoolOfExcellenceModel.FK_TeacherActivity_Activity">
             <End Role="Activity" EntitySet="Activity" />
-            <End Role="TeacherActivity" EntitySet="TeacherActivity" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Teacher_User" Association="SchoolOfExcellenceModel.FK_Teacher_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Teacher" EntitySet="Teacher" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TeacherActivity_Teacher" Association="SchoolOfExcellenceModel.FK_TeacherActivity_Teacher">
-            <End Role="Teacher" EntitySet="Teacher" />
             <End Role="TeacherActivity" EntitySet="TeacherActivity" />
           </AssociationSet>
           <EntitySet Name="Schedule" EntityType="SchoolOfExcellenceModel.Schedule" />
@@ -437,13 +403,45 @@
             <End Role="DayOfWeek" EntitySet="DayOfWeek" />
             <End Role="Schedule" EntitySet="Schedule" />
           </AssociationSet>
+          <AssociationSet Name="FK_SkipVisit_Schedule" Association="SchoolOfExcellenceModel.FK_SkipVisit_Schedule">
+            <End Role="Schedule" EntitySet="Schedule" />
+            <End Role="SkipVisit" EntitySet="SkipVisit" />
+          </AssociationSet>
+          <EntitySet Name="Headmaster" EntityType="SchoolOfExcellenceModel.Headmaster" />
+          <EntitySet Name="Student" EntityType="SchoolOfExcellenceModel.Student" />
+          <EntitySet Name="Teacher" EntityType="SchoolOfExcellenceModel.Teacher" />
+          <EntitySet Name="User" EntityType="SchoolOfExcellenceModel.User" />
+          <AssociationSet Name="FK_Student_Grade" Association="SchoolOfExcellenceModel.FK_Student_Grade">
+            <End Role="Grade" EntitySet="Grade" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Headmaster_User" Association="SchoolOfExcellenceModel.FK_Headmaster_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Headmaster" EntitySet="Headmaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="SchoolOfExcellenceModel.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
           <AssociationSet Name="FK_Schedule_Teacher" Association="SchoolOfExcellenceModel.FK_Schedule_Teacher">
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="Schedule" EntitySet="Schedule" />
           </AssociationSet>
-          <AssociationSet Name="FK_SkipVisit_Schedule" Association="SchoolOfExcellenceModel.FK_SkipVisit_Schedule">
-            <End Role="Schedule" EntitySet="Schedule" />
+          <AssociationSet Name="FK_SkipVisit_Student" Association="SchoolOfExcellenceModel.FK_SkipVisit_Student">
+            <End Role="Student" EntitySet="Student" />
             <End Role="SkipVisit" EntitySet="SkipVisit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentActivity_Student" Association="SchoolOfExcellenceModel.FK_StudentActivity_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="StudentActivity" EntitySet="StudentActivity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_User" Association="SchoolOfExcellenceModel.FK_Teacher_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherActivity_Teacher" Association="SchoolOfExcellenceModel.FK_TeacherActivity_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="TeacherActivity" EntitySet="TeacherActivity" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Activity">
@@ -451,7 +449,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="MaxCount" Type="Int32" />
@@ -483,16 +481,6 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Student" Relationship="SchoolOfExcellenceModel.FK_Student_Grade" FromRole="Grade" ToRole="Student" />
         </EntityType>
-        <EntityType Name="Headmaster">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IdUser" Type="Int32" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="User" Relationship="SchoolOfExcellenceModel.FK_Headmaster_User" FromRole="Headmaster" ToRole="User" />
-        </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="Id" />
@@ -509,20 +497,9 @@
           <Property Name="IdSchedule" Type="Int32" />
           <Property Name="IdStudent" Type="Int32" />
           <Property Name="Reason" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Student" Relationship="SchoolOfExcellenceModel.FK_SkipVisit_Student" FromRole="SkipVisit" ToRole="Student" />
           <Property Name="Date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Schedule" Relationship="SchoolOfExcellenceModel.FK_SkipVisit_Schedule" FromRole="SkipVisit" ToRole="Schedule" />
-        </EntityType>
-        <EntityType Name="Student">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IdGrade" Type="Int32" />
-          <NavigationProperty Name="Grade" Relationship="SchoolOfExcellenceModel.FK_Student_Grade" FromRole="Student" ToRole="Grade" />
-          <NavigationProperty Name="SkipVisit" Relationship="SchoolOfExcellenceModel.FK_SkipVisit_Student" FromRole="Student" ToRole="SkipVisit" />
-          <NavigationProperty Name="StudentActivity" Relationship="SchoolOfExcellenceModel.FK_StudentActivity_Student" FromRole="Student" ToRole="StudentActivity" />
+          <NavigationProperty Name="Student" Relationship="SchoolOfExcellenceModel.FK_SkipVisit_Student" FromRole="SkipVisit" ToRole="Student" />
         </EntityType>
         <EntityType Name="StudentActivity">
           <Key>
@@ -545,18 +522,6 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="IdRole" Type="Int32" />
-          <NavigationProperty Name="Headmaster" Relationship="SchoolOfExcellenceModel.FK_Headmaster_User" FromRole="User" ToRole="Headmaster" />
-          <NavigationProperty Name="Role" Relationship="SchoolOfExcellenceModel.FK_User_Role" FromRole="User" ToRole="Role" />
-          <NavigationProperty Name="Teacher" Relationship="SchoolOfExcellenceModel.FK_Teacher_User" FromRole="User" ToRole="Teacher" />
-        </EntityType>
         <Association Name="FK_StudentActivity_Activity">
           <End Type="SchoolOfExcellenceModel.Activity" Role="Activity" Multiplicity="1" />
           <End Type="SchoolOfExcellenceModel.StudentActivity" Role="StudentActivity" Multiplicity="*" />
@@ -569,79 +534,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Student_Grade">
-          <End Type="SchoolOfExcellenceModel.Grade" Role="Grade" Multiplicity="0..1" />
-          <End Type="SchoolOfExcellenceModel.Student" Role="Student" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Grade">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Student">
-              <PropertyRef Name="IdGrade" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Headmaster_User">
-          <End Type="SchoolOfExcellenceModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="SchoolOfExcellenceModel.Headmaster" Role="Headmaster" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Headmaster">
-              <PropertyRef Name="IdUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_User_Role">
-          <End Type="SchoolOfExcellenceModel.Role" Role="Role" Multiplicity="0..1" />
-          <End Type="SchoolOfExcellenceModel.User" Role="User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="IdRole" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SkipVisit_Student">
-          <End Type="SchoolOfExcellenceModel.Student" Role="Student" Multiplicity="0..1" />
-          <End Type="SchoolOfExcellenceModel.SkipVisit" Role="SkipVisit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Student">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="SkipVisit">
-              <PropertyRef Name="IdStudent" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StudentActivity_Student">
-          <End Type="SchoolOfExcellenceModel.Student" Role="Student" Multiplicity="1" />
-          <End Type="SchoolOfExcellenceModel.StudentActivity" Role="StudentActivity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Student">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="StudentActivity">
-              <PropertyRef Name="IdStudent" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Teacher">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="IdUser" Type="Int32" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="User" Relationship="SchoolOfExcellenceModel.FK_Teacher_User" FromRole="Teacher" ToRole="User" />
-          <NavigationProperty Name="TeacherActivity" Relationship="SchoolOfExcellenceModel.FK_TeacherActivity_Teacher" FromRole="Teacher" ToRole="TeacherActivity" />
-          <NavigationProperty Name="Schedule" Relationship="SchoolOfExcellenceModel.FK_Schedule_Teacher" FromRole="Teacher" ToRole="Schedule" />
-        </EntityType>
         <EntityType Name="TeacherActivity">
           <Key>
             <PropertyRef Name="IdTeacher" />
@@ -665,30 +557,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Teacher_User">
-          <End Type="SchoolOfExcellenceModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="SchoolOfExcellenceModel.Teacher" Role="Teacher" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Teacher">
-              <PropertyRef Name="IdUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TeacherActivity_Teacher">
-          <End Type="SchoolOfExcellenceModel.Teacher" Role="Teacher" Multiplicity="1" />
-          <End Type="SchoolOfExcellenceModel.TeacherActivity" Role="TeacherActivity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Teacher">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TeacherActivity">
-              <PropertyRef Name="IdTeacher" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Schedule">
           <Key>
             <PropertyRef Name="Id" />
@@ -704,8 +572,8 @@
           <NavigationProperty Name="Activity" Relationship="SchoolOfExcellenceModel.FK_Schedule_Activity" FromRole="Schedule" ToRole="Activity" />
           <NavigationProperty Name="Cabinet" Relationship="SchoolOfExcellenceModel.FK_Schedule_Cabinet" FromRole="Schedule" ToRole="Cabinet" />
           <NavigationProperty Name="DayOfWeek" Relationship="SchoolOfExcellenceModel.FK_Schedule_DayOfWeek" FromRole="Schedule" ToRole="DayOfWeek" />
-          <NavigationProperty Name="Teacher" Relationship="SchoolOfExcellenceModel.FK_Schedule_Teacher" FromRole="Schedule" ToRole="Teacher" />
           <NavigationProperty Name="SkipVisit" Relationship="SchoolOfExcellenceModel.FK_SkipVisit_Schedule" FromRole="Schedule" ToRole="SkipVisit" />
+          <NavigationProperty Name="Teacher" Relationship="SchoolOfExcellenceModel.FK_Schedule_Teacher" FromRole="Schedule" ToRole="Teacher" />
         </EntityType>
         <Association Name="FK_Schedule_Activity">
           <End Type="SchoolOfExcellenceModel.Activity" Role="Activity" Multiplicity="0..1" />
@@ -743,6 +611,98 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SkipVisit_Schedule">
+          <End Type="SchoolOfExcellenceModel.Schedule" Role="Schedule" Multiplicity="0..1" />
+          <End Type="SchoolOfExcellenceModel.SkipVisit" Role="SkipVisit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedule">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SkipVisit">
+              <PropertyRef Name="IdSchedule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Headmaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="SchoolOfExcellenceModel.FK_Headmaster_User" FromRole="Headmaster" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdGrade" Type="Int32" />
+          <NavigationProperty Name="Grade" Relationship="SchoolOfExcellenceModel.FK_Student_Grade" FromRole="Student" ToRole="Grade" />
+          <NavigationProperty Name="SkipVisit" Relationship="SchoolOfExcellenceModel.FK_SkipVisit_Student" FromRole="Student" ToRole="SkipVisit" />
+          <NavigationProperty Name="StudentActivity" Relationship="SchoolOfExcellenceModel.FK_StudentActivity_Student" FromRole="Student" ToRole="StudentActivity" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IdUser" Type="Int32" />
+          <NavigationProperty Name="Schedule" Relationship="SchoolOfExcellenceModel.FK_Schedule_Teacher" FromRole="Teacher" ToRole="Schedule" />
+          <NavigationProperty Name="User" Relationship="SchoolOfExcellenceModel.FK_Teacher_User" FromRole="Teacher" ToRole="User" />
+          <NavigationProperty Name="TeacherActivity" Relationship="SchoolOfExcellenceModel.FK_TeacherActivity_Teacher" FromRole="Teacher" ToRole="TeacherActivity" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IdRole" Type="Int32" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Headmaster" Relationship="SchoolOfExcellenceModel.FK_Headmaster_User" FromRole="User" ToRole="Headmaster" />
+          <NavigationProperty Name="Role" Relationship="SchoolOfExcellenceModel.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Teacher" Relationship="SchoolOfExcellenceModel.FK_Teacher_User" FromRole="User" ToRole="Teacher" />
+        </EntityType>
+        <Association Name="FK_Student_Grade">
+          <End Type="SchoolOfExcellenceModel.Grade" Role="Grade" Multiplicity="0..1" />
+          <End Type="SchoolOfExcellenceModel.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="IdGrade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Headmaster_User">
+          <End Type="SchoolOfExcellenceModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="SchoolOfExcellenceModel.Headmaster" Role="Headmaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Headmaster">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Type="SchoolOfExcellenceModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="SchoolOfExcellenceModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Schedule_Teacher">
           <End Type="SchoolOfExcellenceModel.Teacher" Role="Teacher" Multiplicity="0..1" />
           <End Type="SchoolOfExcellenceModel.Schedule" Role="Schedule" Multiplicity="*" />
@@ -755,15 +715,51 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SkipVisit_Schedule">
-          <End Type="SchoolOfExcellenceModel.Schedule" Role="Schedule" Multiplicity="0..1" />
+        <Association Name="FK_SkipVisit_Student">
+          <End Type="SchoolOfExcellenceModel.Student" Role="Student" Multiplicity="0..1" />
           <End Type="SchoolOfExcellenceModel.SkipVisit" Role="SkipVisit" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Schedule">
+            <Principal Role="Student">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="SkipVisit">
-              <PropertyRef Name="IdSchedule" />
+              <PropertyRef Name="IdStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentActivity_Student">
+          <End Type="SchoolOfExcellenceModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="SchoolOfExcellenceModel.StudentActivity" Role="StudentActivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentActivity">
+              <PropertyRef Name="IdStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_User">
+          <End Type="SchoolOfExcellenceModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="SchoolOfExcellenceModel.Teacher" Role="Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeacherActivity_Teacher">
+          <End Type="SchoolOfExcellenceModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="SchoolOfExcellenceModel.TeacherActivity" Role="TeacherActivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TeacherActivity">
+              <PropertyRef Name="IdTeacher" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -808,16 +804,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Headmaster">
-            <EntityTypeMapping TypeName="SchoolOfExcellenceModel.Headmaster">
-              <MappingFragment StoreEntitySet="Headmaster">
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Role">
             <EntityTypeMapping TypeName="SchoolOfExcellenceModel.Role">
               <MappingFragment StoreEntitySet="Role">
@@ -833,15 +819,6 @@
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
                 <ScalarProperty Name="IdSchedule" ColumnName="IdSchedule" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Student">
-            <EntityTypeMapping TypeName="SchoolOfExcellenceModel.Student">
-              <MappingFragment StoreEntitySet="Student">
-                <ScalarProperty Name="IdGrade" ColumnName="IdGrade" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -866,27 +843,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="SchoolOfExcellenceModel.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Teacher">
-            <EntityTypeMapping TypeName="SchoolOfExcellenceModel.Teacher">
-              <MappingFragment StoreEntitySet="Teacher">
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TeacherActivity">
             <EntityTypeMapping TypeName="SchoolOfExcellenceModel.TeacherActivity">
               <MappingFragment StoreEntitySet="TeacherActivity">
@@ -906,6 +862,44 @@
                 <ScalarProperty Name="IsSkipped" ColumnName="IsSkipped" />
                 <ScalarProperty Name="IdDayOfWeek" ColumnName="IdDayOfWeek" />
                 <ScalarProperty Name="IdActivity" ColumnName="IdActivity" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Headmaster">
+            <EntityTypeMapping TypeName="SchoolOfExcellenceModel.Headmaster">
+              <MappingFragment StoreEntitySet="Headmaster">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student">
+            <EntityTypeMapping TypeName="SchoolOfExcellenceModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="IdGrade" ColumnName="IdGrade" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teacher">
+            <EntityTypeMapping TypeName="SchoolOfExcellenceModel.Teacher">
+              <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="SchoolOfExcellenceModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

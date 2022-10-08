@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:SchoolOfExcellence"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddSchedulePage">
+      Title="AddSchedulePage"
+       >
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -31,8 +32,8 @@
         <ComboBox Grid.Column="1" x:Name="comboActivity" DisplayMemberPath="Name" SelectionChanged="comboActivity_SelectionChanged"></ComboBox>
         <ComboBox Grid.Column="1" Grid.Row="1" x:Name="comboTeachers" DisplayMemberPath="FullName" SelectionChanged="comboTeachers_SelectionChanged"></ComboBox>
         <ComboBox Grid.Column="1" Grid.Row="2" x:Name="comboDayOfWeek" DisplayMemberPath="Name"></ComboBox>
-        <DatePicker Grid.Column="1" Grid.Row="4" Name="tbLessonEnd"></DatePicker>
-        <DatePickerTextBox  Grid.Column="1" Grid.Row="3" Name="tbLessonStart"></DatePickerTextBox>
+        <TextBox Grid.Column="1" Grid.Row="4" Name="tbLessonEnd"></TextBox>
+        <TextBox  Grid.Column="1" Grid.Row="3" Name="tbLessonStart"></TextBox>
         <ComboBox Grid.Column="1" Grid.Row="5" x:Name="comboCabinet" DisplayMemberPath="Name"></ComboBox>
         <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center">
             <Button x:Name="btnBack" Content="Назад" Click="btnBack_Click"></Button>

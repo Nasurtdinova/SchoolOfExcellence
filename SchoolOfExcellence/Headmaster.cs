@@ -15,9 +15,7 @@ namespace SchoolOfExcellence
     public partial class Headmaster
     {
         public int Id { get; set; }
-        public string FullName { get; set; }
         public Nullable<int> IdUser { get; set; }
-        public byte[] Image { get; set; }
     
         public virtual User User { get; set; }
     }
