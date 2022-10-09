@@ -7,18 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SchoolOfExcellence
+namespace SchoolOfExcellence.Database
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class StudentActivity
+    public partial class Headmaster
     {
-        public int IdStudent { get; set; }
-        public int IdActivity { get; set; }
-        public Nullable<bool> IsActive { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> IdUser { get; set; }
     
-        public virtual Activity Activity { get; set; }
-        public virtual Student Student { get; set; }
+        public virtual User User { get; set; }
     }
 }

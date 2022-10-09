@@ -1,8 +1,10 @@
-﻿using System;
+﻿using SchoolOfExcellence.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DayOfWeek = SchoolOfExcellence.Database.DayOfWeek;
 
 namespace SchoolOfExcellence
 {

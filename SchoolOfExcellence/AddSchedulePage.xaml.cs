@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolOfExcellence.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,7 +34,7 @@ namespace SchoolOfExcellence
                 Activity = comboActivity.SelectedItem as Activity,
                 Teacher = comboTeachers.SelectedItem as Teacher,
                 Cabinet = comboCabinet.SelectedItem as Cabinet,
-                DayOfWeek = comboDayOfWeek.SelectedItem as DayOfWeek
+                DayOfWeek = comboDayOfWeek.SelectedItem as Database.DayOfWeek
             };
             DataAccess.AddSchedule(schedule);
         }

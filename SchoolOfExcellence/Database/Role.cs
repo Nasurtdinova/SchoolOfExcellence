@@ -7,28 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SchoolOfExcellence
+namespace SchoolOfExcellence.Database
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Teacher
+    public partial class Role
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Teacher()
+        public Role()
         {
-            this.Schedule = new HashSet<Schedule>();
-            this.TeacherActivity = new HashSet<TeacherActivity>();
+            this.User = new HashSet<User>();
         }
     
         public int Id { get; set; }
-        public Nullable<bool> IsActive { get; set; }
-        public Nullable<int> IdUser { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Schedule> Schedule { get; set; }
-        public virtual User User { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TeacherActivity> TeacherActivity { get; set; }
+        public virtual ICollection<User> User { get; set; }
     }
 }

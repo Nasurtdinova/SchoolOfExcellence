@@ -22,14 +22,17 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.RowSpan="3">
             <Image x:Name="imgUser" Width="250"></Image>
-            <Button x:Name="btnEditImage" Width="200" Content="Изменить фото" Click="btnEditImage_Click"></Button>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="btnExit" Content="Выйти" Click="btnExit_Click"></Button>
+                <Button x:Name="btnEditImage" Width="200" Content="Изменить фото" Click="btnEditImage_Click"></Button>
+            </StackPanel>
         </StackPanel>
         <TextBlock Text="{Binding FullName}" Grid.Row="4"></TextBlock>
         <TextBlock Text="{Binding Role.Name}" Grid.Row="3"></TextBlock>
         <Button x:Name="btnReports" Content="Отчеты" Width="300" Grid.Column="1" Grid.Row="0" Click="btnReports_Click"></Button>
         <Button x:Name="btnMyStudents" Content="Мои ученики" Width="300" Grid.Column="1" Grid.Row="2" Click="btnMyStudents_Click"></Button>
         <Button x:Name="btnMyActivities" Content="Мои кружки" Width="300" Grid.Column="1" Grid.Row="1"></Button>
-        <Button x:Name="btnMyActivitiesToday" Content="Мои кружки на сегодня" Width="450" Grid.Column="1" Grid.Row="3"></Button>
+        <Button x:Name="btnMyActivitiesToday" Content="Мои кружки на сегодня" Width="300" Grid.Column="1" Grid.Row="3" Click="btnMyActivitiesToday_Click"></Button>
         <Button x:Name="btnStudentsTeachers" Content="Ученики и учителя" Width="300" Grid.Column="1" Grid.Row="2" Click="btnStudentsTeachers_Click"></Button>
         <Button x:Name="btnActivities" Content="Кружки" Width="300" Grid.Column="1" Grid.Row="1" Click="btnActivities_Click"></Button>
         <Button x:Name="btnActivitiesToday" Content="Кружки на сегодня" Width="300" Grid.Column="1" Grid.Row="3"></Button>

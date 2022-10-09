@@ -22,8 +22,8 @@ namespace SchoolOfExcellence
             InitializeComponent();
             dgMonday.ItemsSource = DataAccess.GetSchedule("Понедельник");
             dgTuesday.ItemsSource = DataAccess.GetSchedule("Вторник");
-            dgThursday.ItemsSource = DataAccess.GetSchedule("Среда");
-            dgWednesday.ItemsSource = DataAccess.GetSchedule("Четверг");
+            dgWednesday.ItemsSource = DataAccess.GetSchedule("Среда");
+            dgThursday.ItemsSource = DataAccess.GetSchedule("Четверг");          
             dgFriday.ItemsSource = DataAccess.GetSchedule("Пятница");
             dgSaturday.ItemsSource = DataAccess.GetSchedule("Суббота");
             dgSunday.ItemsSource = DataAccess.GetSchedule("Воскресенье");

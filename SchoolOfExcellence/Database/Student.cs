@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SchoolOfExcellence
+namespace SchoolOfExcellence.Database
 {
     using System;
     using System.Collections.Generic;

@@ -7,32 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SchoolOfExcellence
+namespace SchoolOfExcellence.Database
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Activity
+    public partial class Teacher
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Activity()
+        public Teacher()
         {
-            this.StudentActivity = new HashSet<StudentActivity>();
-            this.TeacherActivity = new HashSet<TeacherActivity>();
             this.Schedule = new HashSet<Schedule>();
+            this.TeacherActivity = new HashSet<TeacherActivity>();
         }
     
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
         public Nullable<bool> IsActive { get; set; }
-        public Nullable<int> MaxCount { get; set; }
+        public Nullable<int> IdUser { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StudentActivity> StudentActivity { get; set; }
+        public virtual ICollection<Schedule> Schedule { get; set; }
+        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TeacherActivity> TeacherActivity { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Schedule> Schedule { get; set; }
     }
 }

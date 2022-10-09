@@ -67,7 +67,7 @@
     <Compile Include="ActivitiesPage.xaml.cs">
       <DependentUpon>ActivitiesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Activity.cs">
+    <Compile Include="Database\Activity.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="AddEditActivitiesPage.xaml.cs">
@@ -76,53 +76,62 @@
     <Compile Include="AddSchedulePage.xaml.cs">
       <DependentUpon>AddSchedulePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Cabinet.cs">
+    <Compile Include="Database\Cabinet.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="CurrentUser.cs" />
-    <Compile Include="DayOfWeek.cs">
+    <Compile Include="Database\CurrentUser.cs" />
+    <Compile Include="Database\DayOfWeek.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Grade.cs">
+    <Compile Include="Database\Grade.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Headmaster.cs">
+    <Compile Include="Database\Headmaster.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Role.cs">
+    <Compile Include="MyStudentsPage.xaml.cs">
+      <DependentUpon>MyStudentsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Role.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Schedule.cs">
+    <Compile Include="Database\Schedule.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="SchedulePage.xaml.cs">
       <DependentUpon>SchedulePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SelectStudentPage.xaml.cs">
+      <DependentUpon>SelectStudentPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SelectTeacherPage.xaml.cs">
       <DependentUpon>SelectTeacherPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SkipVisit.cs">
+    <Compile Include="Database\SkipVisit.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Student.cs">
+    <Compile Include="Database\Student.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="StudentActivity.cs">
+    <Compile Include="Database\StudentActivity.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="StudentsTeachersPage.xaml.cs">
       <DependentUpon>StudentsTeachersPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
+    <Compile Include="Database\sysdiagrams.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Teacher.cs">
+    <Compile Include="Database\Teacher.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="TeacherActivity.cs">
+    <Compile Include="Database\TeacherActivity.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="User.cs">
+    <Compile Include="TodayActivitiesPage.xaml.cs">
+      <DependentUpon>TodayActivitiesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Database\User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Page Include="ActivitiesPage.xaml">
@@ -156,8 +165,8 @@
     <Compile Include="AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Connection.cs" />
-    <Compile Include="DataAccess.cs" />
+    <Compile Include="Database\Connection.cs" />
+    <Compile Include="Database\DataAccess.cs" />
     <Compile Include="HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -165,7 +174,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MyStudentsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SchedulePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectStudentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -177,19 +194,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="TodayActivitiesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model.Context.cs">
+    <Compile Include="Database\Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model.cs">
+    <Compile Include="Database\Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model.Designer.cs">
+    <Compile Include="Database\Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -211,11 +232,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model.edmx">
+    <EntityDeploy Include="Database\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model.edmx.diagram">
+    <None Include="Database\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -228,23 +249,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="fon.png" />
+    <Resource Include="Images\fon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="logotip_shkoly.png" />
+    <Resource Include="Images\logotip_shkoly.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model.Context.tt">
+    <Content Include="Database\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model.Context.cs</LastGenOutput>
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
-    <Content Include="Model.tt">
+    <Content Include="Database\Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
-    <Resource Include="ProfileIcon.png" />
+    <Resource Include="Images\ProfileIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

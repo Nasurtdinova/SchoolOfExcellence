@@ -7,23 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SchoolOfExcellence
+namespace SchoolOfExcellence.Database
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Grade
+    public partial class Cabinet
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Grade()
+        public Cabinet()
         {
-            this.Student = new HashSet<Student>();
+            this.Schedule = new HashSet<Schedule>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Student> Student { get; set; }
+        public virtual ICollection<Schedule> Schedule { get; set; }
     }
 }

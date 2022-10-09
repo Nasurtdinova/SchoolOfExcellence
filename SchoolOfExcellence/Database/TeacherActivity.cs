@@ -7,20 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SchoolOfExcellence
+namespace SchoolOfExcellence.Database
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class SkipVisit
+    public partial class TeacherActivity
     {
-        public int Id { get; set; }
-        public Nullable<int> IdSchedule { get; set; }
-        public Nullable<int> IdStudent { get; set; }
-        public string Reason { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
+        public int IdTeacher { get; set; }
+        public int IdActivity { get; set; }
+        public string Name { get; set; }
     
-        public virtual Schedule Schedule { get; set; }
-        public virtual Student Student { get; set; }
+        public virtual Activity Activity { get; set; }
+        public virtual Teacher Teacher { get; set; }
     }
 }

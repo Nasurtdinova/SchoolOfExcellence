@@ -5,7 +5,7 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <Style TargetType="TextBlock">
-            <Setter Property="FontSize" Value="25"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
             <Setter Property="FontFamily" Value="Times New Roman"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
@@ -16,7 +16,7 @@
                     <Setter Property="CornerRadius" Value="30" />
                 </Style>
             </Style.Resources>
-            <Setter Property="Width" Value="150"></Setter>
+            <Setter Property="Width" Value="120"></Setter>
             <Setter Property="Height" Value="50"></Setter>
             <Setter Property="Margin" Value="10"></Setter>
             <Setter Property="Foreground" Value="White"></Setter>

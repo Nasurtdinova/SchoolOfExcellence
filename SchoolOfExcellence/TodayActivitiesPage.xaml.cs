@@ -15,19 +15,17 @@ using System.Windows.Shapes;
 
 namespace SchoolOfExcellence
 {
-    public partial class AuthorizationPage : Page
+    public partial class TodayActivitiesPage : Page
     {
-        public AuthorizationPage()
+        public TodayActivitiesPage()
         {
             InitializeComponent();
+            dgTodayActivities.ItemsSource = DataAccess.GetSchedules().Where(a => a.DayOfWeek.Description == DateTime.Now.DayOfWeek.ToString()&& a.IdTeacher == CurrentUser.Teacher.Id);
         }
 
-        private void btnOk_Click(object sender, RoutedEventArgs e)
+        private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            if (DataAccess.IsCorrectUser(tbLogin.Text, tbPassword.Password))
-                NavigationService.Navigate(new HomePage());
-            else
-                MessageBox.Show("Incorrect login or password");
+            NavigationService.GoBack();
         }
     }
 }

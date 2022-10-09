@@ -25,7 +25,7 @@ namespace SchoolOfExcellence
             if (CurrentUser.User != null)
             {
                 if (CurrentUser.User.Image == null)
-                    imgUser.Source = new BitmapImage(new Uri("C:\\Users\\nasur\\Source\\Repos\\SchoolOfExcellence\\SchoolOfExcellence\\ProfileIcon.png"));
+                    imgUser.Source = new BitmapImage(new Uri("C:\\Users\\nasur\\Source\\Repos\\SchoolOfExcellence\\SchoolOfExcellence\\Images\\ProfileIcon.png"));
                 else
                 {
                     var stream = new MemoryStream(CurrentUser.User.Image);
@@ -47,6 +47,8 @@ namespace SchoolOfExcellence
             }
             else
             {
+                btnReports.Visibility = Visibility.Collapsed;
+                btnSchedule.Visibility = Visibility.Collapsed;
                 btnActivities.Visibility = Visibility.Collapsed;
                 btnStudentsTeachers.Visibility = Visibility.Collapsed;
                 btnActivitiesToday.Visibility = Visibility.Collapsed;
@@ -55,12 +57,7 @@ namespace SchoolOfExcellence
 
         private void btnMyStudents_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFile = new OpenFileDialog();
-            if (openFile.ShowDialog() == true)
-            {
-                imgUser.Source = new BitmapImage(new Uri(openFile.FileName));
-                CurrentUser.User.Image = File.ReadAllBytes(openFile.FileName);
-            }
+            NavigationService.Navigate(new MyStudentsPage());
         }
 
         private void btnActivities_Click(object sender, RoutedEventArgs e)
@@ -85,7 +82,24 @@ namespace SchoolOfExcellence
 
         private void btnEditImage_Click(object sender, RoutedEventArgs e)
         {
+            OpenFileDialog openFile = new OpenFileDialog();
+            if (openFile.ShowDialog() == true)
+            {
+                imgUser.Source = new BitmapImage(new Uri(openFile.FileName));
+                CurrentUser.User.Image = File.ReadAllBytes(openFile.FileName);
+                Connection.BdConnection.SaveChanges();
+            }
+        }
 
+        private void btnMyActivitiesToday_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TodayActivitiesPage());
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentUser.User = null;
+            NavigationService.Navigate(new AuthorizationPage());
         }
     }
 }
