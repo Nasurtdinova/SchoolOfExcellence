@@ -21,7 +21,16 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.RowSpan="3">
-            <Image x:Name="imgUser" Width="250"></Image>
+            <Image x:Name="imgUser" Width="250">
+                
+                <Image.Source>
+                    <Binding Path="Image">
+                        <Binding.TargetNullValue>
+                            <BitmapImage UriSource="/SchoolOfExcellence;component/Images/ProfileIcon.png"></BitmapImage>
+                        </Binding.TargetNullValue>
+                    </Binding>
+                </Image.Source>
+            </Image>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="btnExit" Content="Выйти" Click="btnExit_Click"></Button>
                 <Button x:Name="btnEditImage" Width="200" Content="Изменить фото" Click="btnEditImage_Click"></Button>

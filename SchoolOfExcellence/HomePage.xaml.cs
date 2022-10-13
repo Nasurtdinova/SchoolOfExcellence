@@ -22,21 +22,6 @@ namespace SchoolOfExcellence
         public HomePage()
         {
             InitializeComponent();
-            if (CurrentUser.User != null)
-            {
-                if (CurrentUser.User.Image == null)
-                    imgUser.Source = new BitmapImage(new Uri("C:\\Users\\nasur\\Source\\Repos\\SchoolOfExcellence\\SchoolOfExcellence\\Images\\ProfileIcon.png"));
-                else
-                {
-                    var stream = new MemoryStream(CurrentUser.User.Image);
-                    stream.Seek(0, SeekOrigin.Begin);
-                    var image = new BitmapImage();
-                    image.BeginInit();
-                    image.StreamSource = stream;
-                    image.EndInit();
-                    imgUser.Source = image;
-                }              
-            }
             DataContext = CurrentUser.User;          
 
             if (CurrentUser.Headmaster != null)
