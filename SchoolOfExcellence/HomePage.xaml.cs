@@ -24,7 +24,7 @@ namespace SchoolOfExcellence
             InitializeComponent();
             DataContext = CurrentUser.User;          
 
-            if (CurrentUser.Headmaster != null)
+            if (CurrentUser.User.IdRole == 1)
             {
                 btnMyActivities.Visibility = Visibility.Collapsed;
                 btnMyStudents.Visibility = Visibility.Collapsed;

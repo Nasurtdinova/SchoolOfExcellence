@@ -22,10 +22,5 @@ namespace SchoolOfExcellence
             InitializeComponent();
             mainFrame.NavigationService.Navigate(new AuthorizationPage());
         }
-
-        private void mainFrame_ContentRendered(object sender, EventArgs e)
-        {
-            mainFrame.NavigationUIVisibility = System.Windows.Navigation.NavigationUIVisibility.Hidden;
-        }
     }
 }

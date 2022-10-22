@@ -1,0 +1,93 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace SchoolOfExcellence
+{
+    /// <summary>
+    /// Логика взаимодействия для HomeWindow.xaml
+    /// </summary>
+    public partial class HomeWindow : Page
+    {
+        public HomeWindow()
+        {
+            InitializeComponent();
+            if (CurrentUser.User.IdRole == 1)
+            {
+                ItemMyActivities.Visibility = Visibility.Collapsed;
+                ItemMyStudents.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                ItemReports.Visibility = Visibility.Collapsed;
+                ItemSchedule.Visibility = Visibility.Collapsed;
+                ItemActivities.Visibility = Visibility.Collapsed;
+                ItemStudentsTeacher.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void ButtonFechar_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int index = ListViewMenu.SelectedIndex;
+            MoveCursorMenu(index);
+
+            switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
+            {
+                case "ItemHome":
+                    GridPrincipal.Navigate(new AuthorizationPage());
+                    break;
+                case "ItemReports":
+                    //GridPrincipal.Navigate(new ());
+                    break;
+                case "ItemSchedule":
+                    GridPrincipal.Navigate(new SchedulePage());
+                    break;
+                case "ItemActivities":
+                    GridPrincipal.Navigate(new ActivitiesPage());
+                    break;
+                case "ItemStudentsTeacher":
+                    GridPrincipal.Navigate(new StudentsTeachersPage());
+                    break;
+                case "ItemMyActivities":
+                    //GridPrincipal.Navigate(new ());
+                    break;
+                case "ItemMyStudents":
+                    GridPrincipal.Navigate(new MyStudentsPage());
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void MoveCursorMenu(int index)
+        {
+            TrainsitionigContentSlide.OnApplyTemplate();
+            GridCursor.Margin = new Thickness(0, (200 + (60 * index)), 0, 0);
+        }
+
+        private void exit_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AuthorizationPage());
+        }
+
+        private void profile_Click(object sender, RoutedEventArgs e)
+        {
+            //GridPrincipal.Navigate(new )
+        }
+    }
+}

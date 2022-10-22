@@ -1,0 +1,85 @@
+﻿<Page x:Class="SchoolOfExcellence.HomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:SchoolOfExcellence"
+        mc:Ignorable="d"
+        Title="Школа превосходства" d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="White">
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal" Width="352">
+            <TextBlock Text="Попутчики" HorizontalAlignment="Right" FontSize="30"/>
+            <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Right" StaysOpen="False" Margin="10">
+                <StackPanel Width="150">
+                    <StackPanel Orientation="Horizontal" Name="profile">
+                        <materialDesign:PackIcon Kind="Account" Width="30" Margin="0 10" Height="30"/>
+                        <Button Content="Профиль" Margin="0 5" Click="profile_Click" />
+                    </StackPanel>
+                    <Separator/>
+                    <StackPanel Orientation="Horizontal" Name="exit">
+                        <materialDesign:PackIcon Kind="LogoutVariant" Width="30" Margin="0 10" Height="30"/>
+                        <Button Content="Выйти" Margin="0 5" Click="exit_Click" />
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:PopupBox>
+        </StackPanel>
+        <Grid Margin="250 55 0 0">
+            <Frame x:Name="GridPrincipal" NavigationUIVisibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Width="250" HorizontalAlignment="Left" Background="#FF59C5A6">
+            <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.2}">
+                <Grid x:Name="GridCursor" Margin="0 150 0 0" Background="#FF0069C0" Width="10" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top"/>
+            </materialDesign:TransitioningContent>
+            <Ellipse Width="150" Height="150" VerticalAlignment="Top" Margin="20">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="/SchoolOfExcellence;component/Images/logotip_shkoly.png"></ImageBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <ListView x:Name="ListViewMenu" Background="Transparent" Margin="0 200" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="Champagne &amp; Limousines" FontSize="18" SelectionChanged="ListViewMenu_SelectionChanged" SelectedIndex="0">
+                <ListViewItem Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Главная" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60" Name="ItemActivities">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="FoodForkDrink" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Кружки" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60" Name="ItemMyActivities">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Message" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Мои кружки" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60" Name="ItemMyStudents">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Account" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Мои ученики" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60" Name="ItemStudentsTeacher">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Logout" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Ученики и учителя" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60" Name="ItemReports">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Logout" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Отчеты" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60" Name="ItemSchedule">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Logout" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Расписание" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </ListViewItem>
+            </ListView>
+        </Grid>
+    </Grid>
+</Page>

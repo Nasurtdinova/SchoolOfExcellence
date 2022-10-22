@@ -8,6 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AuthorizationPage">
     <Grid>
+      
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -16,11 +17,15 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Text="Логин"></TextBlock>
-        <TextBlock Text="Пароль" Grid.Row="1"></TextBlock>
-        <TextBox x:Name="tbLogin" Grid.Column="1"></TextBox>
-        <PasswordBox x:Name="tbPassword" Grid.Column="1" Grid.Row="1"></PasswordBox>
-        <Button Grid.ColumnSpan="2" Grid.Row="2" Content="Войти" Name="btnOk" Click="btnOk_Click"></Button>
+        <Image Source="Images/fon.png" Grid.ColumnSpan="2" Grid.RowSpan="4"></Image>
+        <Image Source="Images/logotip_shkoly.png" Width="97" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="114,10,0,0" Height="82" ></Image>
+        <TextBlock Text="Школа превосходства" FontSize="30" Margin="20" VerticalAlignment="Top" Grid.ColumnSpan="2"></TextBlock>
+        <TextBlock Text="Логин" Grid.Row="1"></TextBlock>
+        <TextBlock Text="Пароль" Grid.Row="2"></TextBlock>
+        <TextBox x:Name="tbLogin" Grid.Row="1" Grid.Column="1"></TextBox>
+        <PasswordBox x:Name="tbPassword" Grid.Column="1" Grid.Row="2"></PasswordBox>
+        <Button Grid.ColumnSpan="2" Grid.Row="3" Content="Войти" Name="btnOk" Click="btnOk_Click"></Button>
     </Grid>
 </Page>
