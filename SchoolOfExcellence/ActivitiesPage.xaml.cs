@@ -26,18 +26,33 @@ namespace SchoolOfExcellence
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddEditActivitiesPage(null));
+            AddEditActivitiesPage add = new AddEditActivitiesPage(null);
+            add.Show();
+            add.Closed += (s, eventarg) =>
+            {
+                dgActivities.ItemsSource = DataAccess.GetActivities();
+            };
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             var i = (sender as Button).DataContext as Activity;
-            NavigationService.Navigate(new AddEditActivitiesPage(i));
+            AddEditActivitiesPage edit = new AddEditActivitiesPage(i);
+            edit.Show();
+            edit.Closed += (s, eventarg) =>
+            {
+                dgActivities.ItemsSource = DataAccess.GetActivities();
+            };
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

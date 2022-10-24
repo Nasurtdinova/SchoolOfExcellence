@@ -20,7 +20,7 @@ namespace SchoolOfExcellence
         public TodayActivitiesPage()
         {
             InitializeComponent();
-            dgTodayActivities.ItemsSource = DataAccess.GetSchedules().Where(a => a.DayOfWeek.Description == DateTime.Now.DayOfWeek.ToString()&& a.IdTeacher == CurrentUser.Teacher.Id);
+            dgTodayActivities.ItemsSource = DataAccess.GetSchedules().Where(a => a.DayOfWeek.Description == DateTime.Now.DayOfWeek.ToString()&& a.TeacherActivity.Teacher == CurrentUser.Teacher);
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)

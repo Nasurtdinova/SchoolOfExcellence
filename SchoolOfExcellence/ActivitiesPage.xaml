@@ -22,7 +22,7 @@
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="btnRemove" Width="100" Content="Удалить"></Button>
+                            <Button x:Name="btnRemove" Width="100" Content="Удалить" Click="btnRemove_Click"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

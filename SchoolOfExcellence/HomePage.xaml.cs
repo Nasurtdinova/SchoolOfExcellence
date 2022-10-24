@@ -42,7 +42,7 @@ namespace SchoolOfExcellence
 
         private void btnMyStudents_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MyStudentsPage());
+            NavigationService.Navigate(new MyGroupsPage());
         }
 
         private void btnActivities_Click(object sender, RoutedEventArgs e)

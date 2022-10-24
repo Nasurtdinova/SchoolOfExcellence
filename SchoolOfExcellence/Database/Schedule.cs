@@ -21,19 +21,17 @@ namespace SchoolOfExcellence.Database
         }
     
         public int Id { get; set; }
-        public Nullable<int> IdActivity { get; set; }
+        public Nullable<int> IdTeacherActivity { get; set; }
         public Nullable<int> IdDayOfWeek { get; set; }
         public Nullable<bool> IsSkipped { get; set; }
         public Nullable<System.TimeSpan> LessonStartTime { get; set; }
         public Nullable<System.TimeSpan> LessonEndTime { get; set; }
-        public Nullable<int> IdTeacher { get; set; }
         public Nullable<int> IdCabinet { get; set; }
     
-        public virtual Activity Activity { get; set; }
         public virtual Cabinet Cabinet { get; set; }
+        public virtual DayOfWeek DayOfWeek { get; set; }
+        public virtual TeacherActivity TeacherActivity { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SkipVisit> SkipVisit { get; set; }
-        public virtual Teacher Teacher { get; set; }
-        public virtual DayOfWeek DayOfWeek { get; set; }
     }
 }

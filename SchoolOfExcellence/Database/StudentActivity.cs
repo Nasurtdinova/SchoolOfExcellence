@@ -14,6 +14,7 @@ namespace SchoolOfExcellence.Database
     
     public partial class StudentActivity
     {
+        public int Id { get; set; }
         public int IdStudent { get; set; }
         public int IdActivity { get; set; }
         public Nullable<bool> IsActive { get; set; }

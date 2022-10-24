@@ -25,7 +25,7 @@ namespace SchoolOfExcellence
             if (CurrentUser.User.IdRole == 1)
             {
                 ItemMyActivities.Visibility = Visibility.Collapsed;
-                ItemMyStudents.Visibility = Visibility.Collapsed;
+                ItemMyGroups.Visibility = Visibility.Collapsed;
             }
             else
             {
@@ -43,9 +43,6 @@ namespace SchoolOfExcellence
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int index = ListViewMenu.SelectedIndex;
-            MoveCursorMenu(index);
-
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
                 case "ItemHome":
@@ -66,18 +63,12 @@ namespace SchoolOfExcellence
                 case "ItemMyActivities":
                     //GridPrincipal.Navigate(new ());
                     break;
-                case "ItemMyStudents":
-                    GridPrincipal.Navigate(new MyStudentsPage());
+                case "ItemMyGroups":
+                    GridPrincipal.Navigate(new MyGroupsPage());
                     break;
                 default:
                     break;
             }
-        }
-
-        private void MoveCursorMenu(int index)
-        {
-            TrainsitionigContentSlide.OnApplyTemplate();
-            GridCursor.Margin = new Thickness(0, (200 + (60 * index)), 0, 0);
         }
 
         private void exit_Click(object sender, RoutedEventArgs e)

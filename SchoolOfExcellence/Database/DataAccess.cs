@@ -102,30 +102,22 @@ namespace SchoolOfExcellence
 
         public static bool IsCorrectUser(string email, string password)
         {
-            var admin = from usrs in GetUsers()
-                        where email == usrs.Login && password == usrs.Password && usrs.IdRole == 1
-                        select usrs;
+            var user = GetUsers().Where(a => email == a.Login && password == a.Password).FirstOrDefault();
 
-            var teacher = from usrs in GetUsers()
-                          where email == usrs.Login && password == usrs.Password && usrs.IdRole == 2
-                          select usrs;
-
-            if (teacher.Count() == 1)
+            if (user != null && user.IdRole == 2)
             {
-                CurrentUser.User = teacher.FirstOrDefault();
+                CurrentUser.User = user;
                 CurrentUser.Teacher = GetTeacher(CurrentUser.User.Id);
                 return true;
             }
-            else if (admin.Count() == 1)
+            else if (user != null && user.IdRole == 1)
             {
-                CurrentUser.User = admin.FirstOrDefault();
+                CurrentUser.User = user;
                 CurrentUser.Headmaster = GetHeadmaster(CurrentUser.User.Id);
                 return true;
             }
             else
-            {
                 return false;
-            }
         }
     }
 }

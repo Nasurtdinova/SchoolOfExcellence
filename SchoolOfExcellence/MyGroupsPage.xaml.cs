@@ -16,9 +16,9 @@ using System.Windows.Shapes;
 
 namespace SchoolOfExcellence
 {
-    public partial class MyStudentsPage : Page
+    public partial class MyGroupsPage : Page
     {
-        public MyStudentsPage()
+        public MyGroupsPage()
         {
             InitializeComponent();
             dgActivities.ItemsSource = DataAccess.GetActivitiesInTeacher(CurrentUser.Teacher.Id).Select(a=>a.Activity);

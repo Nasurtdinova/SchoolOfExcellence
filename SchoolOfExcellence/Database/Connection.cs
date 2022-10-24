@@ -9,6 +9,6 @@ namespace SchoolOfExcellence
 {
     public static class Connection
     {
-        public static SchoolOfExcellenceEntities BdConnection = new SchoolOfExcellenceEntities();
+        public static ActivityEntities BdConnection = new ActivityEntities();
     }
 }

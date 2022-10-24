@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 
 namespace SchoolOfExcellence
 {
-    public partial class AddEditActivitiesPage : Page
+    public partial class AddEditActivitiesPage : Window
     {
         public Activity CurrentActivity = new Activity();
         public AddEditActivitiesPage(Activity act)
@@ -28,24 +28,23 @@ namespace SchoolOfExcellence
                 lvTeachers.ItemsSource = DataAccess.GetTeachersInActivities(act.Id);
                 lvStudents.ItemsSource = DataAccess.GetStudentsInActivities(act.Id);
             }
-
-            DataContext = CurrentActivity;
-            
+            Title = CurrentActivity.Id == 0 ? "Добавление кружка" : "Редактирование кружка";
+            DataContext = CurrentActivity;           
         }
 
         private void btnAddTeacher_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new SelectTeacherPage(CurrentActivity));
+            SelectTeacherPage select = new SelectTeacherPage(CurrentActivity);
+            select.Show();
+            select.Closed += (s, eventarg) =>
+            {
+                lvTeachers.ItemsSource = DataAccess.GetTeachersInActivities(CurrentActivity.Id);
+            };
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void btnBack_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.GoBack();
         }
     }
 }

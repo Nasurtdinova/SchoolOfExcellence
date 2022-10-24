@@ -1,4 +1,4 @@
-﻿<Page x:Class="SchoolOfExcellence.SelectTeacherPage"
+﻿<Window x:Class="SchoolOfExcellence.SelectTeacherPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -21,4 +21,4 @@
             <Button x:Name="btnCreate" Content="Создать"></Button>
         </StackPanel>
     </Grid>
-</Page>
+</Window>

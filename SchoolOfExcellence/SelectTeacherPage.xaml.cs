@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 
 namespace SchoolOfExcellence
 {
-    public partial class SelectTeacherPage : Page
+    public partial class SelectTeacherPage : Window
     {
         public Activity CurrentActivity = new Activity();
         public SelectTeacherPage(Activity act)
@@ -35,7 +35,7 @@ namespace SchoolOfExcellence
             };
             Connection.BdConnection.TeacherActivity.Add(teacherActivity);
             Connection.BdConnection.SaveChanges();
-            NavigationService.Navigate(new AddEditActivitiesPage(CurrentActivity));
+            Close();
         }
     }
 }

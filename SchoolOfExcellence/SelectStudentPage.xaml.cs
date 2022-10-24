@@ -41,7 +41,7 @@ namespace SchoolOfExcellence
             };
             Connection.BdConnection.StudentActivity.Add(studentActivity);
             Connection.BdConnection.SaveChanges();
-            NavigationService.Navigate(new MyStudentsPage());
+            NavigationService.Navigate(new MyGroupsPage());
         }
     }
 }

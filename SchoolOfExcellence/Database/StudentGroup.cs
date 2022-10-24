@@ -12,22 +12,13 @@ namespace SchoolOfExcellence.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class TeacherActivity
+    public partial class StudentGroup
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TeacherActivity()
-        {
-            this.Schedule = new HashSet<Schedule>();
-        }
-    
         public int Id { get; set; }
-        public int IdTeacher { get; set; }
-        public int IdActivity { get; set; }
-        public string IsDeleted { get; set; }
+        public Nullable<int> IdStudent { get; set; }
+        public Nullable<int> IdGroup { get; set; }
     
-        public virtual Activity Activity { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Schedule> Schedule { get; set; }
-        public virtual Teacher Teacher { get; set; }
+        public virtual Group Group { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

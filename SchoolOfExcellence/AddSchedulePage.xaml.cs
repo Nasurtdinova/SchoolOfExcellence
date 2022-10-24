@@ -29,14 +29,14 @@ namespace SchoolOfExcellence
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            Schedule schedule = new Schedule()
-            {
-                Activity = comboActivity.SelectedItem as Activity,
-                Teacher = comboTeachers.SelectedItem as Teacher,
-                Cabinet = comboCabinet.SelectedItem as Cabinet,
-                DayOfWeek = comboDayOfWeek.SelectedItem as Database.DayOfWeek
-            };
-            DataAccess.AddSchedule(schedule);
+            //Schedule schedule = new Schedule()
+            //{
+            //    Activity = comboActivity.SelectedItem as Activity,
+            //    Teacher = comboTeachers.SelectedItem as Teacher,
+            //    Cabinet = comboCabinet.SelectedItem as Cabinet,
+            //    DayOfWeek = comboDayOfWeek.SelectedItem as Database.DayOfWeek
+            //};
+            //DataAccess.AddSchedule(schedule);
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)

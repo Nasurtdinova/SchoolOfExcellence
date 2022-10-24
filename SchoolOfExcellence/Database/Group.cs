@@ -12,25 +12,19 @@ namespace SchoolOfExcellence.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class Group
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Student()
+        public Group()
         {
-            this.SkipVisit = new HashSet<SkipVisit>();
-            this.StudentActivity = new HashSet<StudentActivity>();
             this.StudentGroup = new HashSet<StudentGroup>();
         }
     
         public int Id { get; set; }
-        public string FullName { get; set; }
-        public Nullable<int> IdGrade { get; set; }
+        public string Name { get; set; }
+        public Nullable<int> IdTeacher { get; set; }
     
-        public virtual Grade Grade { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SkipVisit> SkipVisit { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StudentActivity> StudentActivity { get; set; }
+        public virtual Teacher Teacher { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentGroup> StudentGroup { get; set; }
     }
