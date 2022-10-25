@@ -21,7 +21,7 @@ namespace SchoolOfExcellence
         public MyGroupsPage()
         {
             InitializeComponent();
-            dgActivities.ItemsSource = DataAccess.GetActivitiesInTeacher(CurrentUser.Teacher.Id).Select(a=>a.Activity);
+            dgActivities.ItemsSource = DataAccess.GetActivitiesInTeacher(CurrentUser.Teacher.Id);
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -31,13 +31,25 @@ namespace SchoolOfExcellence
 
         private void dgActivities_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var a = (sender as DataGrid).SelectedItem as Activity;
-            dgStudents.ItemsSource = DataAccess.GetStudentsInActivities(a.Id).Select(b=>b.Student);
+            var a = (sender as DataGrid).SelectedItem as TeacherActivity;
+            dgStudents.ItemsSource = DataAccess.GetStudentsInActivities(a.Id);
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new SelectStudentPage(dgActivities.SelectedItem as Activity));
+            SelectStudentPage select = new SelectStudentPage(dgActivities.SelectedItem as TeacherActivity);
+            select.Show();
+            select.Closed += (s, eventarg) =>
+            {
+                dgStudents.ItemsSource = DataAccess.GetStudentsInActivities((dgActivities.SelectedItem as TeacherActivity).Id);
+            };
+        }
+
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            var student = (sender as Button).DataContext as StudentActivity;
+            student.IsActive = false;
+            Connection.BdConnection.SaveChanges();
         }
     }
 }

@@ -17,7 +17,6 @@ namespace SchoolOfExcellence.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Activity()
         {
-            this.StudentActivity = new HashSet<StudentActivity>();
             this.TeacherActivity = new HashSet<TeacherActivity>();
         }
     
@@ -27,8 +26,6 @@ namespace SchoolOfExcellence.Database
         public Nullable<bool> IsActive { get; set; }
         public Nullable<int> MaxCount { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StudentActivity> StudentActivity { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TeacherActivity> TeacherActivity { get; set; }
     }

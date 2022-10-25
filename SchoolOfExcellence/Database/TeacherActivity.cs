@@ -18,16 +18,19 @@ namespace SchoolOfExcellence.Database
         public TeacherActivity()
         {
             this.Schedule = new HashSet<Schedule>();
+            this.StudentActivity = new HashSet<StudentActivity>();
         }
     
         public int Id { get; set; }
         public int IdTeacher { get; set; }
         public int IdActivity { get; set; }
-        public string IsDeleted { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         public virtual Activity Activity { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Schedule> Schedule { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentActivity> StudentActivity { get; set; }
         public virtual Teacher Teacher { get; set; }
     }
 }

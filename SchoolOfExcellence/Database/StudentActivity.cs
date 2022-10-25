@@ -19,7 +19,7 @@ namespace SchoolOfExcellence.Database
         public int IdActivity { get; set; }
         public Nullable<bool> IsActive { get; set; }
     
-        public virtual Activity Activity { get; set; }
         public virtual Student Student { get; set; }
+        public virtual TeacherActivity TeacherActivity { get; set; }
     }
 }

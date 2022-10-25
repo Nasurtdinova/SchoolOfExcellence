@@ -16,32 +16,34 @@ using System.Windows.Shapes;
 
 namespace SchoolOfExcellence
 {
-    public partial class SelectStudentPage : Page
+    public partial class SelectStudentPage : Window
     {
-        public Activity SelectedActivity { get; set; }
-        public SelectStudentPage(Activity act)
+        public TeacherActivity SelectedActivity { get; set; }
+        public SelectStudentPage(TeacherActivity act)
         {
             InitializeComponent();
             SelectedActivity = act;
             comboStudent.ItemsSource = DataAccess.GetStudents();
         }
 
-        private void btnBack_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.GoBack();
-        }
-
         private void btnSelect_Click(object sender, RoutedEventArgs e)
         {
             StudentActivity studentActivity = new StudentActivity()
             {
-                Activity = SelectedActivity,
+                TeacherActivity = SelectedActivity,
                 Student = comboStudent.SelectedItem as Student,
                 IsActive = true
             };
-            Connection.BdConnection.StudentActivity.Add(studentActivity);
-            Connection.BdConnection.SaveChanges();
-            NavigationService.Navigate(new MyGroupsPage());
+            if (DataAccess.GetStudentsActivities().Where(a => a.TeacherActivity == studentActivity.TeacherActivity && a.Student == studentActivity.Student).Count() != 0)
+            {
+                MessageBox.Show("Этот ученик уже состоит в этом кружке!");
+            }
+            else
+            {
+                Connection.BdConnection.StudentActivity.Add(studentActivity);
+                Connection.BdConnection.SaveChanges();
+                Close();
+            }
         }
     }
 }
