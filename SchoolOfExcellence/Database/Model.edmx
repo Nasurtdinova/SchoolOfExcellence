@@ -75,11 +75,11 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdSchedule" Type="int" />
           <Property Name="IdStudent" Type="int" />
+          <Property Name="IsVisited" Type="bit" />
           <Property Name="Reason" Type="nvarchar" MaxLength="100" />
-          <Property Name="Date" Type="datetime" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -586,11 +586,11 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdSchedule" Type="Int32" />
           <Property Name="IdStudent" Type="Int32" />
+          <Property Name="IsVisited" Type="Boolean" />
           <Property Name="Reason" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Schedule" Relationship="ActivityModel.FK_SkipVisit_Schedule" FromRole="SkipVisit" ToRole="Schedule" />
           <NavigationProperty Name="Student" Relationship="ActivityModel.FK_SkipVisit_Student" FromRole="SkipVisit" ToRole="Student" />
         </EntityType>
@@ -950,8 +950,8 @@
           <EntitySetMapping Name="SkipVisit">
             <EntityTypeMapping TypeName="ActivityModel.SkipVisit">
               <MappingFragment StoreEntitySet="SkipVisit">
-                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="IsVisited" ColumnName="IsVisited" />
                 <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
                 <ScalarProperty Name="IdSchedule" ColumnName="IdSchedule" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

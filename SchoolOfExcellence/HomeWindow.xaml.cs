@@ -24,7 +24,7 @@ namespace SchoolOfExcellence
             InitializeComponent();
             if (CurrentUser.User.IdRole == 1)
             {
-                ItemMyActivities.Visibility = Visibility.Collapsed;
+                ItemTodayActivity.Visibility = Visibility.Collapsed;
                 ItemMyGroups.Visibility = Visibility.Collapsed;
             }
             else
@@ -60,8 +60,8 @@ namespace SchoolOfExcellence
                 case "ItemStudentsTeacher":
                     GridPrincipal.Navigate(new StudentsTeachersPage());
                     break;
-                case "ItemMyActivities":
-                    //GridPrincipal.Navigate(new ());
+                case "ItemTodayActivity":
+                    GridPrincipal.Navigate(new TodayActivitiesPage());
                     break;
                 case "ItemMyGroups":
                     GridPrincipal.Navigate(new MyGroupsPage());

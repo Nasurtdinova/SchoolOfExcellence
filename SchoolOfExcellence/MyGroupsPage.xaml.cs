@@ -47,9 +47,12 @@ namespace SchoolOfExcellence
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
-            var student = (sender as Button).DataContext as StudentActivity;
-            student.IsActive = false;
-            Connection.BdConnection.SaveChanges();
+            if (MessageBox.Show("Вы точно хотите удалить этого студента?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                var student = (sender as Button).DataContext as StudentActivity;
+                student.IsActive = false;
+                Connection.BdConnection.SaveChanges();
+            }
         }
     }
 }

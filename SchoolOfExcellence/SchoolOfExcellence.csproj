@@ -118,6 +118,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="MarkPresentWindow.xaml.cs">
+      <DependentUpon>MarkPresentWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MyGroupsPage.xaml.cs">
       <DependentUpon>MyGroupsPage.xaml</DependentUpon>
     </Compile>
@@ -130,8 +133,8 @@
     <Compile Include="SchedulePage.xaml.cs">
       <DependentUpon>SchedulePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SelectStudentPage.xaml.cs">
-      <DependentUpon>SelectStudentPage.xaml</DependentUpon>
+    <Compile Include="Windows\SelectStudentWindow.xaml.cs">
+      <DependentUpon>SelectStudentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SelectTeacherPage.xaml.cs">
       <DependentUpon>SelectTeacherPage.xaml</DependentUpon>
@@ -182,10 +185,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HomePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="HomeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -203,13 +202,14 @@
     </Compile>
     <Compile Include="Database\Connection.cs" />
     <Compile Include="Database\DataAccess.cs" />
-    <Compile Include="HomePage.xaml.cs">
-      <DependentUpon>HomePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MarkPresentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MyGroupsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -218,7 +218,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SelectStudentPage.xaml">
+    <Page Include="Windows\SelectStudentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

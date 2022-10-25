@@ -25,7 +25,11 @@ namespace SchoolOfExcellence.Database
         public int Id { get; set; }
         public string FullName { get; set; }
         public Nullable<int> IdGrade { get; set; }
-    
+
+        public bool IsMark { get; set; }
+        public string Reason { get; set; }
+        public string VisibilityReason => IsMark ? "Collapsed" : "Visible";
+
         public virtual Grade Grade { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SkipVisit> SkipVisit { get; set; }

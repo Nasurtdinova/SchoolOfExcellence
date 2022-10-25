@@ -46,10 +46,10 @@
                         <TextBlock Text="Кружки" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem Height="60" Name="ItemMyActivities">
+                <ListViewItem Height="60" Name="ItemTodayActivity">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="LocalActivity" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Мои кружки" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                        <TextBlock Text="Сегодняшние кружки" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60" Name="ItemMyGroups">

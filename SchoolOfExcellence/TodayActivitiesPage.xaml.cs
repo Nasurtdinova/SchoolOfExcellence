@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolOfExcellence.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,13 @@ namespace SchoolOfExcellence
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void btnMarkPresent_Click(object sender, RoutedEventArgs e)
+        {
+            var a = (sender as Button).DataContext as Schedule;
+            MarkPresentWindow mark = new MarkPresentWindow(a);
+            mark.Show();
         }
     }
 }

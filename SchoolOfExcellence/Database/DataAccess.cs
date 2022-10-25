@@ -15,6 +15,11 @@ namespace SchoolOfExcellence
             return new List<Cabinet>(Connection.BdConnection.Cabinet).ToList();
         }
 
+        public static List<SkipVisit> GetSkipVisits()
+        {
+            return new List<SkipVisit>(Connection.BdConnection.SkipVisit).ToList();
+        }
+
         public static List<DayOfWeek> GetDaysOfWeek()
         {
             return new List<DayOfWeek>(Connection.BdConnection.DayOfWeek).ToList();
