@@ -80,7 +80,7 @@ namespace SchoolOfExcellence
 
         public static List<StudentActivity> GetStudentsInActivities(int idActivity)
         {
-            return GetStudentsActivities().Where(a => a.IdActivity == idActivity).ToList();
+            return GetStudentsActivities().Where(a => a.IdTeacherActivity == idActivity).ToList();
         }
 
         public static List<Student> GetStudents()

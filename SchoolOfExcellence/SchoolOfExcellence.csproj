@@ -81,7 +81,10 @@
     <Compile Include="AddEditActivitiesPage.xaml.cs">
       <DependentUpon>AddEditActivitiesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddScheduleWindow.xaml.cs">
+    <Compile Include="ReportsPage.xaml.cs">
+      <DependentUpon>ReportsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AddScheduleWindow.xaml.cs">
       <DependentUpon>AddScheduleWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Database\Cabinet.cs">
@@ -92,9 +95,6 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Grade.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\Group.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Headmaster.cs">
@@ -130,14 +130,14 @@
     <Compile Include="Database\Schedule.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="SchedulePage.xaml.cs">
+    <Compile Include="Pages\SchedulePage.xaml.cs">
       <DependentUpon>SchedulePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\SelectStudentWindow.xaml.cs">
       <DependentUpon>SelectStudentWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SelectTeacherPage.xaml.cs">
-      <DependentUpon>SelectTeacherPage.xaml</DependentUpon>
+    <Compile Include="Windows\SelectTeacherWindow.xaml.cs">
+      <DependentUpon>SelectTeacherWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Database\SkipVisit.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -148,10 +148,7 @@
     <Compile Include="Database\StudentActivity.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\StudentGroup.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentsTeachersPage.xaml.cs">
+    <Compile Include="Pages\StudentsTeachersPage.xaml.cs">
       <DependentUpon>StudentsTeachersPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Database\sysdiagrams.cs">
@@ -177,7 +174,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddScheduleWindow.xaml">
+    <Page Include="ReportsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AddScheduleWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -214,7 +215,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SchedulePage.xaml">
+    <Page Include="Pages\SchedulePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -222,11 +223,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SelectTeacherPage.xaml">
+    <Page Include="Windows\SelectTeacherWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StudentsTeachersPage.xaml">
+    <Page Include="Pages\StudentsTeachersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -49,7 +49,7 @@ namespace SchoolOfExcellence
                     GridPrincipal.Navigate(new AuthorizationPage());
                     break;
                 case "ItemReports":
-                    //GridPrincipal.Navigate(new ());
+                    GridPrincipal.Navigate(new ReportsPage());
                     break;
                 case "ItemSchedule":
                     GridPrincipal.Navigate(new SchedulePage());
