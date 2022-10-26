@@ -72,7 +72,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ActivitiesPage.xaml.cs">
+    <Compile Include="Pages\ActivitiesPage.xaml.cs">
       <DependentUpon>ActivitiesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Database\Activity.cs">
@@ -81,8 +81,8 @@
     <Compile Include="AddEditActivitiesPage.xaml.cs">
       <DependentUpon>AddEditActivitiesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddSchedulePage.xaml.cs">
-      <DependentUpon>AddSchedulePage.xaml</DependentUpon>
+    <Compile Include="AddScheduleWindow.xaml.cs">
+      <DependentUpon>AddScheduleWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Database\Cabinet.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -100,7 +100,7 @@
     <Compile Include="Database\Headmaster.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="HomeWindow.xaml.cs">
+    <Compile Include="Windows\HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Database\Model.Context.cs">
@@ -118,10 +118,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="MarkPresentWindow.xaml.cs">
+    <Compile Include="Windows\MarkPresentWindow.xaml.cs">
       <DependentUpon>MarkPresentWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyGroupsPage.xaml.cs">
+    <Compile Include="Pages\MyGroupsPage.xaml.cs">
       <DependentUpon>MyGroupsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Database\Role.cs">
@@ -163,13 +163,13 @@
     <Compile Include="Database\TeacherActivity.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="TodayActivitiesPage.xaml.cs">
+    <Compile Include="Pages\TodayActivitiesPage.xaml.cs">
       <DependentUpon>TodayActivitiesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Database\User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Page Include="ActivitiesPage.xaml">
+    <Page Include="Pages\ActivitiesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -177,7 +177,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddSchedulePage.xaml">
+    <Page Include="AddScheduleWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -185,7 +185,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HomeWindow.xaml">
+    <Page Include="Windows\HomeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -206,11 +206,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MarkPresentWindow.xaml">
+    <Page Include="Windows\MarkPresentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MyGroupsPage.xaml">
+    <Page Include="Pages\MyGroupsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -230,7 +230,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TodayActivitiesPage.xaml">
+    <Page Include="Pages\TodayActivitiesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

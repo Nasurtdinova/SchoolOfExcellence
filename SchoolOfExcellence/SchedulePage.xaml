@@ -18,8 +18,8 @@
         <TextBlock Text="Понедельник"></TextBlock>
         <DataGrid x:Name="dgMonday" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                 <DataGridTextColumn Header="Кружок" Binding="{Binding Activity.Name}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Учитель" Binding="{Binding Teacher.User.FullName}"></DataGridTextColumn>
+                 <DataGridTextColumn Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Учитель" Binding="{Binding TeacherActivity.Teacher.User.FullName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet.Name}"></DataGridTextColumn>
@@ -29,8 +29,8 @@
         <TextBlock Text="Втоник"></TextBlock>
         <DataGrid x:Name="dgTuesday" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Кружок" Binding="{Binding Activity.Name}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Учитель" Binding="{Binding Teacher.User.FullName}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Учитель" Binding="{Binding TeacherActivity.Teacher.User.FullName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet.Name}"></DataGridTextColumn>
@@ -39,8 +39,8 @@
         <TextBlock Text="Среда"></TextBlock>
         <DataGrid x:Name="dgWednesday" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                        <DataGridTextColumn Header="Кружок" Binding="{Binding Activity.Name}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Учитель" Binding="{Binding Teacher.User.FullName}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Учитель" Binding="{Binding TeacherActivity.Teacher.User.FullName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet.Name}"></DataGridTextColumn>
@@ -49,8 +49,8 @@
         <TextBlock Text="Четверг"></TextBlock>
         <DataGrid x:Name="dgThursday" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Кружок" Binding="{Binding Activity.Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Учитель" Binding="{Binding Teacher.User.FullName}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Учитель" Binding="{Binding TeacherActivity.Teacher.User.FullName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet.Name}"></DataGridTextColumn>
@@ -59,8 +59,8 @@
                 <TextBlock Text="Пятница"></TextBlock>
                 <DataGrid x:Name="dgFriday" AutoGenerateColumns="False" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Кружок" Binding="{Binding Activity.Name}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Учитель" Binding="{Binding Teacher.User.FullName}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Учитель" Binding="{Binding TeacherActivity.Teacher.User.FullName}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet.Name}"></DataGridTextColumn>
@@ -69,8 +69,8 @@
                 <TextBlock Text="Суббота"></TextBlock>
                 <DataGrid x:Name="dgSaturday" AutoGenerateColumns="False" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Кружок" Binding="{Binding Activity.Name}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Учитель" Binding="{Binding Teacher.User.FullName}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Учитель" Binding="{Binding TeacherActivity.Teacher.User.FullName}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet.Name}"></DataGridTextColumn>
@@ -79,8 +79,8 @@
                 <TextBlock Text="Воскресенье"></TextBlock>
                 <DataGrid x:Name="dgSunday" AutoGenerateColumns="False" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Кружок" Binding="{Binding Activity.Name}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Учитель" Binding="{Binding Teacher.User.FullName}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Учитель" Binding="{Binding TeacherActivity.Teacher.User.FullName}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet.Name}"></DataGridTextColumn>

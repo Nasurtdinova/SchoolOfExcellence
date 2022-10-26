@@ -31,7 +31,18 @@ namespace SchoolOfExcellence
 
         private void addSchedule_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddSchedulePage());
+            AddScheduleWindow add = new AddScheduleWindow();
+            add.Show();
+            add.Closed += (s, eventarg) =>
+            {
+                dgMonday.ItemsSource = DataAccess.GetSchedule("Понедельник");
+                dgTuesday.ItemsSource = DataAccess.GetSchedule("Вторник");
+                dgWednesday.ItemsSource = DataAccess.GetSchedule("Среда");
+                dgThursday.ItemsSource = DataAccess.GetSchedule("Четверг");
+                dgFriday.ItemsSource = DataAccess.GetSchedule("Пятница");
+                dgSaturday.ItemsSource = DataAccess.GetSchedule("Суббота");
+                dgSunday.ItemsSource = DataAccess.GetSchedule("Воскресенье");
+            };
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)

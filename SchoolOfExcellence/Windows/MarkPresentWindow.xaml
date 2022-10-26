@@ -18,7 +18,7 @@
                 <DataGridTemplateColumn Header="Присутствовал">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox x:Name="checkMark" IsChecked="{Binding IsMark}"></CheckBox>
+                            <CheckBox x:Name="checkMark" IsChecked="{Binding IsMark, Mode=TwoWay}"></CheckBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

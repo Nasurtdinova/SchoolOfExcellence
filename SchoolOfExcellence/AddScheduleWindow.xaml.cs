@@ -16,9 +16,9 @@ using System.Windows.Shapes;
 
 namespace SchoolOfExcellence
 {
-    public partial class AddSchedulePage : Page
+    public partial class AddScheduleWindow : Window
     {
-        public AddSchedulePage()
+        public AddScheduleWindow()
         {
             InitializeComponent();
             comboActivity.ItemsSource = DataAccess.GetActivities();
@@ -29,19 +29,13 @@ namespace SchoolOfExcellence
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            //Schedule schedule = new Schedule()
-            //{
-            //    Activity = comboActivity.SelectedItem as Activity,
-            //    Teacher = comboTeachers.SelectedItem as Teacher,
-            //    Cabinet = comboCabinet.SelectedItem as Cabinet,
-            //    DayOfWeek = comboDayOfWeek.SelectedItem as Database.DayOfWeek
-            //};
-            //DataAccess.AddSchedule(schedule);
-        }
-
-        private void btnBack_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.GoBack();
+            Schedule schedule = new Schedule()
+            {
+                TeacherActivity = DataAccess.GetTeachersActivities().Where(a => a.Activity == comboActivity.SelectedItem as Activity && a.Teacher == comboTeachers.SelectedItem as Teacher).FirstOrDefault(),
+                Cabinet = comboCabinet.SelectedItem as Cabinet,
+                DayOfWeek = comboDayOfWeek.SelectedItem as Database.DayOfWeek
+            };
+            DataAccess.AddSchedule(schedule);
         }
 
         private void comboTeachers_SelectionChanged(object sender, SelectionChangedEventArgs e)
