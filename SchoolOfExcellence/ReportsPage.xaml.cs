@@ -20,7 +20,7 @@ namespace SchoolOfExcellence
         public ReportsPage()
         {
             InitializeComponent();
-            dgPopularDestinations.ItemsSource = DataAccess.GetActivities().OrderByDescending(a=>a.Count);
+            //dgPopularDestinations.ItemsSource = DataAccess.GetActivities().OrderByDescending(a=>a.Count);
         }
 
         private void comboTypeReport_SelectionChanged(object sender, SelectionChangedEventArgs e)

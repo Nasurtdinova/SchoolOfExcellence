@@ -9,16 +9,16 @@
       Title="StudentsTeachersPage">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="9*"></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="dgStudents" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid x:Name="dgStudents" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding FullName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Класс" Binding="{Binding Grade.Name}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel x:Name="teachers">
+        <StackPanel x:Name="teachers" Grid.Row="1">
         <DataGrid x:Name="dgTeachers" Height="450" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                     <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding User.FullName}"></DataGridTextColumn>
@@ -50,7 +50,7 @@
             </StackPanel>
         
         </StackPanel>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <RadioButton GroupName="Types"  Content="Учителя" Margin="20" Click="radioTeachers_Click" Name="radioTeachers"></RadioButton>
             <RadioButton GroupName="Types" Content="Ученики" Margin="20" Click="radioStudents_Click" Name="radioStudents"></RadioButton>
         </StackPanel>

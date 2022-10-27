@@ -13,9 +13,9 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="8*"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
             <TextBlock Text="Статистика" Margin="10"></TextBlock>
-            <ComboBox Name="comboTypeReport" Width="600" SelectedIndex="0" SelectionChanged="comboTypeReport_SelectionChanged">
+            <ComboBox Name="comboTypeReport" Width="600" SelectionChanged="comboTypeReport_SelectionChanged">
                 <ComboBoxItem>о наиболее востребованных направлениях деятельности</ComboBoxItem>
                 <ComboBoxItem>о наиболее активных учениках школы</ComboBoxItem>
                 <ComboBoxItem>об охвате учащихся</ComboBoxItem>
@@ -24,13 +24,13 @@
         </StackPanel>
         <DataGrid x:Name="dgPopularDestinations" Grid.Row="1" IsReadOnly="True" AutoGenerateColumns="False"> 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Название" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Название" Width="*" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Количество человек" Binding="{Binding Count}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="dgActiveStudents" Visibility="Collapsed" Grid.Row="1" IsReadOnly="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ФИО" Binding="{Binding FullName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding FullName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Класс" Binding="{Binding Grade.Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Количество кружков" Binding="{Binding CountActivity}"></DataGridTextColumn>
             </DataGrid.Columns>
