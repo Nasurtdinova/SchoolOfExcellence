@@ -23,7 +23,6 @@ namespace SchoolOfExcellence
             InitializeComponent();
             comboActivity.ItemsSource = DataAccess.GetActivities();
             comboCabinet.ItemsSource = DataAccess.GetCabinets();
-            comboDayOfWeek.ItemsSource = DataAccess.GetDaysOfWeek();
             comboTeachers.ItemsSource = DataAccess.GetTeachers();
         }
 
@@ -33,7 +32,7 @@ namespace SchoolOfExcellence
             {
                 TeacherActivity = DataAccess.GetTeachersActivities().Where(a => a.Activity == comboActivity.SelectedItem as Activity && a.Teacher == comboTeachers.SelectedItem as Teacher).FirstOrDefault(),
                 Cabinet = comboCabinet.SelectedItem as Cabinet,
-                DayOfWeek = comboDayOfWeek.SelectedItem as Database.DayOfWeek
+                Date =dpDate.SelectedDate
             };
             DataAccess.AddSchedule(schedule);
         }

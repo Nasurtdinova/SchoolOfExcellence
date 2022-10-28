@@ -17,8 +17,8 @@ namespace SchoolOfExcellence.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TeacherActivity()
         {
-            this.Schedule = new HashSet<Schedule>();
             this.StudentActivity = new HashSet<StudentActivity>();
+            this.Schedule = new HashSet<Schedule>();
         }
     
         public int Id { get; set; }
@@ -26,11 +26,11 @@ namespace SchoolOfExcellence.Database
         public int IdActivity { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     
-        public virtual Activity Activity { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Schedule> Schedule { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentActivity> StudentActivity { get; set; }
         public virtual Teacher Teacher { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Schedule> Schedule { get; set; }
+        public virtual Activity Activity { get; set; }
     }
 }

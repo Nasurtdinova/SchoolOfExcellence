@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:SchoolOfExcellence"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddScheduleWindow">
+      Title="Добавить расписание">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -30,12 +30,11 @@
         <TextBlock Text="Кабинет" Grid.Row="5"></TextBlock>
         <ComboBox Grid.Column="1" x:Name="comboActivity" DisplayMemberPath="Name" SelectionChanged="comboActivity_SelectionChanged"></ComboBox>
         <ComboBox Grid.Column="1" Grid.Row="1" x:Name="comboTeachers" DisplayMemberPath="User.FullName" SelectionChanged="comboTeachers_SelectionChanged"></ComboBox>
-        <ComboBox Grid.Column="1" Grid.Row="2" x:Name="comboDayOfWeek" DisplayMemberPath="Name"></ComboBox>
+        <DatePicker Grid.Column="1" Grid.Row="2" x:Name="dpDate" Width="300" FontSize="25"></DatePicker>
         <TextBox Grid.Column="1" Grid.Row="4" Name="tbLessonEnd"></TextBox>
         <TextBox  Grid.Column="1" Grid.Row="3" Name="tbLessonStart"></TextBox>
         <ComboBox Grid.Column="1" Grid.Row="5" x:Name="comboCabinet" DisplayMemberPath="Name"></ComboBox>
         <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-          
             <Button x:Name="btnAdd" Content="Добавить" Click="btnAdd_Click"></Button>
         </StackPanel>
         

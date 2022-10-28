@@ -17,12 +17,10 @@ namespace SchoolOfExcellence.Database
         public int Id { get; set; }
         public Nullable<int> IdSchedule { get; set; }
         public Nullable<int> IdStudent { get; set; }
-        public bool IsVisited { get; set; }
+        public Nullable<bool> IsVisited { get; set; }
         public string Reason { get; set; }
-
-        public string VisibilityReason => IsVisited ? "Collapsed" : "Visible";
-
-        public virtual Schedule Schedule { get; set; }
+    
         public virtual Student Student { get; set; }
+        public virtual Schedule Schedule { get; set; }
     }
 }

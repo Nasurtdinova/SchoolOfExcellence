@@ -30,12 +30,21 @@ namespace SchoolOfExcellence
                 dgPopularDestinations.ItemsSource = DataAccess.GetActivities().OrderByDescending(a => a.Count);
                 dgActiveStudents.Visibility = Visibility.Collapsed;
                 dgPopularDestinations.Visibility = Visibility.Visible;
+                dgCountSubject.Visibility = Visibility.Collapsed;
             }
             else if (comboTypeReport.SelectedIndex == 1)
             {
                 dgActiveStudents.ItemsSource = DataAccess.GetStudents().OrderByDescending(a=>a.CountActivity);
                 dgActiveStudents.Visibility = Visibility.Visible;
                 dgPopularDestinations.Visibility = Visibility.Collapsed;
+                dgCountSubject.Visibility = Visibility.Collapsed;
+            }
+            else if (comboTypeReport.SelectedIndex == 3)
+            {
+                dgCountSubject.ItemsSource = DataAccess.GetTeachers().OrderByDescending(a => a.CountSubject);
+                dgActiveStudents.Visibility = Visibility.Collapsed;
+                dgPopularDestinations.Visibility = Visibility.Collapsed;
+                dgCountSubject.Visibility = Visibility.Visible;
             }
         }
     }

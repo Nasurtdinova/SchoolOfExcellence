@@ -27,13 +27,13 @@ namespace SchoolOfExcellence
         // schedule
         public static List<Schedule> GetSchedules()
         {
-            return new List<Schedule>(Connection.BdConnection.Schedule).ToList();
+            return new List<Schedule>(Connection.BdConnection.Schedule).Where(a => a.Date.Value.Date >= DateTime.Now.Date).ToList();
         }
 
-        public static List<Schedule> GetSchedule(string week)
-        {
-            return GetSchedules().Where(a => a.DayOfWeek.Name == week).ToList();
-        }
+        //public static List<Schedule> GetSchedule(string week)
+        //{
+        //    return GetSchedules().Where(a => a.DayOfWeek.Name == week).ToList();
+        //}
 
         public static void AddSchedule(Schedule schedule)
         {

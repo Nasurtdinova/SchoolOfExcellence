@@ -15,72 +15,12 @@
         </Grid.RowDefinitions>
         <ScrollViewer>
         <StackPanel>
-        <TextBlock Text="Понедельник"></TextBlock>
-        <DataGrid x:Name="dgMonday" AutoGenerateColumns="False" IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Width="*" Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Учитель" Binding="{Binding TeacherActivity.Teacher.User.FullName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet.Name}"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-            
-        <TextBlock Text="Втоник"></TextBlock>
-        <DataGrid x:Name="dgTuesday" AutoGenerateColumns="False" IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Width="*" Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Учитель" Binding="{Binding TeacherActivity.Teacher.User.FullName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet.Name}"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        <TextBlock Text="Среда"></TextBlock>
-        <DataGrid x:Name="dgWednesday" AutoGenerateColumns="False" IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Width="*" Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Учитель" Binding="{Binding TeacherActivity.Teacher.User.FullName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet.Name}"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        <TextBlock Text="Четверг"></TextBlock>
-        <DataGrid x:Name="dgThursday" AutoGenerateColumns="False" IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Width="*" Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Учитель" Binding="{Binding TeacherActivity.Teacher.User.FullName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet.Name}"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-                <TextBlock Text="Пятница"></TextBlock>
-                <DataGrid x:Name="dgFriday" AutoGenerateColumns="False" IsReadOnly="True">
+        <TextBlock Text="Расписание" Margin="20" FontSize="25"></TextBlock>
+                <DataGrid x:Name="dgShedules" AutoGenerateColumns="False" IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridTextColumn Width="*" Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Учитель" Binding="{Binding TeacherActivity.Teacher.User.FullName}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet.Name}"></DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-                <TextBlock Text="Суббота"></TextBlock>
-                <DataGrid x:Name="dgSaturday" AutoGenerateColumns="False" IsReadOnly="True">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Width="*" Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Учитель" Binding="{Binding TeacherActivity.Teacher.User.FullName}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet.Name}"></DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-                <TextBlock Text="Воскресенье"></TextBlock>
-                <DataGrid x:Name="dgSunday" AutoGenerateColumns="False" IsReadOnly="True">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Width="*" Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Учитель" Binding="{Binding TeacherActivity.Teacher.User.FullName}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Дата" Width="130" Binding="{Binding Date, StringFormat='dd.MM.yyyy'}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet.Name}"></DataGridTextColumn>
