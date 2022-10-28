@@ -28,13 +28,17 @@ namespace SchoolOfExcellence
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            Schedule schedule = new Schedule()
+            Schedule sch = new Schedule()
             {
                 TeacherActivity = DataAccess.GetTeachersActivities().Where(a => a.Activity == comboActivity.SelectedItem as Activity && a.Teacher == comboTeachers.SelectedItem as Teacher).FirstOrDefault(),
                 Cabinet = comboCabinet.SelectedItem as Cabinet,
-                Date =dpDate.SelectedDate
+                Date =dpDate.SelectedDate,
+                IsSkipped = false,
+                LessonEndTime = tbLessonEnd.SelectedTime.Value.TimeOfDay,
+                LessonStartTime = tbLessonStart.SelectedTime.Value.TimeOfDay            
             };
-            DataAccess.AddSchedule(schedule);
+            DataAccess.AddSchedule(sch);
+            MessageBox.Show("Информация сохранена!");
         }
 
         private void comboTeachers_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -47,6 +51,14 @@ namespace SchoolOfExcellence
         {
             var a = (sender as ComboBox).SelectedItem as Activity;
             comboTeachers.ItemsSource = DataAccess.GetTeachersInActivities(a.Id).Select(b=>b.Teacher);
+
+            tbLessonEnd.SelectedTime = tbLessonStart.SelectedTime + a.Duration;
+        }
+
+        private void tbLessonStart_SelectedTimeChanged(object sender, RoutedPropertyChangedEventArgs<DateTime?> e)
+        {
+            if (comboActivity.SelectedItem != null)
+                tbLessonEnd.SelectedTime = tbLessonStart.SelectedTime + (comboActivity.SelectedItem as Activity).Duration;
         }
     }
 }

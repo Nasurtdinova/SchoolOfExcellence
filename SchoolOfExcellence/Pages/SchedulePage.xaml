@@ -10,12 +10,23 @@
     
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition ></RowDefinition>
             <RowDefinition Height="8*"></RowDefinition>
             <RowDefinition ></RowDefinition>
         </Grid.RowDefinitions>
-        <ScrollViewer>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Кружок" Margin="20 0"></TextBlock>
+                <ComboBox Name="comboActivity" SelectionChanged="comboActivity_SelectionChanged" DisplayMemberPath="Name"></ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Учитель" Margin="20 0"></TextBlock>
+                <ComboBox Name="comboTeacher" SelectionChanged="comboTeacher_SelectionChanged" DisplayMemberPath="User.FullName"></ComboBox>
+            </StackPanel>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1">
         <StackPanel>
-        <TextBlock Text="Расписание" Margin="20" FontSize="25"></TextBlock>
+                <TextBlock Text="Расписание" Margin="20" FontSize="25"></TextBlock>
                 <DataGrid x:Name="dgShedules" AutoGenerateColumns="False" IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridTextColumn Width="*" Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
@@ -28,7 +39,7 @@
                 </DataGrid>
             </StackPanel>
         </ScrollViewer>
-        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
             <Button x:Name="btnBack" Content="Назад" Click="btnBack_Click"></Button>
             <Button x:Name="addSchedule" Content="Добавить расписание" Width="300" Click="addSchedule_Click"></Button>
         </StackPanel>

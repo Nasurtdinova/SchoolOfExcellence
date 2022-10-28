@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SchoolOfExcellence"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Добавить расписание">
@@ -28,11 +29,11 @@
         <TextBlock Text="Начало" Grid.Row="3"></TextBlock>
         <TextBlock Text="Конец" Grid.Row="4"></TextBlock>
         <TextBlock Text="Кабинет" Grid.Row="5"></TextBlock>
-        <ComboBox Grid.Column="1" x:Name="comboActivity" DisplayMemberPath="Name" SelectionChanged="comboActivity_SelectionChanged"></ComboBox>
-        <ComboBox Grid.Column="1" Grid.Row="1" x:Name="comboTeachers" DisplayMemberPath="User.FullName" SelectionChanged="comboTeachers_SelectionChanged"></ComboBox>
+        <ComboBox Grid.Column="1" x:Name="comboActivity" SelectedItem="{Binding TeacherActivity.Activity}" DisplayMemberPath="Name" SelectionChanged="comboActivity_SelectionChanged"></ComboBox>
+        <ComboBox Grid.Column="1" Grid.Row="1" x:Name="comboTeachers" DisplayMemberPath="User.FullName" SelectedItem="{Binding TeacherActivity.Teacher}" SelectionChanged="comboTeachers_SelectionChanged"></ComboBox>
         <DatePicker Grid.Column="1" Grid.Row="2" x:Name="dpDate" Width="300" FontSize="25"></DatePicker>
-        <TextBox Grid.Column="1" Grid.Row="4" Name="tbLessonEnd"></TextBox>
-        <TextBox  Grid.Column="1" Grid.Row="3" Name="tbLessonStart"></TextBox>
+        <materialDesign:TimePicker Width="300" FontSize="23" Grid.Column="1" Grid.Row="4" Name="tbLessonEnd"></materialDesign:TimePicker>
+        <materialDesign:TimePicker Width="300" FontSize="23" Grid.Column="1" Grid.Row="3" Name="tbLessonStart" SelectedTimeChanged="tbLessonStart_SelectedTimeChanged"></materialDesign:TimePicker>
         <ComboBox Grid.Column="1" Grid.Row="5" x:Name="comboCabinet" DisplayMemberPath="Name"></ComboBox>
         <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center">
             <Button x:Name="btnAdd" Content="Добавить" Click="btnAdd_Click"></Button>
