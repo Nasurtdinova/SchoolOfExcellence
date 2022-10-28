@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace SchoolOfExcellence
 {
-    /// <summary>
-    /// Логика взаимодействия для HomeWindow.xaml
-    /// </summary>
     public partial class HomeWindow : Page
     {
         public HomeWindow()
@@ -78,7 +75,7 @@ namespace SchoolOfExcellence
 
         private void profile_Click(object sender, RoutedEventArgs e)
         {
-            //GridPrincipal.Navigate(new )
+            GridPrincipal.Navigate(new MyProfilePage());
         }
     }
 }

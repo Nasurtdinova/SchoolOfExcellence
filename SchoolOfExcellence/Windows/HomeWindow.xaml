@@ -37,43 +37,43 @@
                 <ListViewItem Height="60">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Главная" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                        <TextBlock Text="Главная" VerticalAlignment="Center" Margin="20 0"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60" Name="ItemActivities">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="School" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Кружки" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                        <TextBlock Text="Кружки" Margin="20 0"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60" Name="ItemTodayActivity">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="LocalActivity" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Сегодняшние кружки" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                        <TextBlock Text="Сегодняшние кружки" Margin="20 0"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60" Name="ItemMyGroups">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="PeopleGroup" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Мои группы" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                        <TextBlock Text="Мои группы" Margin="20 0"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60" Name="ItemStudentsTeacher">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="PeopleGroup" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Ученики и учителя" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                        <TextBlock Text="Ученики и учителя" Margin="20 0"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60" Name="ItemReports">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="TableAccount" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Отчеты" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                        <TextBlock Text="Отчеты" Margin="20 0"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60" Name="ItemSchedule">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="ShopSchedule" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Расписание" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                        <TextBlock Text="Расписание" Margin="20 0"/>
                     </StackPanel>
                 </ListViewItem>
             </ListView>

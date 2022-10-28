@@ -72,6 +72,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MyProfilePage.xaml.cs">
+      <DependentUpon>MyProfilePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ActivitiesPage.xaml.cs">
       <DependentUpon>ActivitiesPage.xaml</DependentUpon>
     </Compile>
@@ -166,6 +169,10 @@
     <Compile Include="Database\User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Page Include="MyProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ActivitiesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
