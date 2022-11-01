@@ -26,7 +26,7 @@ namespace SchoolOfExcellence
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            AddEditActivitiesPage add = new AddEditActivitiesPage(null);
+            AddEditActivitiesWindow add = new AddEditActivitiesWindow(null);
             add.Show();
             add.Closed += (s, eventarg) =>
             {
@@ -37,7 +37,7 @@ namespace SchoolOfExcellence
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             var i = (sender as Button).DataContext as Activity;
-            AddEditActivitiesPage edit = new AddEditActivitiesPage(i);
+            AddEditActivitiesWindow edit = new AddEditActivitiesWindow(i);
             edit.Show();
             edit.Closed += (s, eventarg) =>
             {

@@ -31,6 +31,7 @@ namespace SchoolOfExcellence
                 ItemActivities.Visibility = Visibility.Collapsed;
                 ItemStudentsTeacher.Visibility = Visibility.Collapsed;
             }
+            GridPrincipal.Navigate(new MainPage());
         }
 
         private void ButtonFechar_Click(object sender, RoutedEventArgs e)
@@ -43,7 +44,7 @@ namespace SchoolOfExcellence
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
                 case "ItemHome":
-                    GridPrincipal.Navigate(new AuthorizationPage());
+                    GridPrincipal.Navigate(new MainPage());
                     break;
                 case "ItemReports":
                     GridPrincipal.Navigate(new ReportsPage());

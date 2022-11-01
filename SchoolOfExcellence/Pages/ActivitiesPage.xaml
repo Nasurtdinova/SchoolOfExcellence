@@ -14,12 +14,12 @@
             <RowDefinition Height="9*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Text="Кружки"/>
+        <TextBlock Text="Кружки" FontSize="25"/>
         <DataGrid x:Name="dgActivities" Grid.Row="1" Margin="5" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Наименование" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Описание" Binding="{Binding Description}"/>
-                <DataGridTemplateColumn Width="*">
+                <DataGridTextColumn Header="Описание" Width="*" Binding="{Binding Description}"/>
+                <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button x:Name="btnRemove" Width="100" Content="Удалить" Click="btnRemove_Click"></Button>

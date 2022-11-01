@@ -16,10 +16,10 @@ using System.Windows.Shapes;
 
 namespace SchoolOfExcellence
 {
-    public partial class AddEditActivitiesPage : Window
+    public partial class AddEditActivitiesWindow : Window
     {
         public Activity CurrentActivity = new Activity();
-        public AddEditActivitiesPage(Activity act)
+        public AddEditActivitiesWindow(Activity act)
         {
             InitializeComponent();
             if (act != null)

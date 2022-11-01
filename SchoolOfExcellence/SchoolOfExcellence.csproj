@@ -87,7 +87,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="MyProfilePage.xaml.cs">
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MyProfilePage.xaml.cs">
       <DependentUpon>MyProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ActivitiesPage.xaml.cs">
@@ -96,8 +99,8 @@
     <Compile Include="Database\Activity.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="AddEditActivitiesPage.xaml.cs">
-      <DependentUpon>AddEditActivitiesPage.xaml</DependentUpon>
+    <Compile Include="Windows\AddEditActivitiesWindow.xaml.cs">
+      <DependentUpon>AddEditActivitiesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ReportsPage.xaml.cs">
       <DependentUpon>ReportsPage.xaml</DependentUpon>
@@ -184,7 +187,11 @@
     <Compile Include="Database\User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Page Include="MyProfilePage.xaml">
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MyProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -192,7 +199,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddEditActivitiesPage.xaml">
+    <Page Include="Windows\AddEditActivitiesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -332,6 +339,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\FonMain.jpg" />
+    <Resource Include="Images\main.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.6.1\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.6.1\build\MaterialDesignThemes.targets')" />

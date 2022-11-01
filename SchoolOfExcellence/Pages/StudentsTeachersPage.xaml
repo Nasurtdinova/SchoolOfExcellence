@@ -10,45 +10,52 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="dgStudents" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid x:Name="dgStudents" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding FullName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Класс" Binding="{Binding Grade.Name}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel x:Name="teachers" Grid.Row="1">
-        <DataGrid x:Name="dgTeachers" Height="450" AutoGenerateColumns="False" IsReadOnly="True">
-            <DataGrid.Columns>
+            <DataGrid x:Name="dgTeachers" Height="700" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
                     <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding User.FullName}"></DataGridTextColumn>
-                    <DataGridTemplateColumn Header="Фотография" Width="200">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding User.Image}" Height="200"></Image>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <ListView ItemsSource="{Binding TeacherActivity}">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Activity.Name}"></TextBlock>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <DataGridTemplateColumn Header="Фотография" Width="400">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Height="400">
+                                    <Image.Source>
+                                        <Binding Path="User.Image">
+                                            <Binding.TargetNullValue>
+                                                <BitmapImage UriSource="/SchoolOfExcellence;component/Images/ProfileIcon.png"></BitmapImage>
+                                            </Binding.TargetNullValue>
+                                        </Binding>
+                                    </Image.Source>
+                                </Image>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ListView ItemsSource="{Binding TeacherActivity}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Activity.Name}"></TextBlock>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="50">
                 <Button x:Name="btnBack" Content="Назад" Click="btnBack_Click"></Button>
                 <Button Content="Добавить" Name="btnAddTeachers" Click="btnAddTeachers_Click"></Button>
             </StackPanel>
-        
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <RadioButton GroupName="Types"  Content="Учителя" Margin="20" Click="radioTeachers_Click" Name="radioTeachers"></RadioButton>
