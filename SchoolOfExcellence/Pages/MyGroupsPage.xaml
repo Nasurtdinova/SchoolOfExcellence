@@ -21,6 +21,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" Binding="{Binding Activity.Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Описание" Width="*" Binding="{Binding Activity.Description}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Количество человек" Binding="{Binding Count}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="dgStudents" Grid.Column="1" AutoGenerateColumns="False" IsReadOnly="True">
@@ -40,6 +41,5 @@
             <Button x:Name="btnBack" Content="Назад" Click="btnBack_Click"></Button>
             <Button x:Name="btnAdd" Content="Добавить ученика" Width="200" Click="btnAdd_Click"></Button>
         </StackPanel>
-        
     </Grid>
 </Page>

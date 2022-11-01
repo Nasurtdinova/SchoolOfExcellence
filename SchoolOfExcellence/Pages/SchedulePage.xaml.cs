@@ -26,7 +26,7 @@ namespace SchoolOfExcellence
             var listTeacher = DataAccess.GetTeachers();
             listTeacher.Insert(0, new Teacher()
             {
-             User = new User() { FullName="Все"}
+                User = new User() { FullName="Все"}
             });
             comboTeacher.ItemsSource = listTeacher;
             comboTeacher.SelectedIndex = 0;

@@ -28,22 +28,25 @@ namespace SchoolOfExcellence
 
         private void btnSelect_Click(object sender, RoutedEventArgs e)
         {
-            StudentActivity studentActivity = new StudentActivity()
+            if (SelectedActivity.Count <= SelectedActivity.MaxCount)
             {
-                TeacherActivity = SelectedActivity,
-                Student = comboStudent.SelectedItem as Student,
-                IsActive = true
-            };
-            if (DataAccess.GetStudentsActivities().Where(a => a.TeacherActivity == studentActivity.TeacherActivity && a.Student == studentActivity.Student).Count() != 0)
-            {
-                MessageBox.Show("Этот ученик уже состоит в этом кружке!");
+                StudentActivity studentActivity = new StudentActivity()
+                {
+                    TeacherActivity = SelectedActivity,
+                    Student = comboStudent.SelectedItem as Student,
+                    IsActive = true
+                };
+                if (DataAccess.GetStudentsActivities().Where(a => a.TeacherActivity == studentActivity.TeacherActivity && a.Student == studentActivity.Student).Count() != 0)
+                    MessageBox.Show("Этот ученик уже состоит в этом кружке!");
+                else
+                {
+                    Connection.BdConnection.StudentActivity.Add(studentActivity);
+                    Connection.BdConnection.SaveChanges();
+                    Close();
+                }
             }
             else
-            {
-                Connection.BdConnection.StudentActivity.Add(studentActivity);
-                Connection.BdConnection.SaveChanges();
-                Close();
-            }
+                MessageBox.Show("У вас нет места в группе");
         }
     }
 }

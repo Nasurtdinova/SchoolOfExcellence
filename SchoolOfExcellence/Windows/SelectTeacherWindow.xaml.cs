@@ -31,7 +31,8 @@ namespace SchoolOfExcellence
             TeacherActivity teacherActivity = new TeacherActivity()
             {
                 Activity = CurrentActivity,
-                Teacher = comboTeachers.SelectedItem as Teacher
+                Teacher = comboTeachers.SelectedItem as Teacher,
+                MaxCount = Convert.ToInt32(tbMaxCount.Text)
             };
             Connection.BdConnection.TeacherActivity.Add(teacherActivity);
             Connection.BdConnection.SaveChanges();
