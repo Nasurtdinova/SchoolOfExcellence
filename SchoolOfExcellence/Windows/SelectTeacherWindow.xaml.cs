@@ -38,5 +38,11 @@ namespace SchoolOfExcellence
             Connection.BdConnection.SaveChanges();
             Close();
         }
+
+        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        {
+            CreateTeacherWindow create = new CreateTeacherWindow(null);
+            create.Show();
+        }
     }
 }

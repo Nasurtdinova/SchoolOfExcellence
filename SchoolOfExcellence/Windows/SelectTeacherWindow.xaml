@@ -23,7 +23,7 @@
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="btnSelect" Content="Выбрать" Margin="20" Click="btnSelect_Click"></Button>
-            <Button x:Name="btnCreate" Content="Создать"></Button>
+            <Button x:Name="btnCreate" Content="Создать" Click="btnCreate_Click"></Button>
         </StackPanel>
     </Grid>
 </Window>

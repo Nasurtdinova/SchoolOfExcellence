@@ -52,6 +52,13 @@ namespace SchoolOfExcellence
             return GetTeachers().Where(a => a.IdUser == idUser).FirstOrDefault();
         }
 
+        public static void SaveTeacher(Teacher teacher)
+        {
+            if (teacher.Id == 0)
+                Connection.BdConnection.Teacher.Add(teacher);
+            Connection.BdConnection.SaveChanges();
+        }
+
         // activities
         public static List<Activity> GetActivities()
         {
