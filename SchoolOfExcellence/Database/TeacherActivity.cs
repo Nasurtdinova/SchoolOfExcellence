@@ -27,7 +27,7 @@ namespace SchoolOfExcellence.Database
         public int IdActivity { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
         public Nullable<int> MaxCount { get; set; }
-        public int Count => DataAccess.GetStudentsActivities().Where(a=>a.IdTeacherActivity == Id).Count();
+        public int Count => DataAccess.GetStudentsActivities().Where(a => a.IdTeacherActivity == Id).Count();
         public virtual Activity Activity { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Schedule> Schedule { get; set; }

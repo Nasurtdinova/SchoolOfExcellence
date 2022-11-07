@@ -13,10 +13,10 @@ namespace SchoolOfExcellence.Database
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ActivityEntities : DbContext
+    public partial class Activity1Entities : DbContext
     {
-        public ActivityEntities()
-            : base("name=ActivityEntities")
+        public Activity1Entities()
+            : base("name=Activity1Entities")
         {
         }
     
@@ -35,7 +35,6 @@ namespace SchoolOfExcellence.Database
         public virtual DbSet<SkipVisit> SkipVisit { get; set; }
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<StudentActivity> StudentActivity { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Teacher> Teacher { get; set; }
         public virtual DbSet<TeacherActivity> TeacherActivity { get; set; }
         public virtual DbSet<User> User { get; set; }
