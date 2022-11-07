@@ -43,6 +43,10 @@ namespace SchoolOfExcellence
         {
             CreateTeacherWindow create = new CreateTeacherWindow(null);
             create.Show();
+            create.Closed += (s, eventarg) =>
+            {
+                comboTeachers.ItemsSource = DataAccess.GetTeachers();
+            };
         }
     }
 }

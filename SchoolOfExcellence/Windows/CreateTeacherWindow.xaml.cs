@@ -21,13 +21,18 @@ namespace SchoolOfExcellence
     public partial class CreateTeacherWindow : Window
     {
         public Teacher CurrentTeacher = new Teacher();
+        public User CurrentUser = new User();
+
         public CreateTeacherWindow(Teacher selectedTeacher)
         {
             InitializeComponent();
             if (selectedTeacher != null)
+            {
                 CurrentTeacher = selectedTeacher;
-            password.Password = CurrentTeacher.User.Password;
-            DataContext = CurrentTeacher;
+                CurrentUser = selectedTeacher.User;
+                password.Password = CurrentUser.Password;
+            }
+            DataContext = CurrentUser;
         }
 
         private void btnEditImage_Click(object sender, RoutedEventArgs e)
@@ -36,14 +41,20 @@ namespace SchoolOfExcellence
             if (file.ShowDialog() == true)
             {
                 imageTeacher.Source = new BitmapImage(new Uri(file.FileName));
-                //CurrentTeacher.User.Image = File.ReadAllBytes(file.FileName);
+                CurrentUser.Image = File.ReadAllBytes(file.FileName);
             }
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            if (CurrentTeacher.Id == 0)
+            {
+                CurrentTeacher.User = CurrentUser;
+                CurrentTeacher.User.IdRole = 2;
+            }
             DataAccess.SaveTeacher(CurrentTeacher);
             MessageBox.Show("Информация сохранена!");
+            Close();
         }
     }
 }

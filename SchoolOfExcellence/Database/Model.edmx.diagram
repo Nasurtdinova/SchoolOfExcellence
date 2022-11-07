@@ -17,19 +17,19 @@
         <EntityTypeShape EntityType="Activity1Model.StudentActivity" Width="1.5" PointX="12.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Activity1Model.Teacher" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Activity1Model.TeacherActivity" Width="1.5" PointX="7.5" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Activity1Model.User" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
         <AssociationConnector Association="Activity1Model.FK_TeacherActivity_Activity" ManuallyRouted="false" />
         <AssociationConnector Association="Activity1Model.FK_Schedule_Cabinet" ManuallyRouted="false" />
         <AssociationConnector Association="Activity1Model.FK_Student_Grade" ManuallyRouted="false" />
-        <AssociationConnector Association="Activity1Model.FK_Headmaster_User" ManuallyRouted="false" />
-        <AssociationConnector Association="Activity1Model.FK_User_Role" ManuallyRouted="false" />
         <AssociationConnector Association="Activity1Model.FK_Schedule_TeacherActivity" ManuallyRouted="false" />
         <AssociationConnector Association="Activity1Model.FK_SkipVisit_Schedule" ManuallyRouted="false" />
         <AssociationConnector Association="Activity1Model.FK_SkipVisit_Student" ManuallyRouted="false" />
         <AssociationConnector Association="Activity1Model.FK_StudentActivity_Student" ManuallyRouted="false" />
         <AssociationConnector Association="Activity1Model.FK_StudentActivity_TeacherActivity" ManuallyRouted="false" />
-        <AssociationConnector Association="Activity1Model.FK_Teacher_User" ManuallyRouted="false" />
         <AssociationConnector Association="Activity1Model.FK_TeacherActivity_Teacher" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Activity1Model.User" Width="1.5" PointX="3" PointY="5.25" />
+        <AssociationConnector Association="Activity1Model.FK_Headmaster_User" />
+        <AssociationConnector Association="Activity1Model.FK_User_Role" />
+        <AssociationConnector Association="Activity1Model.FK_Teacher_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

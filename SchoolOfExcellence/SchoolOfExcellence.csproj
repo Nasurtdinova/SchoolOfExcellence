@@ -72,7 +72,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CreateTeacherWindow.xaml.cs">
+    <Compile Include="Windows\CreateTeacherWindow.xaml.cs">
       <DependentUpon>CreateTeacherWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Database\Activity.cs">
@@ -129,7 +129,7 @@
     <Compile Include="Database\User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MyProfilePage.xaml.cs">
@@ -172,11 +172,11 @@
     <Compile Include="Pages\TodayActivitiesPage.xaml.cs">
       <DependentUpon>TodayActivitiesPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="CreateTeacherWindow.xaml">
+    <Page Include="Windows\CreateTeacherWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainPage.xaml">
+    <Page Include="Pages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

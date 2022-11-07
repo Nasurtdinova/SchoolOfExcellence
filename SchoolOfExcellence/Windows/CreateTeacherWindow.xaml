@@ -17,11 +17,11 @@
         </Grid.RowDefinitions>
         <StackPanel>
             <TextBlock Text="ФИО"></TextBlock>
-            <TextBox Text="{Binding User.FullName}"></TextBox>
+            <TextBox Text="{Binding FullName}" Name="tbName"></TextBox>
         </StackPanel>
         <StackPanel Grid.Row="1">
             <TextBlock Text="Логин"></TextBlock>
-            <TextBox Text="{Binding User.Login}"></TextBox>
+            <TextBox Text="{Binding Login}" Name="tbLogin"></TextBox>
         </StackPanel>
         <StackPanel Grid.Row="2">
             <TextBlock Text="Пароль"></TextBlock>
@@ -30,9 +30,9 @@
         <StackPanel Grid.Row="3">
             <TextBlock Text="Фото"></TextBlock>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Image x:Name="imageTeacher" Width="150">
+                <Image x:Name="imageTeacher" Width="200">
                     <Image.Source>
-                        <Binding Path="User.Image">
+                        <Binding Path="Image">
                             <Binding.TargetNullValue>
                                 <BitmapImage UriSource="/SchoolOfExcellence;component/Images/ProfileIcon.png"></BitmapImage>
                             </Binding.TargetNullValue>

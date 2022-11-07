@@ -44,7 +44,7 @@ namespace SchoolOfExcellence
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-
+            DataAccess.SaveActivity(CurrentActivity);
         }
     }
 }

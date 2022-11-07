@@ -40,7 +40,12 @@ namespace SchoolOfExcellence
 
         private void btnAddTeachers_Click(object sender, RoutedEventArgs e)
         {
-
+            CreateTeacherWindow create = new CreateTeacherWindow(null);
+            create.Show();
+            create.Closed += (s, eventarg) =>
+            {
+                dgTeachers.ItemsSource = DataAccess.GetTeachers();
+            };
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)

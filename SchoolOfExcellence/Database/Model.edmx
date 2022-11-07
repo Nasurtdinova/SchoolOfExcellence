@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Activity1Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище Activity1Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Activity">
           <Key>
             <PropertyRef Name="Id" />
@@ -113,7 +113,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Login" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="30" />
           <Property Name="IdRole" Type="int" />
@@ -327,8 +327,7 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Activity1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -374,7 +373,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="IdUser" Type="Int32" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Headmaster_User" FromRole="Headmaster" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="Activity1Model.FK_Headmaster_User" FromRole="Headmaster" ToRole="User" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -382,7 +381,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="Activity1Model.FK_User_Role" FromRole="Role" ToRole="User" />
         </EntityType>
         <EntityType Name="Schedule">
           <Key>
@@ -440,8 +439,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="IdUser" Type="Int32" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Teacher_User" FromRole="Teacher" ToRole="User" />
           <NavigationProperty Name="TeacherActivity" Relationship="Self.FK_TeacherActivity_Teacher" FromRole="Teacher" ToRole="TeacherActivity" />
+          <NavigationProperty Name="User" Relationship="Activity1Model.FK_Teacher_User" FromRole="Teacher" ToRole="User" />
         </EntityType>
         <EntityType Name="TeacherActivity">
           <Key>
@@ -456,20 +455,6 @@
           <NavigationProperty Name="Schedule" Relationship="Self.FK_Schedule_TeacherActivity" FromRole="TeacherActivity" ToRole="Schedule" />
           <NavigationProperty Name="StudentActivity" Relationship="Self.FK_StudentActivity_TeacherActivity" FromRole="TeacherActivity" ToRole="StudentActivity" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_TeacherActivity_Teacher" FromRole="TeacherActivity" ToRole="Teacher" />
-        </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="IdRole" Type="Int32" />
-          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Headmaster" Relationship="Self.FK_Headmaster_User" FromRole="User" ToRole="Headmaster" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
-          <NavigationProperty Name="Teacher" Relationship="Self.FK_Teacher_User" FromRole="User" ToRole="Teacher" />
         </EntityType>
         <Association Name="FK_TeacherActivity_Activity">
           <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
@@ -504,30 +489,6 @@
             </Principal>
             <Dependent Role="Student">
               <PropertyRef Name="IdGrade" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Headmaster_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Headmaster" Type="Self.Headmaster" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Headmaster">
-              <PropertyRef Name="IdUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_User_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="IdRole" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -591,18 +552,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Teacher_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Teacher">
-              <PropertyRef Name="IdUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TeacherActivity_Teacher">
           <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
           <End Role="TeacherActivity" Type="Self.TeacherActivity" Multiplicity="*" />
@@ -628,7 +577,6 @@
           <EntitySet Name="StudentActivity" EntityType="Self.StudentActivity" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" />
           <EntitySet Name="TeacherActivity" EntityType="Self.TeacherActivity" />
-          <EntitySet Name="User" EntityType="Self.User" />
           <AssociationSet Name="FK_TeacherActivity_Activity" Association="Self.FK_TeacherActivity_Activity">
             <End Role="Activity" EntitySet="Activity" />
             <End Role="TeacherActivity" EntitySet="TeacherActivity" />
@@ -640,14 +588,6 @@
           <AssociationSet Name="FK_Student_Grade" Association="Self.FK_Student_Grade">
             <End Role="Grade" EntitySet="Grade" />
             <End Role="Student" EntitySet="Student" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Headmaster_User" Association="Self.FK_Headmaster_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Headmaster" EntitySet="Headmaster" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="User" EntitySet="User" />
           </AssociationSet>
           <AssociationSet Name="FK_Schedule_TeacherActivity" Association="Self.FK_Schedule_TeacherActivity">
             <End Role="TeacherActivity" EntitySet="TeacherActivity" />
@@ -669,15 +609,74 @@
             <End Role="TeacherActivity" EntitySet="TeacherActivity" />
             <End Role="StudentActivity" EntitySet="StudentActivity" />
           </AssociationSet>
-          <AssociationSet Name="FK_Teacher_User" Association="Self.FK_Teacher_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Teacher" EntitySet="Teacher" />
-          </AssociationSet>
           <AssociationSet Name="FK_TeacherActivity_Teacher" Association="Self.FK_TeacherActivity_Teacher">
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="TeacherActivity" EntitySet="TeacherActivity" />
           </AssociationSet>
+          <EntitySet Name="User" EntityType="Activity1Model.User" />
+          <AssociationSet Name="FK_Headmaster_User" Association="Activity1Model.FK_Headmaster_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Headmaster" EntitySet="Headmaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Activity1Model.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_User" Association="Activity1Model.FK_Teacher_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IdRole" Type="Int32" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Headmaster" Relationship="Activity1Model.FK_Headmaster_User" FromRole="User" ToRole="Headmaster" />
+          <NavigationProperty Name="Role" Relationship="Activity1Model.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Teacher" Relationship="Activity1Model.FK_Teacher_User" FromRole="User" ToRole="Teacher" />
+        </EntityType>
+        <Association Name="FK_Headmaster_User">
+          <End Type="Activity1Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="Activity1Model.Headmaster" Role="Headmaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Headmaster">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Type="Activity1Model.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="Activity1Model.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_User">
+          <End Type="Activity1Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="Activity1Model.Teacher" Role="Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -803,12 +802,12 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="Activity1Model.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

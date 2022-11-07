@@ -54,6 +54,7 @@ namespace SchoolOfExcellence
 
         public static void SaveTeacher(Teacher teacher)
         {
+            teacher.IsActive = true;
             if (teacher.Id == 0)
                 Connection.BdConnection.Teacher.Add(teacher);
             Connection.BdConnection.SaveChanges();
@@ -63,6 +64,13 @@ namespace SchoolOfExcellence
         public static List<Activity> GetActivities()
         {
             return new List<Activity>(Connection.BdConnection.Activity.Where(a=>a.IsActive == true)).ToList();
+        }
+
+        public static void SaveActivity(Activity activity)
+        {
+            if (activity.Id == 0)
+                Connection.BdConnection.Activity.Add(activity);
+            Connection.BdConnection.SaveChanges();
         }
 
         public static List<TeacherActivity> GetTeachersActivities()
@@ -87,7 +95,7 @@ namespace SchoolOfExcellence
 
         public static List<StudentActivity> GetStudentsInActivities(int idActivity)
         {
-            return GetStudentsActivities().Where(a => a.IdTeacherActivity == idActivity).ToList();
+            return GetStudentsActivities().Where(a => a.TeacherActivity.IdActivity == idActivity).ToList();
         }
 
         public static List<Student> GetStudents()
