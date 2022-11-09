@@ -11,10 +11,10 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition ></RowDefinition>
-            <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition Height="7*"></RowDefinition>
             <RowDefinition ></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" Margin="15">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Кружок" Margin="20 0"></TextBlock>
                 <ComboBox Name="comboActivity" SelectionChanged="comboActivity_SelectionChanged" DisplayMemberPath="Name"></ComboBox>

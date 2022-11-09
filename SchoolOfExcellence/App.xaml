@@ -13,7 +13,11 @@
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="TextBlock">
                 <Setter Property="FontSize" Value="20"></Setter>
-                <Setter Property="FontFamily" Value="Times New Roman"></Setter>
+                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            </Style>
+            <Style TargetType="ListViewItem">
+                <Setter Property="FontSize" Value="22"></Setter>
                 <Setter Property="HorizontalAlignment" Value="Center"></Setter>
                 <Setter Property="VerticalAlignment" Value="Center"></Setter>
             </Style>
@@ -25,7 +29,6 @@
                 </Style.Resources>
                 <Setter Property="Width" Value="120"></Setter>
                 <Setter Property="Height" Value="50"></Setter>
-                <Setter Property="Margin" Value="10"></Setter>
                 <Setter Property="Foreground" Value="White"></Setter>
                 <Setter Property="Background" Value="#FF459780"></Setter>
                 <Setter Property="FontFamily" Value="Times New Roman"></Setter>

@@ -37,7 +37,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Кружок">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ListView ItemsSource="{Binding TeacherActivity}">
@@ -52,7 +52,7 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
                 <Button x:Name="btnBack" Content="Назад" Click="btnBack_Click"></Button>
                 <Button Content="Добавить" Name="btnAddTeachers" Click="btnAddTeachers_Click"></Button>
             </StackPanel>

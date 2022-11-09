@@ -5,14 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SchoolOfExcellence"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      MinHeight="650" MinWidth="800"
       Title="CreateTeacherWindow">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel>
@@ -30,7 +30,7 @@
         <StackPanel Grid.Row="3">
             <TextBlock Text="Фото"></TextBlock>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Image x:Name="imageTeacher" Width="200">
+                <Image x:Name="imageTeacher" Width="150">
                     <Image.Source>
                         <Binding Path="Image">
                             <Binding.TargetNullValue>
