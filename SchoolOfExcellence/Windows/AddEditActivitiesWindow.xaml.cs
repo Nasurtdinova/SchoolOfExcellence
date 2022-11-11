@@ -25,6 +25,7 @@ namespace SchoolOfExcellence
             if (act != null)
             {
                 CurrentActivity = act;
+                tpDuration.SelectedTime = new DateTime(act.Duration.Value.Ticks);
                 lvTeachers.ItemsSource = DataAccess.GetTeachersInActivities(act.Id);
                 lvStudents.ItemsSource = DataAccess.GetStudentsInActivities(act.Id);
             }
@@ -44,6 +45,7 @@ namespace SchoolOfExcellence
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            CurrentActivity.Duration = tpDuration.SelectedTime.Value.TimeOfDay;
             DataAccess.SaveActivity(CurrentActivity);
         }
     }

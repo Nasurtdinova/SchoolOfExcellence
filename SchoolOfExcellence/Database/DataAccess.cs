@@ -68,6 +68,7 @@ namespace SchoolOfExcellence
 
         public static void SaveActivity(Activity activity)
         {
+            activity.IsActive = true;
             if (activity.Id == 0)
                 Connection.BdConnection.Activity.Add(activity);
             Connection.BdConnection.SaveChanges();

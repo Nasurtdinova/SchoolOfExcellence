@@ -58,7 +58,7 @@ namespace SchoolOfExcellence
             }
             else
             {
-                foreach (var i in DataAccess.GetSkipVisits().Where(a => a.Schedule == CurrentSchedule).ToList())
+                foreach (var i in dgEditStudents.ItemsSource)
                     Connection.BdConnection.SaveChanges();
             }
             MaterialMessageBox.Show("Информация сохранена!");

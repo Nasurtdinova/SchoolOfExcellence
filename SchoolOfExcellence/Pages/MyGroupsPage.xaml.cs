@@ -32,7 +32,7 @@ namespace SchoolOfExcellence
         private void dgActivities_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var a = (sender as DataGrid).SelectedItem as TeacherActivity;
-            dgStudents.ItemsSource = DataAccess.GetStudentsInActivities(a.Id);
+            dgStudents.ItemsSource = DataAccess.GetStudentsActivities().Where(b=>b.IdTeacherActivity == a.Id);
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -41,7 +41,7 @@ namespace SchoolOfExcellence
             select.Show();
             select.Closed += (s, eventarg) =>
             {
-                dgStudents.ItemsSource = DataAccess.GetStudentsInActivities((dgActivities.SelectedItem as TeacherActivity).Id);
+                dgStudents.ItemsSource = DataAccess.GetStudentsActivities().Where(b=>b.IdTeacherActivity == (dgActivities.SelectedItem as TeacherActivity).Id);
             };
         }
 
