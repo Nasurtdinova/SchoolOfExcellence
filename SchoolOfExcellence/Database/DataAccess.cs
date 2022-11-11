@@ -20,20 +20,11 @@ namespace SchoolOfExcellence
             return new List<SkipVisit>(Connection.BdConnection.SkipVisit).ToList();
         }
 
-        public static List<DayOfWeek> GetDaysOfWeek()
-        {
-            return new List<DayOfWeek>(Connection.BdConnection.DayOfWeek).ToList();
-        }
         // schedule
         public static List<Schedule> GetSchedules()
         {
             return new List<Schedule>(Connection.BdConnection.Schedule).Where(a => a.Date.Value.Date >= DateTime.Now.Date).ToList();
         }
-
-        //public static List<Schedule> GetSchedule(string week)
-        //{
-        //    return GetSchedules().Where(a => a.DayOfWeek.Name == week).ToList();
-        //}
 
         public static void AddSchedule(Schedule schedule)
         {
@@ -44,7 +35,7 @@ namespace SchoolOfExcellence
         // teachers
         public static List<Teacher> GetTeachers()
         {
-            return new List<Teacher>(Connection.BdConnection.Teacher.Where(a=>a.IsActive == true)).ToList();
+            return new List<Teacher>(Connection.BdConnection.Teacher).Where(a => a.IsActive == true).ToList();
         }
 
         public static Teacher GetTeacher(int idUser)
@@ -63,7 +54,7 @@ namespace SchoolOfExcellence
         // activities
         public static List<Activity> GetActivities()
         {
-            return new List<Activity>(Connection.BdConnection.Activity.Where(a=>a.IsActive == true)).ToList();
+            return new List<Activity>(Connection.BdConnection.Activity).Where(a => a.IsActive == true).ToList();
         }
 
         public static void SaveActivity(Activity activity)
@@ -76,7 +67,7 @@ namespace SchoolOfExcellence
 
         public static List<TeacherActivity> GetTeachersActivities()
         {
-            return new List<TeacherActivity>(Connection.BdConnection.TeacherActivity).ToList();
+            return new List<TeacherActivity>(Connection.BdConnection.TeacherActivity).Where(a=>a.IsDeleted == false).ToList();
         }
 
         public static List<TeacherActivity> GetTeachersInActivities(int idActivity)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolOfExcellence.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,6 +52,16 @@ namespace SchoolOfExcellence
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void dgTeachers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CreateTeacherWindow edit = new CreateTeacherWindow((sender as DataGrid).SelectedItem as Teacher);
+            edit.Show();
+            edit.Closed += (s, eventarg) =>
+            {
+                dgTeachers.ItemsSource = DataAccess.GetTeachers();
+            };
         }
     }
 }

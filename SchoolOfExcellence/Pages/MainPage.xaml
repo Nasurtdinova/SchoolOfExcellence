@@ -13,7 +13,7 @@
             <ColumnDefinition Width="500"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Image Source="/Images/FonMain.jpg" Grid.Column="0" Grid.ColumnSpan="2"/>
+        <Image Source="/Images/fon.jpg" Grid.ColumnSpan="2"/>
         <Image Source="/Images/main.jpg" Margin="60 0 0 0" Width="500" />
         <StackPanel Grid.Column="1" VerticalAlignment="Center" Width="585">
             <StackPanel Orientation="Horizontal" Margin="5">

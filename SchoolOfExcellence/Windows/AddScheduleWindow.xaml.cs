@@ -30,7 +30,7 @@ namespace SchoolOfExcellence
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if (DataAccess.GetSchedules().Where(a =>a.Date.Value.Date == DateTime.Now.Date && a.Cabinet == comboCabinet.SelectedItem as Cabinet && a.LessonStartTime == tbLessonStart.SelectedTime.Value.TimeOfDay && a.LessonEndTime >= tbLessonEnd.SelectedTime.Value.TimeOfDay).Count() == 0)
+            if (DataAccess.GetSchedules().Where(a =>a.Date.Value.Date == DateTime.Now.Date && a.Cabinet == comboCabinet.SelectedItem as Cabinet && a.LessonStartTime.Value.Ticks == tbLessonStart.SelectedTime.Value.Ticks).Count() == 0)
             {
                 Schedule sch = new Schedule()
                 {
@@ -43,6 +43,7 @@ namespace SchoolOfExcellence
                 };
                 DataAccess.AddSchedule(sch);
                 MaterialMessageBox.Show("Информация сохранена!");
+                Close();
             }
             else if (DataAccess.GetSchedules().Where(a => a.LessonStartTime == tbLessonStart.SelectedTime.Value.TimeOfDay && a.TeacherActivity == DataAccess.GetTeachersActivities().Where(b => b.Activity == comboActivity.SelectedItem as Activity && b.Teacher == comboTeachers.SelectedItem as Teacher).FirstOrDefault()).Count() != 0)
                 MaterialMessageBox.ShowError("У этого учителя в это время уже есть кружок!");

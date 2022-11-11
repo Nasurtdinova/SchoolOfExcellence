@@ -32,7 +32,8 @@ namespace SchoolOfExcellence
             {
                 Activity = CurrentActivity,
                 Teacher = comboTeachers.SelectedItem as Teacher,
-                MaxCount = Convert.ToInt32(tbMaxCount.Text)
+                MaxCount = Convert.ToInt32(tbMaxCount.Text),
+                IsDeleted = false
             };
             Connection.BdConnection.TeacherActivity.Add(teacherActivity);
             Connection.BdConnection.SaveChanges();

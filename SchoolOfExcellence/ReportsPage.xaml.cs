@@ -41,7 +41,7 @@ namespace SchoolOfExcellence
                 dgPopularDestinations.Visibility = Visibility.Collapsed;
                 dgCountSubject.Visibility = Visibility.Collapsed;
             }
-            else if (comboTypeReport.SelectedIndex == 3)
+            else if (comboTypeReport.SelectedIndex == 2)
             {
                 dgCountSubject.ItemsSource = DataAccess.GetTeachers().OrderByDescending(a => a.CountSubject);
                 dgActiveStudents.Visibility = Visibility.Collapsed;
@@ -125,6 +125,11 @@ namespace SchoolOfExcellence
             }
             else
                 MaterialMessageBox.ShowError("Выберите тип!", "Предупреждение");
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

@@ -38,6 +38,8 @@ namespace SchoolOfExcellence
             });
             comboActivity.ItemsSource = listActivity;
             comboActivity.SelectedIndex = 0;
+
+            dpDate.DisplayDateStart = DateTime.Now;
         }
 
         private void addSchedule_Click(object sender, RoutedEventArgs e)
@@ -57,6 +59,8 @@ namespace SchoolOfExcellence
                 schedules = schedules.Where(a => a.TeacherActivity.Activity == comboActivity.SelectedItem as Activity).OrderBy(a => a.Date).ToList();
             if (comboTeacher.SelectedIndex > 0)
                 schedules = schedules.Where(a => a.TeacherActivity.Teacher == comboTeacher.SelectedItem as Teacher).OrderBy(a => a.Date).ToList();
+            if (dpDate.SelectedDate != null)
+                schedules = schedules.Where(a => a.Date == dpDate.SelectedDate).ToList();
             dgShedules.ItemsSource = schedules;
         }
 
@@ -71,6 +75,11 @@ namespace SchoolOfExcellence
         }
 
         private void comboTeacher_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateList();
+        }
+
+        private void dpDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdateList();
         }

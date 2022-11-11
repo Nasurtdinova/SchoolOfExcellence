@@ -1,4 +1,5 @@
-﻿using SchoolOfExcellence.Database;
+﻿using BespokeFusion;
+using SchoolOfExcellence.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,7 +53,23 @@ namespace SchoolOfExcellence
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
-
+            if (MessageBox.Show("Вы точно хотите удалить кружок?", "Предупреждение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                var i = (sender as Button).DataContext as Activity;
+                i.IsActive = false;
+                foreach (var j in i.TeacherActivity)
+                {
+                    j.IsDeleted = true;
+                    foreach (var k in j.StudentActivity)
+                    {
+                        k.IsActive = false;
+                        Connection.BdConnection.SaveChanges();
+                    }
+                }
+                Connection.BdConnection.SaveChanges();
+                MaterialMessageBox.Show("Кружок успешно удален!");
+                dgActivities.ItemsSource = DataAccess.GetActivities();
+            }
         }
     }
 }

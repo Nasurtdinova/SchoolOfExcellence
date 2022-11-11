@@ -1,4 +1,5 @@
-﻿using SchoolOfExcellence.Database;
+﻿using BespokeFusion;
+using SchoolOfExcellence.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,6 +48,8 @@ namespace SchoolOfExcellence
         {
             CurrentActivity.Duration = tpDuration.SelectedTime.Value.TimeOfDay;
             DataAccess.SaveActivity(CurrentActivity);
+            MaterialMessageBox.Show("Информация сохранена!");
+            Close();
         }
     }
 }

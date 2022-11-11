@@ -15,6 +15,7 @@
             <RowDefinition ></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Margin="15">
+            <DatePicker Name="dpDate" FontSize="20" SelectedDateChanged="dpDate_SelectedDateChanged"></DatePicker>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Кружок" Margin="20 0"></TextBlock>
                 <ComboBox Name="comboActivity" SelectionChanged="comboActivity_SelectionChanged" DisplayMemberPath="Name"></ComboBox>

@@ -19,7 +19,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel x:Name="teachers" Grid.Row="1">
-            <DataGrid x:Name="dgTeachers" Height="500" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid x:Name="dgTeachers" Height="500" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="dgTeachers_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding User.FullName}"></DataGridTextColumn>
                     <DataGridTemplateColumn Header="Фотография" Width="400">

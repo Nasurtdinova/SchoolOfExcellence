@@ -34,19 +34,19 @@ namespace SchoolOfExcellence
             var a = (sender as Button).DataContext as Schedule;
             MarkPresentWindow mark = new MarkPresentWindow(a);
             mark.Show();
+            mark.Closed += (s, eventarg) =>
+            {
+                dgTodayActivities.ItemsSource = DataAccess.GetSchedules().Where(b => a.Date.Value.Date == DateTime.Now.Date && b.TeacherActivity.Teacher == CurrentUser.Teacher);
+            };
         }
 
         private void checkSkip_Checked(object sender, RoutedEventArgs e)
         {
             var a = (sender as CheckBox).DataContext as Schedule;
             if ((sender as CheckBox).IsChecked == true)
-            {
                 a.IsSkipped = true;
-            }
             else
-            {
                 a.IsSkipped = false;
-            }
             Connection.BdConnection.SaveChanges();
             dgTodayActivities.ItemsSource = DataAccess.GetSchedules().Where(b => b.Date.Value.Date == DateTime.Now.Date && b.TeacherActivity.Teacher == CurrentUser.Teacher);
         }

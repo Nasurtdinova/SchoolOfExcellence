@@ -62,6 +62,7 @@ namespace SchoolOfExcellence
                     Connection.BdConnection.SaveChanges();
             }
             MaterialMessageBox.Show("Информация сохранена!");
+            Close();
         }
 
         private void checkMark_Click(object sender, RoutedEventArgs e)

@@ -47,6 +47,7 @@ namespace SchoolOfExcellence
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            CurrentUser.Password = password.Password;
             if (CurrentTeacher.Id == 0)
             {
                 CurrentTeacher.User = CurrentUser;

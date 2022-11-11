@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Школа превосходства" d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="White">
-        <Grid Height="60" VerticalAlignment="Top" Background="Azure">
+        <Grid Height="60" VerticalAlignment="Top" Background="#FF81D6D6">
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="1" ShadowDepth="1" Color="#FFACACAC"/>
             </Grid.Effect>
@@ -52,7 +52,7 @@
                 <ListViewItem Height="60" Name="ItemTodayActivity">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="LocalActivity" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Сегодняшние кружки" Margin="10 0"/>
+                        <TextBlock Text="Кружки на сегодня" Margin="10 0"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60" Name="ItemMyGroups">

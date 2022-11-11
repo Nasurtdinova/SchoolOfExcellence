@@ -29,7 +29,6 @@ namespace SchoolOfExcellence.Database
         public bool IsVisited { get; set; }
         public string Reason { get; set; }
         public string VisibilityReason => IsVisited ? "Collapsed" : "Visible";
-
         public virtual Grade Grade { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SkipVisit> SkipVisit { get; set; }
