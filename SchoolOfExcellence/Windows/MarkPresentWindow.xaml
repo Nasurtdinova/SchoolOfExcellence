@@ -22,7 +22,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Причина" IsReadOnly="False">
+                <DataGridTemplateColumn Header="Причина">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox Visibility="{Binding VisibilityReason}" AcceptsReturn="True" Height="2cm" ScrollViewer.VerticalScrollBarVisibility="Visible" Text="{Binding Reason}"></TextBox>

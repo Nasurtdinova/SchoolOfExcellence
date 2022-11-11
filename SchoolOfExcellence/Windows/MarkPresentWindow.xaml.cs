@@ -59,9 +59,7 @@ namespace SchoolOfExcellence
             else
             {
                 foreach (var i in DataAccess.GetSkipVisits().Where(a => a.Schedule == CurrentSchedule).ToList())
-                {
                     Connection.BdConnection.SaveChanges();
-                }
             }
             MaterialMessageBox.Show("Информация сохранена!");
         }
@@ -70,28 +68,19 @@ namespace SchoolOfExcellence
         {
             var a = (sender as CheckBox).DataContext as Student;
             if ((sender as CheckBox).IsChecked == true)
-            {
                 a.IsVisited = true;
-            }
             else
-            {
                 a.IsVisited = false;
-            }
             dgAddStudents.ItemsSource = CurrentSchedule.TeacherActivity.StudentActivity.Select(b => b.Student).ToList();
-
         }
 
         private void checkMark_Click_1(object sender, RoutedEventArgs e)
         {
             var a = (sender as CheckBox).DataContext as SkipVisit;
             if ((sender as CheckBox).IsChecked == true)
-            {
                 a.IsVisited = true;
-            }
             else
-            {
                 a.IsVisited = false;
-            }
             dgEditStudents.ItemsSource = DataAccess.GetSkipVisits().Where(b => b.Schedule == CurrentSchedule).ToList();
         }
     }
