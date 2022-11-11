@@ -25,7 +25,7 @@
         </Grid.RowDefinitions>
         <TextBlock Text="Кружок"></TextBlock>
         <TextBlock Text="Учитель" Grid.Row="1"></TextBlock>
-        <TextBlock Text="День недели" Grid.Row="2"></TextBlock>
+        <TextBlock Text="Дата" Grid.Row="2"></TextBlock>
         <TextBlock Text="Начало" Grid.Row="3"></TextBlock>
         <TextBlock Text="Конец" Grid.Row="4"></TextBlock>
         <TextBlock Text="Кабинет" Grid.Row="5"></TextBlock>

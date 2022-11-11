@@ -20,10 +20,17 @@
                 <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet.Name}"></DataGridTextColumn>
-                <DataGridTemplateColumn Width="*">
+                <DataGridTemplateColumn Header="Проведен">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="btnMarkPresent" Click="btnMarkPresent_Click" Width="110" Content="Отметить"></Button>
+                            <CheckBox x:Name="checkSkip" IsChecked="{Binding IsSkipped, Mode=TwoWay}" Click="checkSkip_Checked"></CheckBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnMarkPresent" Visibility="{Binding VisibilityMark}" Click="btnMarkPresent_Click" Width="110" Content="Отметить"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

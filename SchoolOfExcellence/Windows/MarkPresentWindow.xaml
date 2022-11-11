@@ -18,14 +18,14 @@
                 <DataGridTemplateColumn Header="Присутствовал">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox x:Name="checkMark" IsChecked="{Binding IsMark, Mode=TwoWay}"></CheckBox>
+                            <CheckBox x:Name="checkMark" IsChecked="{Binding IsVisited, Mode=TwoWay}" Click="checkMark_Click"></CheckBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="Причина" IsReadOnly="False">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox x:Name="tbReason" Visibility="{Binding VisibilityReason}" Text="{Binding Reason}"></TextBox>
+                            <TextBox Visibility="{Binding VisibilityReason}" AcceptsReturn="True" Height="2cm" ScrollViewer.VerticalScrollBarVisibility="Visible" Text="{Binding Reason}"></TextBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -38,19 +38,19 @@
                 <DataGridTemplateColumn Header="Присутствовал">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox x:Name="checkMark" IsChecked="{Binding IsVisited}"></CheckBox>
+                            <CheckBox x:Name="checkMark" IsChecked="{Binding IsVisited, Mode=TwoWay}" Click="checkMark_Click_1"></CheckBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Причина" IsReadOnly="False">
+                <DataGridTemplateColumn Header="Причина">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox x:Name="tbReason" Visibility="{Binding VisibilityReason}" Text="{Binding Reason}"></TextBox>
+                            <TextBox AcceptsReturn="True" Height="2cm" ScrollViewer.VerticalScrollBarVisibility="Visible" Visibility="{Binding VisibilityReason}" Text="{Binding Reason}"></TextBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btnSave" Content="Сохранить" Click="btnSave_Click"></Button>
+        <Button x:Name="btnSave" Content="Сохранить" Click="btnSave_Click" Grid.Row="1"></Button>
     </Grid>
 </Window>

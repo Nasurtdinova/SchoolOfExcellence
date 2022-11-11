@@ -18,29 +18,29 @@
         <StackPanel Grid.Column="1" VerticalAlignment="Center" Width="585">
             <StackPanel Orientation="Horizontal" Margin="5">
                 <materialDesign:PackIcon Kind="School" Width="30" Height="30"/>
-                <TextBlock Text="Полное наименование: школа" FontSize="25"/>
+                <TextBlock Text="Полное наименование: школа" FontSize="23"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5">
                 <materialDesign:PackIcon Kind="AddressMarker" Width="30" Height="30"/>
-                <TextBlock Text="Юридический адрес: г. Казань, ул. Пушкина, 30" FontSize="25"/>
+                <TextBlock Text="Юридический адрес: г. Казань, ул. Пушкина, 30" FontSize="23"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5">
                 <materialDesign:PackIcon Kind="Account" Width="30" Height="30"/>
                 <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Руководитель образовательного учреждения:" FontSize="25"/>
-                    <TextBlock Text="Насуртдинова Гузель Раисовна" Margin="30,0" FontSize="25"/>
+                    <TextBlock Text="Руководитель образовательного учреждения:" FontSize="23"/>
+                    <TextBlock Text="Насуртдинова Гузель Раисовна" Margin="30,0" FontSize="23"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5">
                 <materialDesign:PackIcon Kind="Contact" Width="30" Height="30"/>
-                <TextBlock Text="Телефон: 8-486-345-56-56" FontSize="25"/>
+                <TextBlock Text="Телефон: 8-486-345-56-56" FontSize="23"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5">
                 <materialDesign:PackIcon Kind="Email" Width="30" Height="30"/>
-                <TextBlock Text="E-mail: school" FontSize="25"/>
+                <TextBlock Text="E-mail: school" FontSize="23"/>
             </StackPanel>
             <StackPanel>
-                <TextBlock TextWrapping="Wrap" Text="Кружковая работа, одна из форм дополнительного образования детей, заключающаяся в организации кружков и секций различной направленности." FontSize="25"/>
+                <TextBlock TextWrapping="Wrap" Text="Кружковая работа, одна из форм дополнительного образования детей, заключающаяся в организации кружков и секций различной направленности." FontSize="23"/>
             </StackPanel>
         </StackPanel>
     </Grid>
