@@ -19,8 +19,8 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Image Source="Images/fon.png" Grid.ColumnSpan="3" Grid.RowSpan="4"></Image>
-        <Image Source="Images/logotip_shkoly.png" Width="97" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="114,10,0,0" Height="82" ></Image>
+        <Image Source="/Images/fon.png" Grid.ColumnSpan="3" Grid.RowSpan="4"></Image>
+        <Image Source="/Images/logotip_shkoly.png" Width="97" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="114,10,0,0" Height="82" ></Image>
         <TextBlock Text="Школа превосходства" FontSize="30" Margin="20" VerticalAlignment="Top" Grid.ColumnSpan="3"></TextBlock>
         <TextBlock Text="Логин" FontSize="28" Grid.Row="1"></TextBlock>
         <TextBlock Text="Пароль" FontSize="28" Grid.Row="2"></TextBlock>

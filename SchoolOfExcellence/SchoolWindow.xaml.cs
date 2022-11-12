@@ -15,9 +15,9 @@ using System.Windows.Shapes;
 
 namespace SchoolOfExcellence
 {
-    public partial class MainWindow : Window
+    public partial class SchoolWindow : Window
     {
-        public MainWindow()
+        public SchoolWindow()
         {
             InitializeComponent();
             mainFrame.NavigationService.Navigate(new AuthorizationPage());

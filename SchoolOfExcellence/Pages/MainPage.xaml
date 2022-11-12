@@ -40,7 +40,7 @@
                 <TextBlock Text="E-mail: school" FontSize="23"/>
             </StackPanel>
             <StackPanel>
-                <TextBlock TextWrapping="Wrap" Text="Кружковая работа, одна из форм дополнительного образования детей, заключающаяся в организации кружков и секций различной направленности." FontSize="23"/>
+                <TextBlock TextWrapping="Wrap" Text="Кружковая работа, одна из форм дополнительного образования детей, заключающаяся в организации кружков и секций различной направленности." FontSize="22"/>
             </StackPanel>
         </StackPanel>
     </Grid>

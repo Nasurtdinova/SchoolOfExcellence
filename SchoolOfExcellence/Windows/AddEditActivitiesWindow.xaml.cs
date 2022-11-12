@@ -26,7 +26,8 @@ namespace SchoolOfExcellence
             if (act != null)
             {
                 CurrentActivity = act;
-                tpDuration.SelectedTime = new DateTime(act.Duration.Value.Ticks);
+                var date= new DateTime(act.Duration.Value.Ticks);
+                tpDuration.SelectedTime = date;
                 lvTeachers.ItemsSource = DataAccess.GetTeachersInActivities(act.Id);
                 lvStudents.ItemsSource = DataAccess.GetStudentsInActivities(act.Id);
             }

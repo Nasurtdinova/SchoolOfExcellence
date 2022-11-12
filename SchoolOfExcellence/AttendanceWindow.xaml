@@ -1,0 +1,19 @@
+﻿<Window x:Class="SchoolOfExcellence.AttendanceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SchoolOfExcellence"
+        mc:Ignorable="d"
+        Title="AttendanceWindow" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="dgAttendance" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True" CanUserSortColumns="True" CanUserReorderColumns="True" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ФИО" Binding="{Binding Student.FullName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Класс" Binding="{Binding Student.Grade.Name}"></DataGridTextColumn>
+                <DataGridCheckBoxColumn Header="Присутствовал" Binding="{Binding IsVisited}"></DataGridCheckBoxColumn>
+                <DataGridTextColumn Header="Причина" Binding="{Binding Reason}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

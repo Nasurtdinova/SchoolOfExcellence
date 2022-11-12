@@ -35,6 +35,7 @@
                 <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding FullName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Класс" Binding="{Binding Grade.Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Количество кружков" Binding="{Binding CountActivity}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Посещаемость" Binding="{Binding Attendance, TargetNullValue='0'}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="dgCountSubject" Visibility="Collapsed" Grid.Row="1" IsReadOnly="True" AutoGenerateColumns="False">

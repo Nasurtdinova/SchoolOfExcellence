@@ -61,6 +61,12 @@
                         <TextBlock Text="Мои группы" Margin="10 0"/>
                     </StackPanel>
                 </ListViewItem>
+                <ListViewItem Height="60" Name="ItemAttendance">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Estate" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Посещаемость" Margin="10 0"/>
+                    </StackPanel>
+                </ListViewItem>
                 <ListViewItem Height="60" Name="ItemStudentsTeacher">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="PeopleGroup" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>

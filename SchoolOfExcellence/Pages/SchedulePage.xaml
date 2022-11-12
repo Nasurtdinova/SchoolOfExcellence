@@ -36,9 +36,10 @@
                         <DataGridTextColumn Width="*" Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Учитель" Binding="{Binding TeacherActivity.Teacher.User.FullName}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Дата" Width="130" Binding="{Binding Date, StringFormat='dd.MM.yyyy'}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime,  StringFormat=hh\\:mm}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime,  StringFormat=hh\\:mm}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet.Name}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Проведен" Binding="{Binding IsSkipped}"></DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

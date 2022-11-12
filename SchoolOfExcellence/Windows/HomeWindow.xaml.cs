@@ -55,6 +55,9 @@ namespace SchoolOfExcellence
                 case "ItemActivities":
                     GridPrincipal.Navigate(new ActivitiesPage());
                     break;
+                case "ItemAttendance":
+                    GridPrincipal.Navigate(new AttendancePage());
+                    break;
                 case "ItemStudentsTeacher":
                     GridPrincipal.Navigate(new StudentsTeachersPage());
                     break;
