@@ -26,11 +26,16 @@ namespace SchoolOfExcellence.Database
         public string FullName { get; set; }
         public Nullable<int> IdGrade { get; set; }
         public int CountActivity => DataAccess.GetStudentsActivities().Where(a => a.IdStudent == Id && a.IsActive == true).Count();
-        public string Attendance { get {
+        public string Attendance
+        {
+            get
+            {
                 if (DataAccess.GetSkipVisits().Where(a => a.IdStudent == Id && a.IsVisited == true).Count() == 0)
                     return "Кружков не было!";
                 else
-                    return $"{DataAccess.GetSkipVisits().Where(a => a.IdStudent == Id && a.IsVisited == true).Count() * 100 / DataAccess.GetSkipVisits().Where(a => a.IdStudent == Id).Count()}%"; } }
+                    return $"{DataAccess.GetSkipVisits().Where(a => a.IdStudent == Id && a.IsVisited == true).Count() * 100 / DataAccess.GetSkipVisits().Where(a => a.IdStudent == Id).Count()}%";
+            }
+        }
         public bool IsVisited { get; set; }
         public string Reason { get; set; }
         public string VisibilityReason => IsVisited ? "Collapsed" : "Visible";

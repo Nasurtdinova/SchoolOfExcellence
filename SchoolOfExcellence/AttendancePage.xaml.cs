@@ -24,13 +24,16 @@ namespace SchoolOfExcellence
         public AttendancePage()
         {
             InitializeComponent();
-            dgShedules.ItemsSource = DataAccess.GetSchedulesPast().OrderBy(a => a.Date);
+            if (CurrentUser.User.IdRole == 2)
+                dgShedules.ItemsSource = DataAccess.GetSchedulesPast().Where(a=> a.TeacherActivity.Teacher == CurrentUser.Teacher).OrderBy(b => b.Date);
+            else
+                dgShedules.ItemsSource = DataAccess.GetSchedulesPast().OrderBy(a => a.Date);
         }
 
         private void dgShedules_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var a = (sender as DataGrid).SelectedItem as Schedule;
-            if (a.IsSkipped == true)
+            if (a.IsConducted == true)
             {
                 AttendanceWindow atten = new AttendanceWindow(a);
                 atten.Show();

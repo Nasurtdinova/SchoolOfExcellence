@@ -20,6 +20,7 @@ namespace SchoolOfExcellence
         public AttendanceWindow(Schedule selectedSchedule)
         {
             InitializeComponent();
+
             dgAttendance.ItemsSource = DataAccess.GetSkipVisits().Where(a => a.Schedule == selectedSchedule).ToList();
         }
     }

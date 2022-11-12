@@ -96,9 +96,6 @@
     <Compile Include="Database\Cabinet.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\DayOfWeek.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Database\Grade.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

@@ -44,9 +44,9 @@ namespace SchoolOfExcellence
         {
             var a = (sender as CheckBox).DataContext as Schedule;
             if ((sender as CheckBox).IsChecked == true)
-                a.IsSkipped = true;
+                a.IsConducted = true;
             else
-                a.IsSkipped = false;
+                a.IsConducted = false;
             Connection.BdConnection.SaveChanges();
             dgTodayActivities.ItemsSource = DataAccess.GetSchedules().Where(b => b.Date.Value.Date == DateTime.Now.Date && b.TeacherActivity.Teacher == CurrentUser.Teacher);
         }

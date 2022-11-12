@@ -18,13 +18,14 @@
             <TextBlock Text="Расписание" Margin="20" FontSize="25"></TextBlock>
             <DataGrid Height="400" ScrollViewer.VerticalScrollBarVisibility="Visible" x:Name="dgShedules" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="dgShedules_SelectionChanged">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="*" Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Учитель" Binding="{Binding TeacherActivity.Teacher.User.FullName}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Дата" Width="130" Binding="{Binding Date, StringFormat='dd.MM.yyyy'}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime,  StringFormat=hh\\:mm}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime,  StringFormat=hh\\:mm}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet.Name}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Проведен" Binding="{Binding IsSkipped}"></DataGridTextColumn>
+                    <DataGridCheckBoxColumn Header="Проведен" Binding="{Binding IsConducted}"></DataGridCheckBoxColumn>
+                    <DataGridTextColumn Header="Причина" Binding="{Binding Reason}"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>

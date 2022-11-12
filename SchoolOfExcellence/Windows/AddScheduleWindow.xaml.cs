@@ -43,7 +43,7 @@ namespace SchoolOfExcellence
                     TeacherActivity = DataAccess.GetTeachersActivities().Where(a => a.Activity == comboActivity.SelectedItem as Activity && a.Teacher == comboTeachers.SelectedItem as Teacher).FirstOrDefault(),
                     Cabinet = comboCabinet.SelectedItem as Cabinet,
                     Date = dpDate.SelectedDate,
-                    IsSkipped = false,
+                    IsConducted = false,
                     LessonEndTime = tbLessonEnd.SelectedTime.Value.TimeOfDay,
                     LessonStartTime = tbLessonStart.SelectedTime.Value.TimeOfDay
                 };

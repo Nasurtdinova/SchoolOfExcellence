@@ -17,13 +17,13 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Описание" Binding="{Binding TeacherActivity.Activity.Description}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime,  StringFormat=hh\\:mm}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime,  StringFormat=hh\\:mm}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet.Name}"></DataGridTextColumn>
                 <DataGridTemplateColumn Header="Проведен">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox x:Name="checkSkip" IsChecked="{Binding IsSkipped, Mode=TwoWay}" Click="checkSkip_Checked"></CheckBox>
+                            <CheckBox x:Name="checkSkip" IsChecked="{Binding IsConducted, Mode=TwoWay}" Click="checkSkip_Checked"></CheckBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
