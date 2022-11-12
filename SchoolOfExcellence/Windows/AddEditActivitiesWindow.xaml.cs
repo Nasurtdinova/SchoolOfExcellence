@@ -54,7 +54,14 @@ namespace SchoolOfExcellence
 
         private void btnRemoveTeacher_Click(object sender, RoutedEventArgs e)
         {
-
+            var a = (sender as Button).DataContext as TeacherActivity;
+            if (MessageBox.Show($"Вы точно хотите чтобы {a.Teacher.User.FullName} не проводил(-а) {a.Activity.Name}?", "Предупреждение", MessageBoxButton.YesNoCancel, MessageBoxImage.Stop) == MessageBoxResult.Yes)
+            {                
+                a.IsDeleted = true;
+                Connection.BdConnection.SaveChanges();
+                MaterialMessageBox.Show($"{a.Teacher.User.FullName} больше не проводит {a.Activity.Name}!");
+                lvTeachers.ItemsSource = DataAccess.GetTeachersInActivities(CurrentActivity.Id);
+            }
         }
     }
 }
