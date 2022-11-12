@@ -50,5 +50,12 @@ namespace SchoolOfExcellence
             Connection.BdConnection.SaveChanges();
             dgTodayActivities.ItemsSource = DataAccess.GetSchedules().Where(b => b.Date.Value.Date == DateTime.Now.Date && b.TeacherActivity.Teacher == CurrentUser.Teacher);
         }
+
+        private void tbReason_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var a = (sender as TextBox).DataContext as Schedule;
+            a.Reason = (sender as TextBox).Text;
+            Connection.BdConnection.SaveChanges();
+        }
     }
 }

@@ -27,7 +27,10 @@ namespace SchoolOfExcellence.Database
         public Nullable<System.TimeSpan> LessonStartTime { get; set; }
         public Nullable<System.TimeSpan> LessonEndTime { get; set; }
         public Nullable<int> IdCabinet { get; set; }
+
+        public string Reason { get; set; }
         public string VisibilityMark => IsSkipped ? "Visibility" : "Collapsed";
+        public string VisibilityReason => IsSkipped ? "Collapsed" : "Visibility";
         public virtual Cabinet Cabinet { get; set; }
         public virtual TeacherActivity TeacherActivity { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

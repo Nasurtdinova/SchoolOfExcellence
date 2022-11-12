@@ -21,8 +21,7 @@ namespace SchoolOfExcellence
     {
         public ReportsPage()
         {
-            InitializeComponent();
-            //dgPopularDestinations.ItemsSource = DataAccess.GetActivities().OrderByDescending(a=>a.Count);
+            InitializeComponent();           
         }
 
         private void comboTypeReport_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -48,6 +47,7 @@ namespace SchoolOfExcellence
                 dgPopularDestinations.Visibility = Visibility.Collapsed;
                 dgCountSubject.Visibility = Visibility.Visible;
             }
+            tbNull.Visibility = Visibility.Collapsed;
         }
 
         private void btnExcel_Click(object sender, RoutedEventArgs e)
@@ -100,7 +100,7 @@ namespace SchoolOfExcellence
                 startRowIndex = 1;
                 application.Visible = true;
             }
-            else if (comboTypeReport.SelectedItem != null && comboTypeReport.SelectedIndex == 3)
+            else if (comboTypeReport.SelectedItem != null && comboTypeReport.SelectedIndex == 2)
             {
                 Excel.Application application = new Excel.Application();
                 Excel.Workbook workbook = application.Workbooks.Add(Type.Missing);

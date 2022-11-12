@@ -27,10 +27,13 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="btnMarkPresent" Visibility="{Binding VisibilityMark}" Click="btnMarkPresent_Click" Width="110" Content="Отметить"></Button>
+                            <StackPanel>
+                                <Button x:Name="btnMarkPresent" Visibility="{Binding VisibilityMark}" Click="btnMarkPresent_Click" Width="110" Content="Отметить"></Button>
+                                <TextBox Text="{Binding Reason}" AcceptsReturn="True" Width="7cm" ScrollViewer.VerticalScrollBarVisibility="Visible" x:Name="tbReason" Visibility="{Binding VisibilityReason}" TextChanged="tbReason_TextChanged"></TextBox>
+                            </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

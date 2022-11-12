@@ -23,7 +23,8 @@
             </ComboBox>
             <Button x:Name="btnExcel" Content="Excel" Margin="5" Click="btnExcel_Click"></Button>
         </StackPanel>
-        <DataGrid x:Name="dgPopularDestinations" Grid.Row="1" IsReadOnly="True" AutoGenerateColumns="False"> 
+        <TextBlock x:Name="tbNull" Grid.Row="1" Text="Выберите вид статистики!"></TextBlock>
+        <DataGrid x:Name="dgPopularDestinations" Visibility="Collapsed" Grid.Row="1" IsReadOnly="True" AutoGenerateColumns="False"> 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" Width="*" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Количество человек" Binding="{Binding Count}"></DataGridTextColumn>

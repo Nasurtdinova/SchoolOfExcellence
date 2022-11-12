@@ -51,5 +51,10 @@ namespace SchoolOfExcellence
             MaterialMessageBox.Show("Информация сохранена!");
             Close();
         }
+
+        private void btnRemoveTeacher_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -14,15 +14,18 @@
             <RowDefinition Height="7*"></RowDefinition>
             <RowDefinition ></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Margin="15">
-            <DatePicker Name="dpDate" FontSize="20" SelectedDateChanged="dpDate_SelectedDateChanged"></DatePicker>
+        <StackPanel Orientation="Horizontal" Margin="15" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Дата" Margin="20 0"></TextBlock>
+                <DatePicker Name="dpDate" FontSize="20" SelectedDateChanged="dpDate_SelectedDateChanged"></DatePicker>
+            </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Кружок" Margin="20 0"></TextBlock>
-                <ComboBox Name="comboActivity" SelectionChanged="comboActivity_SelectionChanged" DisplayMemberPath="Name"></ComboBox>
+                <ComboBox Name="comboActivity" Width="300" SelectionChanged="comboActivity_SelectionChanged" DisplayMemberPath="Name"></ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Учитель" Margin="20 0"></TextBlock>
-                <ComboBox Name="comboTeacher" SelectionChanged="comboTeacher_SelectionChanged" DisplayMemberPath="User.FullName"></ComboBox>
+                <ComboBox Name="comboTeacher" Width="300" SelectionChanged="comboTeacher_SelectionChanged" DisplayMemberPath="User.FullName"></ComboBox>
             </StackPanel>
         </StackPanel>
         <ScrollViewer Grid.Row="1">

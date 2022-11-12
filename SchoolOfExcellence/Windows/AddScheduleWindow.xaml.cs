@@ -30,8 +30,14 @@ namespace SchoolOfExcellence
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if (DataAccess.GetSchedules().Where(a =>a.Date.Value.Date == DateTime.Now.Date && a.Cabinet == comboCabinet.SelectedItem as Cabinet && a.LessonStartTime.Value.Ticks == tbLessonStart.SelectedTime.Value.Ticks).Count() == 0)
+            if (DataAccess.GetSchedules().Where(a => a.Date.Value.Date == DateTime.Now.Date && a.Cabinet == comboCabinet.SelectedItem as Cabinet && a.LessonStartTime.Value.Ticks == tbLessonStart.SelectedTime.Value.Ticks || a.LessonEndTime.Value.Ticks >= tbLessonEnd.SelectedTime.Value.Ticks).Count() != 0)
             {
+                MaterialMessageBox.ShowError("В этом кабинете в это время проводится другой кружок!");
+            }
+            else if (DataAccess.GetSchedules().Where(a => a.LessonStartTime == tbLessonStart.SelectedTime.Value.TimeOfDay && a.TeacherActivity == DataAccess.GetTeachersActivities().Where(b => b.Activity == comboActivity.SelectedItem as Activity && b.Teacher == comboTeachers.SelectedItem as Teacher).FirstOrDefault()).Count() != 0)
+                MaterialMessageBox.ShowError("У этого учителя в это время уже есть кружок!");
+            else
+            {               
                 Schedule sch = new Schedule()
                 {
                     TeacherActivity = DataAccess.GetTeachersActivities().Where(a => a.Activity == comboActivity.SelectedItem as Activity && a.Teacher == comboTeachers.SelectedItem as Teacher).FirstOrDefault(),
@@ -45,10 +51,6 @@ namespace SchoolOfExcellence
                 MaterialMessageBox.Show("Информация сохранена!");
                 Close();
             }
-            else if (DataAccess.GetSchedules().Where(a => a.LessonStartTime == tbLessonStart.SelectedTime.Value.TimeOfDay && a.TeacherActivity == DataAccess.GetTeachersActivities().Where(b => b.Activity == comboActivity.SelectedItem as Activity && b.Teacher == comboTeachers.SelectedItem as Teacher).FirstOrDefault()).Count() != 0)
-                MaterialMessageBox.ShowError("У этого учителя в это время уже есть кружок!");
-            else
-                MaterialMessageBox.ShowError("В этом кабинете в это время проводится другой кружок!");           
         }
 
         private void comboTeachers_SelectionChanged(object sender, SelectionChangedEventArgs e)
