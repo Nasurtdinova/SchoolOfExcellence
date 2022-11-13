@@ -30,9 +30,9 @@
                         <TextBlock Text="Название кружка"></TextBlock>
                         <TextBlock Text="Описание" Grid.Row="1"></TextBlock>
                         <TextBlock Text="Продолжительность" Grid.Row="2"></TextBlock>
-                        <TextBox Grid.Column="2" Text="{Binding Name}"></TextBox>
-                        <TextBox Grid.Column="2" Grid.Row="1" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" Height="2cm" Text="{Binding Description}"></TextBox>
-                        <materialDesign:TimePicker Language="ru-RU" Is24Hours="True" Grid.Column="2" FontSize="25" Width="300" Grid.Row="2" Name="tpDuration"/>
+                        <TextBox Grid.Column="2" FontSize="20" Text="{Binding Name}"></TextBox>
+                        <TextBox Grid.Column="2" FontSize="20" Grid.Row="1" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" Height="2cm" Text="{Binding Description}"></TextBox>
+                        <materialDesign:TimePicker Language="ru-RU" Is24Hours="True" Grid.Column="2" FontSize="20" Width="300" Grid.Row="2" Name="tpDuration"/>
                         <Button x:Name="btnSave" Grid.Row="3" Grid.ColumnSpan="2" Content="Сохранить" Click="btnSave_Click"></Button>
                     </Grid>
                 </TabItem.Content>

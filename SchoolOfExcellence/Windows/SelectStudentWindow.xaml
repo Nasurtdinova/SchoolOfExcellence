@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Text="Выберите студента" Margin="20"></TextBlock>
-            <ComboBox Name="comboStudent" DisplayMemberPath="FullName"></ComboBox>
+            <ComboBox Name="comboStudent" TextBoxBase.TextChanged="OnComboboxTextChanged" IsEditable="True" DisplayMemberPath="FullName"></ComboBox>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="btnSelect" Content="Выбрать" Click="btnSelect_Click"></Button>

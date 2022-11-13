@@ -14,12 +14,26 @@
             <RowDefinition Height="6*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Margin="15" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Дата" Margin="20 0"></TextBlock>
+                <DatePicker Name="dpDate" FontSize="20" SelectedDateChanged="dpDate_SelectedDateChanged"></DatePicker>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Кружок" Margin="20 0"></TextBlock>
+                <ComboBox Name="comboActivity" Width="300" SelectionChanged="comboActivity_SelectionChanged" DisplayMemberPath="Name"></ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Учитель" Margin="20 0"></TextBlock>
+                <ComboBox Name="comboTeacher" Width="300" SelectionChanged="comboTeacher_SelectionChanged" DisplayMemberPath="User.FullName"></ComboBox>
+            </StackPanel>
+        </StackPanel>
         <StackPanel Grid.Row="1">
             <TextBlock Text="Расписание" Margin="20" FontSize="25"></TextBlock>
             <DataGrid Height="400" ScrollViewer.VerticalScrollBarVisibility="Visible" x:Name="dgShedules" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="dgShedules_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Учитель" Binding="{Binding TeacherActivity.Teacher.User.FullName}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Учитель" x:Name="columnTeacher" Binding="{Binding TeacherActivity.Teacher.User.FullName}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Дата" Width="130" Binding="{Binding Date, StringFormat='dd.MM.yyyy'}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime,  StringFormat=hh\\:mm}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime,  StringFormat=hh\\:mm}"></DataGridTextColumn>
@@ -29,5 +43,6 @@
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
+        <Button x:Name="btnBack" Content="Назад" Grid.Row="2" Click="btnBack_Click"></Button>
     </Grid>
 </Page>

@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Text="Выберите учителя" Margin="20"></TextBlock>
-            <ComboBox Name="comboTeachers" DisplayMemberPath="User.FullName"></ComboBox>
+            <ComboBox Name="comboTeachers" TextBoxBase.TextChanged="OnComboboxTextChanged" IsEditable="True" DisplayMemberPath="User.FullName"></ComboBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
             <TextBlock Text="Максимальное количество учеников" Margin="20"></TextBlock>

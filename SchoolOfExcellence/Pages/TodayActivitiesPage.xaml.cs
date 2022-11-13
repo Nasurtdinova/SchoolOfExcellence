@@ -1,4 +1,5 @@
-﻿using SchoolOfExcellence.Database;
+﻿using BespokeFusion;
+using SchoolOfExcellence.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,12 +33,17 @@ namespace SchoolOfExcellence
         private void btnMarkPresent_Click(object sender, RoutedEventArgs e)
         {
             var a = (sender as Button).DataContext as Schedule;
-            MarkPresentWindow mark = new MarkPresentWindow(a);
-            mark.Show();
-            mark.Closed += (s, eventarg) =>
+            if (a.LessonStartTime.Value.Ticks <= DateTime.Now.TimeOfDay.Ticks)
             {
-                dgTodayActivities.ItemsSource = DataAccess.GetSchedules().Where(b => a.Date.Value.Date == DateTime.Now.Date && b.TeacherActivity.Teacher == CurrentUser.Teacher);
-            };
+                MarkPresentWindow mark = new MarkPresentWindow(a);
+                mark.Show();
+                mark.Closed += (s, eventarg) =>
+                {
+                    dgTodayActivities.ItemsSource = DataAccess.GetSchedules().Where(b => a.Date.Value.Date == DateTime.Now.Date && b.TeacherActivity.Teacher == CurrentUser.Teacher);
+                };
+            }
+            else
+                MaterialMessageBox.ShowError("Вы пока не можете отметить!", "Предупреждение!");
         }
 
         private void checkSkip_Checked(object sender, RoutedEventArgs e)

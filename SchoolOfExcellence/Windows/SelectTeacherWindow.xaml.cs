@@ -49,5 +49,10 @@ namespace SchoolOfExcellence
                 comboTeachers.ItemsSource = DataAccess.GetTeachers();
             };
         }
+
+        public void OnComboboxTextChanged(object sender, RoutedEventArgs e)
+        {
+            comboTeachers.ItemsSource = DataAccess.GetTeachers().Where(a => a.User.FullName.ToLower().Contains(comboTeachers.Text.ToLower()));
+        }
     }
 }

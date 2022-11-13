@@ -1,4 +1,5 @@
-﻿using SchoolOfExcellence.Database;
+﻿using BespokeFusion;
+using SchoolOfExcellence.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,20 +29,30 @@ namespace SchoolOfExcellence
 
         private void btnSelect_Click(object sender, RoutedEventArgs e)
         {
-            StudentActivity studentActivity = new StudentActivity()
+            if (comboStudent.SelectedItem != null)
             {
-                TeacherActivity = SelectedActivity,
-                Student = comboStudent.SelectedItem as Student,
-                IsActive = true
-            };
-            if (DataAccess.GetStudentsActivities().Where(a => a.TeacherActivity == studentActivity.TeacherActivity && a.Student == studentActivity.Student).Count() != 0)
-                MessageBox.Show("Этот ученик уже состоит в этом кружке!");
-            else
-            {
-                Connection.BdConnection.StudentActivity.Add(studentActivity);
-                Connection.BdConnection.SaveChanges();
-                Close();
+                StudentActivity studentActivity = new StudentActivity()
+                {
+                    TeacherActivity = SelectedActivity,
+                    Student = comboStudent.SelectedItem as Student,
+                    IsActive = true
+                };
+                if (DataAccess.GetStudentsActivities().Where(a => a.TeacherActivity == studentActivity.TeacherActivity && a.Student == studentActivity.Student).Count() != 0)
+                    MessageBox.Show("Этот ученик уже состоит в этом кружке!");
+                else
+                {
+                    Connection.BdConnection.StudentActivity.Add(studentActivity);
+                    Connection.BdConnection.SaveChanges();
+                    Close();
+                }
             }
+            else
+                MaterialMessageBox.ShowError("Выберите студента!", "Предупреждение!");
+        }
+
+        public void OnComboboxTextChanged(object sender, RoutedEventArgs e)
+        {
+            comboStudent.ItemsSource = DataAccess.GetStudents().Where(a => a.FullName.ToLower().Contains(comboStudent.Text.ToLower()));
         }
     }
 }

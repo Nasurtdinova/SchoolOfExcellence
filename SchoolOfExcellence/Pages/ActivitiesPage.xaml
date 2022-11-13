@@ -18,18 +18,35 @@
         <DataGrid x:Name="dgActivities" Grid.Row="1" Margin="5" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Наименование" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Описание" Width="*" Binding="{Binding Description}"/>
-                <DataGridTemplateColumn>
+                <DataGridTextColumn Header="Описание" Width="*" ScrollViewer.VerticalScrollBarVisibility="Visible" Binding="{Binding Description}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap"></Setter>
+                            <Setter Property="TextBlock.Height" Value="100"></Setter>
+                            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Visible"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTemplateColumn Header="Учителя">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="btnRemove" Width="100" Content="Удалить" Click="btnRemove_Click"></Button>
+                            <ListView ItemsSource="{Binding TeacherActivity}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Teacher.User.FullName}"></TextBlock>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn >
+                <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="btnEdit" Width="170" Content="Редактировать" Click="btnEdit_Click"></Button>
+                            <StackPanel VerticalAlignment="Center">
+                                <Button x:Name="btnRemove" Margin="10" Width="100" Content="Удалить" Click="btnRemove_Click"></Button>
+                                <Button x:Name="btnEdit" Width="170" Content="Редактировать" Click="btnEdit_Click"></Button>
+                            </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

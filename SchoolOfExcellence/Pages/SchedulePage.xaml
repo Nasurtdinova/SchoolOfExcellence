@@ -39,7 +39,7 @@
                         <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime,  StringFormat=hh\\:mm}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime,  StringFormat=hh\\:mm}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet.Name}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Проведен" Binding="{Binding IsConducted}"></DataGridTextColumn>
+                        <DataGridCheckBoxColumn Header="Проведен" Binding="{Binding IsConducted}"></DataGridCheckBoxColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

@@ -27,7 +27,7 @@ namespace SchoolOfExcellence
 
         public static List<Schedule> GetSchedulesPast()
         {
-            return new List<Schedule>(Connection.BdConnection.Schedule).Where(a => a.Date.Value.Date < DateTime.Now.Date).ToList();
+            return new List<Schedule>(Connection.BdConnection.Schedule).Where(a => a.Date.Value.Date <= DateTime.Now.Date).ToList();
         }
 
         public static void AddSchedule(Schedule schedule)

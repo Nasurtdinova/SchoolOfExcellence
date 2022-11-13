@@ -78,10 +78,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AttendancePage.xaml.cs">
+    <Compile Include="Pages\AttendancePage.xaml.cs">
       <DependentUpon>AttendancePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AttendanceWindow.xaml.cs">
+    <Compile Include="Windows\AttendanceWindow.xaml.cs">
       <DependentUpon>AttendanceWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Database\Activity.cs">
@@ -184,11 +184,11 @@
     <Compile Include="Pages\TodayActivitiesPage.xaml.cs">
       <DependentUpon>TodayActivitiesPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="AttendancePage.xaml">
+    <Page Include="Pages\AttendancePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AttendanceWindow.xaml">
+    <Page Include="Windows\AttendanceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

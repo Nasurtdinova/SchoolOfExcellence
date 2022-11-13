@@ -38,18 +38,25 @@ namespace SchoolOfExcellence
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if ((dgActivities.SelectedItem as TeacherActivity).Count <= (dgActivities.SelectedItem as TeacherActivity).MaxCount)
+            if (dgActivities.SelectedItem != null)
             {
-                SelectStudentPage select = new SelectStudentPage(dgActivities.SelectedItem as TeacherActivity);
-                select.Show();
-                select.Closed += (s, eventarg) =>
+                if ((dgActivities.SelectedItem as TeacherActivity).Count < (dgActivities.SelectedItem as TeacherActivity).MaxCount)
                 {
-                    dgStudents.ItemsSource = DataAccess.GetStudentsActivities().Where(b => b.IdTeacherActivity == (dgActivities.SelectedItem as TeacherActivity).Id);
-                    dgActivities.ItemsSource = DataAccess.GetActivitiesInTeacher(CurrentUser.Teacher.Id);
-                };
+                    SelectStudentPage select = new SelectStudentPage(dgActivities.SelectedItem as TeacherActivity);
+                    select.Show();
+                    select.Closed += (s, eventarg) =>
+                    {
+                        dgStudents.ItemsSource = DataAccess.GetStudentsActivities().Where(b => b.IdTeacherActivity == (dgActivities.SelectedItem as TeacherActivity).Id);
+                        dgActivities.ItemsSource = DataAccess.GetActivitiesInTeacher(CurrentUser.Teacher.Id);
+                    };
+                }
+                else
+                    MaterialMessageBox.ShowError("У вас нет места в группе!","Предупреждение!");
             }
             else
-                MaterialMessageBox.Show("У вас нет места в группе");
+            {
+                MaterialMessageBox.ShowError("Выберите кружок!","Предупреждение!");
+            }
         }
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
@@ -59,6 +66,7 @@ namespace SchoolOfExcellence
                 var student = (sender as Button).DataContext as StudentActivity;
                 student.IsActive = false;
                 Connection.BdConnection.SaveChanges();
+                dgActivities.ItemsSource = DataAccess.GetActivitiesInTeacher(CurrentUser.Teacher.Id);
                 dgStudents.ItemsSource = DataAccess.GetStudentsActivities().Where(b => b.IdTeacherActivity == (dgActivities.SelectedItem as TeacherActivity).Id);
             }
         }

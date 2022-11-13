@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using BespokeFusion;
+using Microsoft.Win32;
 using SchoolOfExcellence.Database;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,7 @@ namespace SchoolOfExcellence
                 CurrentUser = selectedTeacher.User;
                 password.Password = CurrentUser.Password;
             }
+            Title = CurrentTeacher.Id == 0 ? "Создание учителя" : "Редактирование учителя";
             DataContext = CurrentUser;
         }
 
@@ -54,7 +56,7 @@ namespace SchoolOfExcellence
                 CurrentTeacher.User.IdRole = 2;
             }
             DataAccess.SaveTeacher(CurrentTeacher);
-            MessageBox.Show("Информация сохранена!");
+            MaterialMessageBox.Show("Информация сохранена!");
             Close();
         }
     }

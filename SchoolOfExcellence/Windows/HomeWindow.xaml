@@ -36,7 +36,7 @@
                     <ImageBrush ImageSource="/SchoolOfExcellence;component/Images/logotip_shkoly.png"></ImageBrush>
                 </Ellipse.Fill>
             </Ellipse>
-            <ListView x:Name="ListViewMenu" Background="Transparent" Margin="0 200" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="Champagne &amp; Limousines" FontSize="18" SelectionChanged="ListViewMenu_SelectionChanged" SelectedIndex="0">
+            <ListView x:Name="ListViewMenu" Background="Transparent" Margin="0 170" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="Champagne &amp; Limousines" FontSize="18" SelectionChanged="ListViewMenu_SelectionChanged" SelectedIndex="0">
                 <ListViewItem Height="60"  Name="ItemHome">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>

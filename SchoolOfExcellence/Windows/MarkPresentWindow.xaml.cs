@@ -69,7 +69,10 @@ namespace SchoolOfExcellence
         {
             var a = (sender as CheckBox).DataContext as Student;
             if ((sender as CheckBox).IsChecked == true)
+            {
                 a.IsVisited = true;
+                a.Reason = string.Empty;
+            }
             else
                 a.IsVisited = false;
             dgAddStudents.ItemsSource = CurrentSchedule.TeacherActivity.StudentActivity.Select(b => b.Student).ToList();
@@ -79,7 +82,10 @@ namespace SchoolOfExcellence
         {
             var a = (sender as CheckBox).DataContext as SkipVisit;
             if ((sender as CheckBox).IsChecked == true)
+            {
                 a.IsVisited = true;
+                a.Reason = string.Empty;
+            }
             else
                 a.IsVisited = false;
             dgEditStudents.ItemsSource = DataAccess.GetSkipVisits().Where(b => b.Schedule == CurrentSchedule).ToList();
