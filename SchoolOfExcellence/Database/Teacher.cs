@@ -25,6 +25,7 @@ namespace SchoolOfExcellence.Database
         public Nullable<bool> IsActive { get; set; }
         public Nullable<int> IdUser { get; set; }
         public int CountSubject => Connection.BdConnection.Schedule.Where(a => a.TeacherActivity.IdTeacher == Id && a.IsConducted == true).Count();
+        public int CountNoSubject => Connection.BdConnection.Schedule.Where(a => a.TeacherActivity.IdTeacher == Id && a.IsConducted == false).Count();
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TeacherActivity> TeacherActivity { get; set; }

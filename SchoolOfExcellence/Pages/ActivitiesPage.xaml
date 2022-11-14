@@ -23,6 +23,7 @@
                         <Style>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap"></Setter>
                             <Setter Property="TextBlock.Height" Value="100"></Setter>
+                            <Setter Property="TextBlock.Width" Value="200"></Setter>
                             <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Visible"></Setter>
                         </Style>
                     </DataGridTextColumn.ElementStyle>

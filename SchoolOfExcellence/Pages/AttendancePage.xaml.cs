@@ -54,7 +54,11 @@ namespace SchoolOfExcellence
 
         public void UpdateList()
         {
-            schedules = DataAccess.GetSchedulesPast().OrderBy(a => a.Date).ToList();
+            if (CurrentUser.User.IdRole == 2)
+                schedules = DataAccess.GetSchedulesPast().Where(a => a.TeacherActivity.Teacher == CurrentUser.Teacher).OrderBy(b => b.Date).ToList();
+            else
+                schedules = DataAccess.GetSchedulesPast().OrderBy(a => a.Date).ToList();
+
             if (comboActivity.SelectedIndex > 0)
                 schedules = schedules.Where(a => a.TeacherActivity.Activity == comboActivity.SelectedItem as Activity).OrderBy(a => a.Date).ToList();
             if (comboTeacher.SelectedIndex > 0)

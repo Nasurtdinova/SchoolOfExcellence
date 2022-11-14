@@ -81,10 +81,12 @@ namespace SchoolOfExcellence
                 Excel.Workbook workbook = application.Workbooks.Add(Type.Missing);
                 Excel.Worksheet worksheet = application.Worksheets.Item[1];
                 int startRowIndex = 1;
-
+                worksheet.Rows.HorizontalAlignment = HorizontalAlignment.Center;
+                worksheet.Rows.VerticalAlignment = HorizontalAlignment.Center;
                 worksheet.Cells[1][startRowIndex] = "ФИО";
                 worksheet.Cells[2][startRowIndex] = "Класс";
-                worksheet.Cells[2][startRowIndex] = "Количество кружков";
+                worksheet.Cells[3][startRowIndex] = "Количество кружков";
+                worksheet.Cells[4][startRowIndex] = "Посещаемость кружков";
                 startRowIndex++;
 
                 var results = DataAccess.GetStudents().OrderByDescending(a => a.CountActivity);
@@ -92,7 +94,13 @@ namespace SchoolOfExcellence
                 {
                     worksheet.Cells[1][startRowIndex] = result.FullName;
                     worksheet.Cells[2][startRowIndex] = result.Grade.Name;
-                    worksheet.Cells[2][startRowIndex] = result.CountActivity;
+                    worksheet.Cells[3][startRowIndex] = result.CountActivity;
+                    string attendance = string.Empty;
+                    foreach(var i in result.StudentActivityTrue)
+                    {
+                        attendance = attendance + $"{i.TeacherActivity.Activity.Name} {i.Attendance}" + Environment.NewLine;
+                    }
+                    worksheet.Cells[4][startRowIndex] = attendance;
                     startRowIndex++;
                 }
                 worksheet.Columns.AutoFit();
@@ -108,7 +116,8 @@ namespace SchoolOfExcellence
                 int startRowIndex = 1;
 
                 worksheet.Cells[1][startRowIndex] = "ФИО";
-                worksheet.Cells[2][startRowIndex] = "Количество кружков";
+                worksheet.Cells[2][startRowIndex] = "Количество проведенных кружков";
+                worksheet.Cells[3][startRowIndex] = "Количество не проведенных кружков";
                 startRowIndex++;
 
                 var results = DataAccess.GetTeachers().OrderByDescending(a => a.CountSubject);
@@ -116,6 +125,7 @@ namespace SchoolOfExcellence
                 {
                     worksheet.Cells[1][startRowIndex] = result.User.FullName;
                     worksheet.Cells[2][startRowIndex] = result.CountSubject;
+                    worksheet.Cells[3][startRowIndex] = result.CountNoSubject;
                     startRowIndex++;
                 }
                 worksheet.Columns.AutoFit();
