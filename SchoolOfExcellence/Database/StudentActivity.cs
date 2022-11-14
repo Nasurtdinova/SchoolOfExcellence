@@ -11,14 +11,24 @@ namespace SchoolOfExcellence.Database
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public partial class StudentActivity
     {
         public int Id { get; set; }
         public int IdStudent { get; set; }
         public int IdTeacherActivity { get; set; }
         public Nullable<bool> IsActive { get; set; }
-    
+        public string Attendance
+        {
+            get
+            {
+                if (DataAccess.GetSkipVisits().Where(a => a.IdStudent == Id && a.Schedule.TeacherActivity == TeacherActivity).Count() == 0)
+                    return "0%";
+                else
+                    return $"{DataAccess.GetSkipVisits().Where(a => a.IdStudent == Id && a.IsVisited == true && a.Schedule.TeacherActivity == TeacherActivity).Count() * 100 / DataAccess.GetSkipVisits().Where(a => a.IdStudent == Id && a.Schedule.TeacherActivity == TeacherActivity).Count()}%";
+            }
+        }
         public virtual Student Student { get; set; }
         public virtual TeacherActivity TeacherActivity { get; set; }
     }

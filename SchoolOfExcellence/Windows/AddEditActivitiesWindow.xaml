@@ -84,8 +84,8 @@
                         </Grid.RowDefinitions>
                         <DataGrid Name="lvStudents" AutoGenerateColumns="False" CanUserAddRows="false">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="ФИО"  Binding="{Binding Student.FullName}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Класс"  Binding="{Binding Student.Grade.Name}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="ФИО"  Binding="{Binding FullName}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Класс"  Binding="{Binding Grade.Name}"></DataGridTextColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>

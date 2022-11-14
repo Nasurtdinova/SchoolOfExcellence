@@ -30,7 +30,7 @@
                 <DataGridTemplateColumn Header="Учителя">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ListView ItemsSource="{Binding TeacherActivity}">
+                            <ListView ItemsSource="{Binding TeacherActivityTrue}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Teacher.User.FullName}"></TextBlock>

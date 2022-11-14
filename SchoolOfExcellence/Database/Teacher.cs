@@ -28,5 +28,13 @@ namespace SchoolOfExcellence.Database
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TeacherActivity> TeacherActivity { get; set; }
+
+        public ICollection<TeacherActivity> TeacherActivityTrue
+        {
+            get
+            {
+                return TeacherActivity.Where(a => a.IsDeleted == false).ToList();
+            }
+        }
     }
 }

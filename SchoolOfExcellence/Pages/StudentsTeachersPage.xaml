@@ -40,7 +40,7 @@
                     <DataGridTemplateColumn Header="Кружок">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <ListView ItemsSource="{Binding TeacherActivity}">
+                                <ListView ItemsSource="{Binding TeacherActivityTrue}">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding Activity.Name}"></TextBlock>

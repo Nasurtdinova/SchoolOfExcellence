@@ -21,7 +21,7 @@
         <DataGrid x:Name="dgActivities" Grid.Row="1" SelectionChanged="dgActivities_SelectionChanged" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" Width="*" Binding="{Binding Activity.Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Количество человек" Binding="{Binding Count}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Count}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="dgStudents" Grid.Column="1" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">

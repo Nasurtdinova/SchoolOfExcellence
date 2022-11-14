@@ -32,9 +32,25 @@
         </DataGrid>
         <DataGrid x:Name="dgActiveStudents" Visibility="Collapsed" Grid.Row="1" IsReadOnly="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding FullName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ФИО" Binding="{Binding FullName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Класс" Binding="{Binding Grade.Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Количество кружков" Binding="{Binding CountActivity}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Количество" Binding="{Binding CountActivity}"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Кружки" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ListView ItemsSource="{Binding StudentActivityTrue}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding TeacherActivity.Activity.Name}"></TextBlock>
+                                            <TextBlock Margin="10" Text="{Binding Attendance, TargetNullValue='0'}"></TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Посещаемость" Binding="{Binding Attendance, TargetNullValue='0'}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>

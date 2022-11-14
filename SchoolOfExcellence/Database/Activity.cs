@@ -11,6 +11,7 @@ namespace SchoolOfExcellence.Database
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Linq;
 
     public partial class Activity
@@ -22,14 +23,32 @@ namespace SchoolOfExcellence.Database
         }
     
         public int Id { get; set; }
+        [Required(ErrorMessage = "Заполните название!")]
         public string Name { get; set; }
         public string Description { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public Nullable<int> MaxCount { get; set; }
-        public int Count => DataAccess.GetStudentsActivities().Where(a => a.TeacherActivity.IdActivity == Id).Count();
+        public int Count
+        {
+            get
+            {
+                int sum = 0;
+                foreach (var i in DataAccess.GetTeachersInActivities(Id))
+                    sum += i.Count;
+                return sum;
+            }
+        }
+        [Required(ErrorMessage = "Заполните продолжительность!")]
         public Nullable<System.TimeSpan> Duration { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TeacherActivity> TeacherActivity { get; set; }
+        public ICollection<TeacherActivity> TeacherActivityTrue
+        {
+            get
+            {
+                return TeacherActivity.Where(a => a.IsDeleted == false).ToList();
+            }
+        }
     }
 }

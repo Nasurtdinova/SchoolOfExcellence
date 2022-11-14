@@ -30,26 +30,40 @@ namespace SchoolOfExcellence
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if (DataAccess.GetSchedules().Where(a => a.Date.Value.Date == DateTime.Now.Date && a.Cabinet == comboCabinet.SelectedItem as Cabinet && a.LessonStartTime.Value.Ticks == tbLessonStart.SelectedTime.Value.Ticks || a.LessonEndTime.Value.Ticks >= tbLessonEnd.SelectedTime.Value.Ticks).Count() != 0)
-            {
-                MaterialMessageBox.ShowError("В этом кабинете в это время проводится другой кружок!");
-            }
-            else if (DataAccess.GetSchedules().Where(a => a.LessonStartTime == tbLessonStart.SelectedTime.Value.TimeOfDay && a.TeacherActivity == DataAccess.GetTeachersActivities().Where(b => b.Activity == comboActivity.SelectedItem as Activity && b.Teacher == comboTeachers.SelectedItem as Teacher).FirstOrDefault()).Count() != 0)
-                MaterialMessageBox.ShowError("У этого учителя в это время уже есть кружок!");
+            if (comboActivity.SelectedItem == null)
+                MaterialMessageBox.Show("Заполните кружок!");
+            else if (comboTeachers.SelectedItem == null)
+                MaterialMessageBox.Show("Заполните учителя!");
+            else if (comboCabinet.SelectedItem == null)
+                MaterialMessageBox.Show("Заполните кабинет!");
+            else if (dpDate.SelectedDate == null)
+                MaterialMessageBox.Show("Заполните дату!");
+            else if (tbLessonStart.SelectedTime == null)
+                MaterialMessageBox.Show("Заполните время начала!");
+            else if (tbLessonEnd.SelectedTime == null)
+                MaterialMessageBox.Show("Заполните время окончания!");
             else
-            {               
-                Schedule sch = new Schedule()
+            {
+                if (DataAccess.GetSchedules().Where(a => a.Date.Value.Date == dpDate.SelectedDate.Value.Date && a.Cabinet == comboCabinet.SelectedItem as Cabinet && a.LessonStartTime.Value.Ticks <= tbLessonStart.SelectedTime.Value.Ticks && a.LessonEndTime.Value.Ticks >= tbLessonEnd.SelectedTime.Value.Ticks).Count() != 0)
+                    MaterialMessageBox.ShowError("В этом кабинете в это время проводится другой кружок!");
+                else if (DataAccess.GetSchedules().Where(a => a.LessonStartTime == tbLessonStart.SelectedTime.Value.TimeOfDay && a.TeacherActivity == DataAccess.GetTeachersActivities().Where(b => b.Activity == comboActivity.SelectedItem as Activity && b.Teacher == comboTeachers.SelectedItem as Teacher).FirstOrDefault()).Count() != 0)
+                    MaterialMessageBox.ShowError("У этого учителя в это время уже есть кружок!");
+                else
                 {
-                    TeacherActivity = DataAccess.GetTeachersActivities().Where(a => a.Activity == comboActivity.SelectedItem as Activity && a.Teacher == comboTeachers.SelectedItem as Teacher).FirstOrDefault(),
-                    Cabinet = comboCabinet.SelectedItem as Cabinet,
-                    Date = dpDate.SelectedDate,
-                    IsConducted = false,
-                    LessonEndTime = tbLessonEnd.SelectedTime.Value.TimeOfDay,
-                    LessonStartTime = tbLessonStart.SelectedTime.Value.TimeOfDay
-                };
-                DataAccess.AddSchedule(sch);
-                MaterialMessageBox.Show("Информация сохранена!");
-                Close();
+
+                    Schedule sch = new Schedule()
+                    {
+                        TeacherActivity = DataAccess.GetTeachersActivities().Where(a => a.Activity == comboActivity.SelectedItem as Activity && a.Teacher == comboTeachers.SelectedItem as Teacher).FirstOrDefault(),
+                        Cabinet = comboCabinet.SelectedItem as Cabinet,
+                        Date = dpDate.SelectedDate,
+                        IsConducted = false,
+                        LessonEndTime = tbLessonEnd.SelectedTime.Value.TimeOfDay,
+                        LessonStartTime = tbLessonStart.SelectedTime.Value.TimeOfDay
+                    };
+                    DataAccess.AddSchedule(sch);
+                    MaterialMessageBox.Show("Информация сохранена!");
+                    Close();
+                }
             }
         }
 

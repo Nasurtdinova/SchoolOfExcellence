@@ -1,4 +1,5 @@
-﻿using SchoolOfExcellence.Database;
+﻿using BespokeFusion;
+using SchoolOfExcellence.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,16 +29,34 @@ namespace SchoolOfExcellence
 
         private void btnSelect_Click(object sender, RoutedEventArgs e)
         {
-            TeacherActivity teacherActivity = new TeacherActivity()
+            if (comboTeachers.SelectedItem != null && !string.IsNullOrEmpty(tbMaxCount.Text))
             {
-                Activity = CurrentActivity,
-                Teacher = comboTeachers.SelectedItem as Teacher,
-                MaxCount = Convert.ToInt32(tbMaxCount.Text),
-                IsDeleted = false
-            };
-            Connection.BdConnection.TeacherActivity.Add(teacherActivity);
-            Connection.BdConnection.SaveChanges();
-            Close();
+                TeacherActivity teacherActivity = new TeacherActivity()
+                {
+                    Activity = CurrentActivity,
+                    Teacher = comboTeachers.SelectedItem as Teacher,
+                    MaxCount = Convert.ToInt32(tbMaxCount.Text),
+                    IsDeleted = false
+                };
+                var teach = DataAccess.GetTeachersActivitiesTotal().Where(a => a.Activity == CurrentActivity && a.Teacher == teacherActivity.Teacher && a.IsDeleted == true).FirstOrDefault();
+                if (DataAccess.GetTeachersActivities().Where(a => a.Activity == CurrentActivity && a.Teacher == teacherActivity.Teacher).Count() != 0)
+                    MaterialMessageBox.ShowError("Этот учитель уже проводит этот кружок!");
+                else if (teach != null)
+                {
+                    teach.IsDeleted = false;
+                    teach.MaxCount = teacherActivity.MaxCount;
+                    Connection.BdConnection.SaveChanges();
+                    Close();
+                }
+                else
+                {
+                    Connection.BdConnection.TeacherActivity.Add(teacherActivity);
+                    Connection.BdConnection.SaveChanges();
+                    Close();
+                }
+            }
+            else
+                MaterialMessageBox.ShowError("Заполните данные!");
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)

@@ -2,6 +2,7 @@
 using SchoolOfExcellence.Database;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace SchoolOfExcellence
                 var date= new DateTime(act.Duration.Value.Ticks);
                 tpDuration.SelectedTime = date;
                 lvTeachers.ItemsSource = DataAccess.GetTeachersInActivities(act.Id);
-                lvStudents.ItemsSource = DataAccess.GetStudentsInActivities(act.Id);
+                lvStudents.ItemsSource = DataAccess.GetStudentsInActivities(act.Id).Select(a=>a.Student).Distinct();
             }
             Title = CurrentActivity.Id == 0 ? "Добавление кружка" : "Редактирование кружка";
             DataContext = CurrentActivity;           
@@ -47,10 +48,22 @@ namespace SchoolOfExcellence
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            CurrentActivity.Duration = tpDuration.SelectedTime.Value.TimeOfDay;
-            DataAccess.SaveActivity(CurrentActivity);
-            MaterialMessageBox.Show("Информация сохранена!");
-            Close();
+            if (tpDuration.SelectedTime != null)
+                CurrentActivity.Duration = tpDuration.SelectedTime.Value.TimeOfDay;
+            var results = new List<System.ComponentModel.DataAnnotations.ValidationResult>();
+            var context = new ValidationContext(CurrentActivity);
+
+            if (!Validator.TryValidateObject(CurrentActivity, context, results, true))
+            {
+                foreach (var error in results)
+                    MaterialMessageBox.ShowError(error.ErrorMessage);
+            }
+            else
+            {
+                DataAccess.SaveActivity(CurrentActivity);
+                MaterialMessageBox.Show("Информация сохранена!");
+                Close();
+            }
         }
 
         private void btnRemoveTeacher_Click(object sender, RoutedEventArgs e)

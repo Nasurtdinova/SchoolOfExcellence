@@ -67,7 +67,7 @@ namespace SchoolOfExcellence
         private void dgShedules_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var a = (sender as DataGrid).SelectedItem as Schedule;
-            if (a.IsConducted == true)
+            if (a!= null && a.IsConducted == true)
             {
                 AttendanceWindow atten = new AttendanceWindow(a);
                 atten.Show();

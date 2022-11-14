@@ -37,8 +37,15 @@ namespace SchoolOfExcellence
                     Student = comboStudent.SelectedItem as Student,
                     IsActive = true
                 };
+                var stud = DataAccess.GetStudentsActivitiesTotal().Where(a => a.TeacherActivity == studentActivity.TeacherActivity && a.Student == studentActivity.Student && a.IsActive == false).FirstOrDefault();
                 if (DataAccess.GetStudentsActivities().Where(a => a.TeacherActivity == studentActivity.TeacherActivity && a.Student == studentActivity.Student).Count() != 0)
-                    MessageBox.Show("Этот ученик уже состоит в этом кружке!");
+                    MaterialMessageBox.ShowError("Этот ученик уже состоит в этом кружке!");
+                else if (stud != null)
+                {
+                    stud.IsActive = true;
+                    Connection.BdConnection.SaveChanges();
+                    Close();
+                }
                 else
                 {
                     Connection.BdConnection.StudentActivity.Add(studentActivity);

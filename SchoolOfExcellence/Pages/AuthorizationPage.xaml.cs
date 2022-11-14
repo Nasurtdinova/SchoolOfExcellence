@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BespokeFusion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,10 +25,17 @@ namespace SchoolOfExcellence
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            if (DataAccess.IsCorrectUser(tbLogin.Text, tbPassword.Password))
-                NavigationService.Navigate(new HomeWindow());
+            if (string.IsNullOrEmpty(tbLogin.Text) || string.IsNullOrEmpty(tbPassword.Password))
+            {
+                MaterialMessageBox.ShowError("Заполните данные!", "Предупреждение!");
+            }
             else
-                MessageBox.Show("Incorrect login or password");
+            {
+                if (DataAccess.IsCorrectUser(tbLogin.Text, tbPassword.Password))
+                    NavigationService.Navigate(new HomeWindow());
+                else
+                    MaterialMessageBox.ShowError("Incorrect login or password");
+            }
         }
     }
 }

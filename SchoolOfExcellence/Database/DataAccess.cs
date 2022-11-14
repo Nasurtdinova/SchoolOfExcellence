@@ -14,6 +14,14 @@ namespace SchoolOfExcellence
             return new List<Cabinet>(Connection.BdConnection.Cabinet).ToList();
         }
 
+        public static bool IsTrueLogin(string login)
+        {
+            if (GetUsers().Where(a => a.Login == login).Count() > 0)
+                return false;
+            else
+                return true;
+        }
+
         public static List<SkipVisit> GetSkipVisits()
         {
             return new List<SkipVisit>(Connection.BdConnection.SkipVisit).ToList();
@@ -73,6 +81,10 @@ namespace SchoolOfExcellence
         {
             return new List<TeacherActivity>(Connection.BdConnection.TeacherActivity).Where(a=>a.IsDeleted == false).ToList();
         }
+        public static List<TeacherActivity> GetTeachersActivitiesTotal()
+        {
+            return new List<TeacherActivity>(Connection.BdConnection.TeacherActivity).ToList();
+        }
 
         public static List<TeacherActivity> GetTeachersInActivities(int idActivity)
         {
@@ -86,7 +98,12 @@ namespace SchoolOfExcellence
 
         public static List<StudentActivity> GetStudentsActivities()
         {
-            return new List<StudentActivity>(Connection.BdConnection.StudentActivity.Where(a=>a.IsActive == true)).ToList();
+            return new List<StudentActivity>(Connection.BdConnection.StudentActivity).Where(a => a.IsActive == true).ToList();
+        }
+
+        public static List<StudentActivity> GetStudentsActivitiesTotal()
+        {
+            return new List<StudentActivity>(Connection.BdConnection.StudentActivity).ToList();
         }
 
         public static List<StudentActivity> GetStudentsInActivities(int idActivity)

@@ -30,8 +30,8 @@ namespace SchoolOfExcellence.Database
         {
             get
             {
-                if (DataAccess.GetSkipVisits().Where(a => a.IdStudent == Id && a.IsVisited == true).Count() == 0)
-                    return "Кружков не было!";
+                if (DataAccess.GetSkipVisits().Where(a => a.IdStudent == Id).Count() == 0)
+                    return "0%";
                 else
                     return $"{DataAccess.GetSkipVisits().Where(a => a.IdStudent == Id && a.IsVisited == true).Count() * 100 / DataAccess.GetSkipVisits().Where(a => a.IdStudent == Id).Count()}%";
             }
@@ -44,5 +44,9 @@ namespace SchoolOfExcellence.Database
         public virtual ICollection<SkipVisit> SkipVisit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentActivity> StudentActivity { get; set; }
+        public ICollection<StudentActivity> StudentActivityTrue { get
+            {
+                return StudentActivity.Where(a => a.IsActive == true).ToList();
+            }}
     }
 }
