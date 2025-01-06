@@ -22,7 +22,31 @@ namespace SchoolOfExcellence
         public MyProfilePage()
         {
             InitializeComponent();
-            DataContext = CurrentUser.User;
+            if (CurrentUser.Teacher != null)
+            {
+                tbPersonnelNumber.Text = CurrentUser.Teacher.PersonnelNumber.ToString();
+                tbFullName.Text = CurrentUser.Teacher.FullName;
+                tbDateOfBirth.Text = CurrentUser.Teacher.DateOfBirth.Value.ToShortDateString();
+                tbPhoneNumber.Text = CurrentUser.Teacher.PhoneNumber;
+                tbSeniority.Text = CurrentUser.Teacher.Seniority.ToString();
+                tbGrade.Visibility = Visibility.Collapsed;
+                textGrade.Visibility = Visibility.Collapsed;
+                tbDateStudy.Visibility = Visibility.Collapsed;
+                textDateStudy.Visibility = Visibility.Collapsed;
+                DataContext = CurrentUser.Teacher;
+            }
+            if (CurrentUser.Student != null)
+            {
+                tbPersonnelNumber.Text = CurrentUser.Student.PersonnelNumber.ToString();
+                tbFullName.Text = CurrentUser.Student.FullName;
+                tbDateOfBirth.Text = CurrentUser.Student.DateOfBirth.Value.ToShortDateString();
+                tbPhoneNumber.Text = CurrentUser.Student.PhoneNumber;
+                tbGrade.Text = CurrentUser.Student.Grade.Name.ToString();
+                tbDateStudy.Text = CurrentUser.Student.DateStudy.Value.ToShortDateString();
+                tbSeniority.Visibility = Visibility.Collapsed;
+                textSeniority.Visibility = Visibility.Collapsed;
+                DataContext = CurrentUser.Student;
+            }
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -37,7 +61,17 @@ namespace SchoolOfExcellence
             if (file.ShowDialog() == true)
             {
                 imgUser.Source = new BitmapImage(new Uri(file.FileName));
-                CurrentUser.User.Image = File.ReadAllBytes(file.FileName);
+                if (CurrentUser.Teacher != null)
+                {
+                    CurrentUser.Teacher.Image = File.ReadAllBytes(file.FileName);
+                    Connection.BdConnection.SaveChanges();
+                }
+
+                if (CurrentUser.Student != null)
+                {
+                    CurrentUser.Student.Image = File.ReadAllBytes(file.FileName);
+                    Connection.BdConnection.SaveChanges();
+                }
             }
         }
     }

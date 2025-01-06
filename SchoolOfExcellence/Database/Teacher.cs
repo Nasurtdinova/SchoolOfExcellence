@@ -18,24 +18,23 @@ namespace SchoolOfExcellence.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Teacher()
         {
+            this.Grade = new HashSet<Grade>();
             this.TeacherActivity = new HashSet<TeacherActivity>();
         }
     
-        public int Id { get; set; }
+        public int PersonnelNumber { get; set; }
+        public string FullName { get; set; }
+        public Nullable<System.DateTime> DateOfBirth { get; set; }
+        public string PhoneNumber { get; set; }
+        public Nullable<double> Seniority { get; set; }
         public Nullable<bool> IsActive { get; set; }
-        public Nullable<int> IdUser { get; set; }
-        public int CountSubject => Connection.BdConnection.Schedule.Where(a => a.TeacherActivity.IdTeacher == Id && a.IsConducted == true).Count();
-        public int CountNoSubject => Connection.BdConnection.Schedule.Where(a => a.TeacherActivity.IdTeacher == Id && a.IsConducted == false).Count();
-        public virtual User User { get; set; }
+        public byte[] Image { get; set; }
+        public int CountSubject => Connection.BdConnection.Schedule.Where(a => a.TeacherActivity.IdTeacher == PersonnelNumber && a.IsConducted == true).Count();
+        public int CountNoSubject => Connection.BdConnection.Schedule.Where(a => a.TeacherActivity.IdTeacher == PersonnelNumber && a.IsConducted == false).Count();
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Grade> Grade { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TeacherActivity> TeacherActivity { get; set; }
-
-        public ICollection<TeacherActivity> TeacherActivityTrue
-        {
-            get
-            {
-                return TeacherActivity.Where(a => a.IsDeleted == false).ToList();
-            }
-        }
     }
 }

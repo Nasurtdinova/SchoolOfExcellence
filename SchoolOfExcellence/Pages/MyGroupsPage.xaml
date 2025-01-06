@@ -17,29 +17,29 @@
             <RowDefinition Height="7*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Text="Мои кружки и ученики" FontSize="25" Grid.ColumnSpan="2"></TextBlock>
+        <TextBlock Text="Мои дисциплины и студенты" FontSize="25" Grid.ColumnSpan="2"></TextBlock>
         <DataGrid x:Name="dgActivities" Grid.Row="1" SelectionChanged="dgActivities_SelectionChanged" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" Width="*" Binding="{Binding Activity.Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Количество" Binding="{Binding Count}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Количество часов" Binding="{Binding CountHour}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="dgStudents" Grid.Column="1" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding Student.FullName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Класс" Binding="{Binding Student.Grade.Name}"></DataGridTextColumn>
-                <DataGridTemplateColumn>
+                <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding FullName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Группа" Binding="{Binding Grade.Name}"></DataGridTextColumn>
+                <!--<DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button x:Name="btnRemove" Content="Удалить" Click="btnRemove_Click"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                </DataGridTemplateColumn>-->
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="btnBack" Content="Назад" Click="btnBack_Click"></Button>
-            <Button x:Name="btnAdd" Content="Добавить ученика" Width="200" Click="btnAdd_Click"></Button>
+            <!--<Button x:Name="btnAdd" Content="Добавить ученика" Width="200" Click="btnAdd_Click"></Button>-->
         </StackPanel>
     </Grid>
 </Page>

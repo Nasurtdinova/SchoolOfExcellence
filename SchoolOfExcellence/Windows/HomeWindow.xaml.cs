@@ -19,18 +19,28 @@ namespace SchoolOfExcellence
         public HomeWindow()
         {
             InitializeComponent();
-            if (CurrentUser.User.IdRole == 1)
+            if (CurrentUser.Teacher == null)
             {
                 ItemTodayActivity.Visibility = Visibility.Collapsed;
                 ItemMyGroups.Visibility = Visibility.Collapsed;
             }
-            else
+            
+            if (CurrentUser.Student != null)
             {
-                ItemReports.Visibility = Visibility.Collapsed;
-                ItemSchedule.Visibility = Visibility.Collapsed;
+                //ItemSchedule.Visibility = Visibility.Collapsed;
                 ItemActivities.Visibility = Visibility.Collapsed;
                 ItemStudentsTeacher.Visibility = Visibility.Collapsed;
             }
+
+            if (CurrentUser.Student != null || CurrentUser.Teacher != null)
+            {
+                ItemReports.Visibility = Visibility.Collapsed;
+                ItemActivities.Visibility = Visibility.Collapsed;
+                ItemAttendance.Visibility = Visibility.Collapsed;
+            }
+
+            if (CurrentUser.Student == null && CurrentUser.Teacher == null)
+                profile.Visibility = Visibility.Collapsed;
             GridPrincipal.Navigate(new MainPage());
         }
 
@@ -74,6 +84,8 @@ namespace SchoolOfExcellence
 
         private void exit_Click(object sender, RoutedEventArgs e)
         {
+            CurrentUser.Student = null;
+            CurrentUser.Teacher = null;
             NavigationService.Navigate(new AuthorizationPage());
         }
 

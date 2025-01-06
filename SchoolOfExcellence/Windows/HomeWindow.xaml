@@ -27,7 +27,7 @@
                     </StackPanel>
                 </materialDesign:PopupBox>
             </StackPanel>
-            <TextBlock Text="Школа превосходства" FontSize="30"></TextBlock>
+            <TextBlock Text="Техникум информационных технологий" FontSize="26"></TextBlock>
         </Grid>
         <Frame x:Name="GridPrincipal" NavigationUIVisibility="Hidden" Margin="250,50,0,0"/>
         <Grid Width="250" HorizontalAlignment="Left" Background="#FF59C5A6">
@@ -46,7 +46,7 @@
                 <ListViewItem Height="60" Name="ItemActivities">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="School" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Кружки" Margin="10 0"/>
+                        <TextBlock Text="Дисциплины" Margin="10 0"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60" Name="ItemTodayActivity">
@@ -58,7 +58,7 @@
                 <ListViewItem Height="60" Name="ItemMyGroups">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="PeopleGroup" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Мои группы" Margin="10 0"/>
+                        <TextBlock Text="Мои студенты" Margin="10 0"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60" Name="ItemAttendance">
@@ -70,7 +70,7 @@
                 <ListViewItem Height="60" Name="ItemStudentsTeacher">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="PeopleGroup" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Ученики и учителя" Margin="10 0"/>
+                        <TextBlock Text="Студенты и преподаватели" Margin="10 0"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60" Name="ItemReports">

@@ -26,7 +26,7 @@ namespace SchoolOfExcellence
             var listTeacher = DataAccess.GetTeachers();
             listTeacher.Insert(0, new Teacher()
             {
-                User = new User() { FullName="Все"}
+                FullName="Все"
             });
             comboTeacher.ItemsSource = listTeacher;
             comboTeacher.SelectedIndex = 0;
@@ -40,6 +40,11 @@ namespace SchoolOfExcellence
             comboActivity.SelectedIndex = 0;
 
             dpDate.DisplayDateStart = DateTime.Now;
+
+            if (CurrentUser.Student != null || CurrentUser.Teacher != null)
+            {
+                addSchedule.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void addSchedule_Click(object sender, RoutedEventArgs e)

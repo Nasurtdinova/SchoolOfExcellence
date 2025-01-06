@@ -22,7 +22,8 @@ namespace SchoolOfExcellence
         public MyGroupsPage()
         {
             InitializeComponent();
-            dgActivities.ItemsSource = DataAccess.GetActivitiesInTeacher(CurrentUser.Teacher.Id);
+            dgActivities.ItemsSource = DataAccess.GetActivitiesInTeacher(1);
+            dgStudents.ItemsSource = DataAccess.GetStudentsInTeacher(1);
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -32,43 +33,32 @@ namespace SchoolOfExcellence
 
         private void dgActivities_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var a = (sender as DataGrid).SelectedItem as TeacherActivity;
-            dgStudents.ItemsSource = DataAccess.GetStudentsActivities().Where(b=>b.IdTeacherActivity == a.Id);
+           
+
         }
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {
-            if (dgActivities.SelectedItem != null)
-            {
-                if ((dgActivities.SelectedItem as TeacherActivity).Count < (dgActivities.SelectedItem as TeacherActivity).MaxCount)
-                {
-                    SelectStudentPage select = new SelectStudentPage(dgActivities.SelectedItem as TeacherActivity);
-                    select.Show();
-                    select.Closed += (s, eventarg) =>
-                    {
-                        dgStudents.ItemsSource = DataAccess.GetStudentsActivities().Where(b => b.IdTeacherActivity == (dgActivities.SelectedItem as TeacherActivity).Id);
-                        dgActivities.ItemsSource = DataAccess.GetActivitiesInTeacher(CurrentUser.Teacher.Id);
-                    };
-                }
-                else
-                    MaterialMessageBox.ShowError("У вас нет места в группе!","Предупреждение!");
-            }
-            else
-            {
-                MaterialMessageBox.ShowError("Выберите кружок!","Предупреждение!");
-            }
-        }
+        //private void btnAdd_Click(object sender, RoutedEventArgs e)
+        //{
+        //        SelectStudentPage select = new SelectStudentPage(dgActivities.SelectedItem as TeacherActivity);
+        //        select.Show();
+        //        select.Closed += (s, eventarg) =>
+        //        {
+        //            dgStudents.ItemsSource = DataAccess.GetStudentsInTeacher(1);
+        //                dgActivities.ItemsSource = DataAccess.GetActivitiesInTeacher(1);
+        //            };
 
-        private void btnRemove_Click(object sender, RoutedEventArgs e)
-        {
-            if (MessageBox.Show("Вы точно хотите удалить этого студента?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-            {
-                var student = (sender as Button).DataContext as StudentActivity;
-                student.IsActive = false;
-                Connection.BdConnection.SaveChanges();
-                dgActivities.ItemsSource = DataAccess.GetActivitiesInTeacher(CurrentUser.Teacher.Id);
-                dgStudents.ItemsSource = DataAccess.GetStudentsActivities().Where(b => b.IdTeacherActivity == (dgActivities.SelectedItem as TeacherActivity).Id);
-            }
-        }
+        //}
+
+        //private void btnRemove_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (MessageBox.Show("Вы точно хотите удалить этого студента?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+        //    {
+        //        var student = (sender as Button).DataContext as Student;
+        //        student.IdGrade = null;
+        //        Connection.BdConnection.SaveChanges();
+        //        dgActivities.ItemsSource = DataAccess.GetActivitiesInTeacher(1);
+        //        dgStudents.ItemsSource = DataAccess.GetStudentsInTeacher(1);
+        //    }
+        //}
     }
 }

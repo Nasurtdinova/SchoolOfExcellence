@@ -25,36 +25,37 @@ namespace SchoolOfExcellence
             InitializeComponent();
             SelectedActivity = act;
             comboStudent.ItemsSource = DataAccess.GetStudents();
+            comboGrade.ItemsSource = DataAccess.GetGrades();
         }
 
         private void btnSelect_Click(object sender, RoutedEventArgs e)
         {
-            if (comboStudent.SelectedItem != null)
-            {
-                StudentActivity studentActivity = new StudentActivity()
-                {
-                    TeacherActivity = SelectedActivity,
-                    Student = comboStudent.SelectedItem as Student,
-                    IsActive = true
-                };
-                var stud = DataAccess.GetStudentsActivitiesTotal().Where(a => a.TeacherActivity == studentActivity.TeacherActivity && a.Student == studentActivity.Student && a.IsActive == false).FirstOrDefault();
-                if (DataAccess.GetStudentsActivities().Where(a => a.TeacherActivity == studentActivity.TeacherActivity && a.Student == studentActivity.Student).Count() != 0)
-                    MaterialMessageBox.ShowError("Этот ученик уже состоит в этом кружке!");
-                else if (stud != null)
-                {
-                    stud.IsActive = true;
-                    Connection.BdConnection.SaveChanges();
-                    Close();
-                }
-                else
-                {
-                    Connection.BdConnection.StudentActivity.Add(studentActivity);
-                    Connection.BdConnection.SaveChanges();
-                    Close();
-                }
-            }
-            else
-                MaterialMessageBox.ShowError("Выберите студента!", "Предупреждение!");
+            //if (comboStudent.SelectedItem != null)
+            //{
+            //    StudentActivity studentActivity = new StudentActivity()
+            //    {
+            //        TeacherActivity = SelectedActivity,
+            //        Student = comboStudent.SelectedItem as Student,
+            //        IsActive = true
+            //    };
+            //    var stud = DataAccess.GetStudentsActivitiesTotal().Where(a => a.TeacherActivity == studentActivity.TeacherActivity && a.Student == studentActivity.Student && a.IsActive == false).FirstOrDefault();
+            //    if (DataAccess.GetStudentsActivities().Where(a => a.TeacherActivity == studentActivity.TeacherActivity && a.Student == studentActivity.Student).Count() != 0)
+            //        MaterialMessageBox.ShowError("Этот ученик уже состоит в этом кружке!");
+            //    else if (stud != null)
+            //    {
+            //        stud.IsActive = true;
+            //        Connection.BdConnection.SaveChanges();
+            //        Close();
+            //    }
+            //    else
+            //    {
+            //        Connection.BdConnection.StudentActivity.Add(studentActivity);
+            //        Connection.BdConnection.SaveChanges();
+            //        Close();
+            //    }
+            //}
+            //else
+            //    MaterialMessageBox.ShowError("Выберите студента!", "Предупреждение!");
         }
 
         public void OnComboboxTextChanged(object sender, RoutedEventArgs e)

@@ -25,7 +25,7 @@
                 <DataGridTemplateColumn Header="Причина">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox x:Name="tbReasonAdd" TextChanged="tbReasonAdd_TextChanged" Visibility="{Binding VisibilityReason}" AcceptsReturn="True" Height="2cm" ScrollViewer.VerticalScrollBarVisibility="Visible" Text="{Binding Reason}"></TextBox>
+                            <TextBox x:Name="tbReasonAdd" Visibility="{Binding VisibilityReason}" AcceptsReturn="True" Height="2cm" ScrollViewer.VerticalScrollBarVisibility="Visible" Text="{Binding Reason}"></TextBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -45,7 +45,7 @@
                 <DataGridTemplateColumn Header="Причина">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox x:Name="tbReasonEdit" TextChanged="tbReasonEdit_TextChanged" AcceptsReturn="True" Height="2cm" ScrollViewer.VerticalScrollBarVisibility="Visible" Visibility="{Binding VisibilityReason}" Text="{Binding Reason, Mode=TwoWay}"></TextBox>
+                            <TextBox x:Name="tbReasonEdit" AcceptsReturn="True" Height="2cm" ScrollViewer.VerticalScrollBarVisibility="Visible" Visibility="{Binding VisibilityReason}" Text="{Binding Reason, Mode=TwoWay}"></TextBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

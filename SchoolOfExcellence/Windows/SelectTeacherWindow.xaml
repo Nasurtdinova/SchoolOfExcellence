@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:SchoolOfExcellence"
       mc:Ignorable="d" 
       MinHeight="450" MinWidth="800"
-      Title="Выбор учителя">
+      Title="Выбор преподавателя">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -14,13 +14,13 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBlock Text="Выберите учителя" Margin="20"></TextBlock>
-            <ComboBox Name="comboTeachers" TextBoxBase.TextChanged="OnComboboxTextChanged" IsEditable="True" DisplayMemberPath="User.FullName"></ComboBox>
+            <TextBlock Text="Выберите преподавателя" Margin="20"></TextBlock>
+            <ComboBox Name="comboTeachers" TextBoxBase.TextChanged="OnComboboxTextChanged" IsEditable="True" DisplayMemberPath="FullName"></ComboBox>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
-            <TextBlock Text="Максимальное количество учеников" Margin="20"></TextBlock>
+        <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
+            <TextBlock Text="Максимальное количество студентов" Margin="20"></TextBlock>
             <TextBox x:Name="tbMaxCount" Width="50" Height="30"></TextBox>
-        </StackPanel>
+        </StackPanel>-->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="btnSelect" Content="Выбрать" Margin="20" Click="btnSelect_Click"></Button>
             <Button x:Name="btnCreate" Content="Создать" Click="btnCreate_Click"></Button>

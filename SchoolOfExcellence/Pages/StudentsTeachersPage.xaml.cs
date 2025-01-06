@@ -23,6 +23,8 @@ namespace SchoolOfExcellence
             InitializeComponent();
             radioTeachers.IsChecked = true;
             dgTeachers.ItemsSource = DataAccess.GetTeachers();
+            if (CurrentUser.Teacher != null)
+                btnAddTeachers.Visibility = Visibility.Collapsed;
         }
 
         private void radioStudents_Click(object sender, RoutedEventArgs e)

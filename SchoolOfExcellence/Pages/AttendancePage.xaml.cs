@@ -28,7 +28,7 @@ namespace SchoolOfExcellence
             var listTeacher = DataAccess.GetTeachers();
             listTeacher.Insert(0, new Teacher()
             {
-                User = new User() { FullName = "Все" }
+                FullName = "Все"
             });
             comboTeacher.ItemsSource = listTeacher;
             comboTeacher.SelectedIndex = 0;
@@ -41,7 +41,7 @@ namespace SchoolOfExcellence
             comboActivity.ItemsSource = listActivity;
             comboActivity.SelectedIndex = 0;
 
-            if (CurrentUser.User.IdRole == 2)
+            if (CurrentUser.Teacher != null)
             {
                 dgShedules.ItemsSource = DataAccess.GetSchedulesPast().Where(a => a.TeacherActivity.Teacher == CurrentUser.Teacher).OrderBy(b => b.Date);
                 columnTeacher.Visibility = Visibility.Collapsed;
@@ -54,10 +54,10 @@ namespace SchoolOfExcellence
 
         public void UpdateList()
         {
-            if (CurrentUser.User.IdRole == 2)
-                schedules = DataAccess.GetSchedulesPast().Where(a => a.TeacherActivity.Teacher == CurrentUser.Teacher).OrderBy(b => b.Date).ToList();
-            else
-                schedules = DataAccess.GetSchedulesPast().OrderBy(a => a.Date).ToList();
+            //if (CurrentUser.User.IdRole == 2)
+            //    schedules = DataAccess.GetSchedulesPast().Where(a => a.TeacherActivity.Teacher == CurrentUser.Teacher).OrderBy(b => b.Date).ToList();
+            //else
+            //    schedules = DataAccess.GetSchedulesPast().OrderBy(a => a.Date).ToList();
 
             if (comboActivity.SelectedIndex > 0)
                 schedules = schedules.Where(a => a.TeacherActivity.Activity == comboActivity.SelectedItem as Activity).OrderBy(a => a.Date).ToList();

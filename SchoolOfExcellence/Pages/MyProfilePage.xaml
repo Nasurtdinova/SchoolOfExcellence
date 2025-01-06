@@ -9,6 +9,8 @@
       Title="MyProfilePage">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -29,12 +31,20 @@
                 </Image.Source>
             </Image>
         <Button Grid.Column="1" x:Name="btnEdit" Content="Редактировать фото" Click="btnEdit_Click" Width="250"></Button>
-        <TextBlock Text="Роль" Grid.Row="1"></TextBlock>
+        <TextBlock Text="№" Grid.Row="1"></TextBlock>
         <TextBlock Text="ФИО" Grid.Row="2"></TextBlock>
-        <TextBlock Text="Логин" Grid.Row="3"></TextBlock>
-        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Role.Name}"></TextBlock>
-        <TextBox Text="{Binding FullName}" Grid.Column="1" Grid.Row="2"></TextBox>
-        <TextBox Text="{Binding Login}" Grid.Column="1" Grid.Row="3"></TextBox>
-        <Button x:Name="btnSave" Grid.Row="4" Grid.ColumnSpan="2" Content="Сохранить" Click="btnSave_Click"></Button>
+        <TextBlock Text="Дата рождения" Grid.Row="3"></TextBlock>
+        <TextBlock Text="Номер телефона" Grid.Row="4"></TextBlock>
+        <TextBlock Text="Группа" Grid.Row="5" Name="textGrade"></TextBlock>
+        <TextBlock Text="Стаж работы" Grid.Row="5"  Name="textSeniority"></TextBlock>
+        <TextBlock Text="Дата поступления" Grid.Row="6"  Name="textDateStudy"></TextBlock>
+        <TextBox Grid.Column="1" Grid.Row="1" IsEnabled="False" Name ="tbPersonnelNumber"></TextBox>
+        <TextBox Name ="tbFullName" Grid.Column="1" Grid.Row="2" IsEnabled="False"></TextBox>
+        <TextBox Name ="tbDateOfBirth" IsEnabled="False" Grid.Column="1" Grid.Row="3" ></TextBox>
+        <TextBox Name ="tbPhoneNumber" Grid.Column="1" Grid.Row="4" IsEnabled="False"></TextBox>
+        <TextBox Name ="tbGrade" IsEnabled="False" Grid.Column="1" Grid.Row="5" ></TextBox>
+        <TextBox Name ="tbSeniority" IsEnabled="False" Grid.Column="1" Grid.Row="5"></TextBox>
+        <TextBox Name ="tbDateStudy" IsEnabled="False" Grid.Column="1" Grid.Row="6"></TextBox>
+        
     </Grid>
 </Page>

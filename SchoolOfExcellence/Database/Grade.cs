@@ -11,19 +11,37 @@ namespace SchoolOfExcellence.Database
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
     public partial class Grade
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Grade()
         {
+            this.Schedule = new HashSet<Schedule>();
             this.Student = new HashSet<Student>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
+        public Nullable<int> Course { get; set; }
+        public string FormStudy { get; set; }
+        public Nullable<int> Curator { get; set; }
     
+        public virtual Teacher Teacher { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Schedule> Schedule { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Student> Student { get; set; }
+
+        public string Attendance
+        {
+            get
+            {
+                if (DataAccess.GetSkipVisits().Where(a => a.Student.Grade != null && a.Student.IdGrade == Id).Count() == 0)
+                    return "0%";
+                else
+                    return $"{DataAccess.GetSkipVisits().Where(a => a.Student.Grade != null && a.Student.IdGrade == Id && a.IsVisited == true).Count() * 100 / DataAccess.GetSkipVisits().Where(a => a.Student.Grade != null && a.Student.IdGrade == Id).Count()}%";
+            }
+        }
     }
 }

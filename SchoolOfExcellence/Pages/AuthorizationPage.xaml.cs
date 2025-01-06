@@ -23,19 +23,21 @@ namespace SchoolOfExcellence
             InitializeComponent();
         }
 
-        private void btnOk_Click(object sender, RoutedEventArgs e)
+        private void btnAdmin_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(tbLogin.Text) || string.IsNullOrEmpty(tbPassword.Password))
-            {
-                MaterialMessageBox.ShowError("Заполните данные!", "Предупреждение!");
-            }
-            else
-            {
-                if (DataAccess.IsCorrectUser(tbLogin.Text, tbPassword.Password))
-                    NavigationService.Navigate(new HomeWindow());
-                else
-                    MaterialMessageBox.ShowError("Incorrect login or password");
-            }
+            NavigationService.Navigate(new HomeWindow());
+        }
+
+        private void btnPrepod_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentUser.Teacher = DataAccess.GetTeachers().FirstOrDefault();
+            NavigationService.Navigate(new HomeWindow());
+        }
+
+        private void btnStudent_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentUser.Student = DataAccess.GetStudents().FirstOrDefault();
+            NavigationService.Navigate(new HomeWindow());
         }
     }
 }

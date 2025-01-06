@@ -22,20 +22,23 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Text="Кружок"></TextBlock>
-        <TextBlock Text="Учитель" Grid.Row="1"></TextBlock>
-        <TextBlock Text="Дата" Grid.Row="2"></TextBlock>
-        <TextBlock Text="Начало" Grid.Row="3"></TextBlock>
-        <TextBlock Text="Конец" Grid.Row="4"></TextBlock>
-        <TextBlock Text="Кабинет" Grid.Row="5"></TextBlock>
+        <TextBlock Text="Дисциплина"></TextBlock>
+        <TextBlock Text="Преподаватель" Grid.Row="1"></TextBlock>
+        <TextBlock Text="Группа" Grid.Row="2"></TextBlock>
+        <TextBlock Text="Дата" Grid.Row="3"></TextBlock>
+        <TextBlock Text="Начало" Grid.Row="4"></TextBlock>
+        <TextBlock Text="Конец" Grid.Row="5"></TextBlock>
+        <TextBlock Text="Кабинет" Grid.Row="6"></TextBlock>
         <ComboBox Grid.Column="1" x:Name="comboActivity" SelectedItem="{Binding TeacherActivity.Activity}" DisplayMemberPath="Name" SelectionChanged="comboActivity_SelectionChanged"></ComboBox>
-        <ComboBox Grid.Column="1" Grid.Row="1" x:Name="comboTeachers" DisplayMemberPath="User.FullName" SelectedItem="{Binding TeacherActivity.Teacher}" SelectionChanged="comboTeachers_SelectionChanged"></ComboBox>
-        <DatePicker Grid.Column="1" Grid.Row="2" x:Name="dpDate" Width="300" FontSize="25"></DatePicker>
-        <materialDesign:TimePicker Is24Hours="True" Width="300" FontSize="23" Grid.Column="1" Grid.Row="4" Name="tbLessonEnd"></materialDesign:TimePicker>
-        <materialDesign:TimePicker Is24Hours="True" Width="300" FontSize="23" Grid.Column="1" Grid.Row="3" Name="tbLessonStart" SelectedTimeChanged="tbLessonStart_SelectedTimeChanged"></materialDesign:TimePicker>
-        <ComboBox Grid.Column="1" Grid.Row="5" x:Name="comboCabinet" DisplayMemberPath="Name"></ComboBox>
-        <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+        <ComboBox Grid.Column="1" Grid.Row="1" x:Name="comboTeachers" DisplayMemberPath="FullName" SelectedItem="{Binding TeacherActivity.Teacher}" SelectionChanged="comboTeachers_SelectionChanged"></ComboBox>
+        <ComboBox Grid.Column="1" Grid.Row="1" x:Name="comboGrades" DisplayMemberPath="Name" SelectedItem="{Binding TeacherActivity.Teacher}"></ComboBox>
+        <DatePicker Grid.Column="1" Grid.Row="3" x:Name="dpDate" Width="300" FontSize="25"></DatePicker>
+        <materialDesign:TimePicker Is24Hours="True" Width="300" FontSize="23" Grid.Column="1" Grid.Row="5" Name="tbLessonEnd"></materialDesign:TimePicker>
+        <materialDesign:TimePicker Is24Hours="True" Width="300" FontSize="23" Grid.Column="1" Grid.Row="4" Name="tbLessonStart" SelectedTimeChanged="tbLessonStart_SelectedTimeChanged"></materialDesign:TimePicker>
+        <TextBox Grid.Column="1" Grid.Row="6" x:Name="comboCabinet" Text="{Binding Cabinet}"></TextBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.ColumnSpan="2" HorizontalAlignment="Center">
             <Button x:Name="btnAdd" Content="Добавить" Click="btnAdd_Click"></Button>
         </StackPanel>
         

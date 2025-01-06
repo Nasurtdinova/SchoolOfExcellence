@@ -22,11 +22,14 @@
         </Grid.RowDefinitions>
         <Image Source="/Images/fon.png" Grid.ColumnSpan="3" Grid.RowSpan="4"></Image>
         <Image Source="/Images/logotip_shkoly.png" Width="97" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="114,10,0,0" Height="82" ></Image>
-        <TextBlock Text="Школа превосходства" FontSize="30" Margin="20" VerticalAlignment="Top" Grid.ColumnSpan="3"></TextBlock>
-        <TextBlock Text="Логин" FontSize="28" Grid.Row="1"></TextBlock>
-        <TextBlock Text="Пароль" FontSize="28" Grid.Row="2"></TextBlock>
-        <TextBox materialDesign:HintAssist.Hint="Логин" materialDesign:HintAssist.IsFloating="True" x:Name="tbLogin" Grid.Row="1" Grid.Column="1"></TextBox>
-        <PasswordBox materialDesign:HintAssist.Hint="Пароль" materialDesign:HintAssist.IsFloating="True" x:Name="tbPassword" Grid.Column="1" Grid.Row="2"></PasswordBox>
-        <Button Grid.ColumnSpan="2" Grid.Row="3" Content="Войти" Name="btnOk" Click="btnOk_Click"></Button>
+        <TextBlock Text="АИС Техникум" FontSize="30" Margin="29,52,38,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Button Grid.Row="2" Content="Администратор" Name="btnAdmin" Click="btnAdmin_Click" Grid.Column="1" Margin="113,30,0,32" Width="154"/>
+        <Button Grid.ColumnSpan="2" Grid.Row="2" Content="Преподаватель" x:Name="btnPrepod" Click="btnPrepod_Click" Margin="207,30,159,32" Width="168"/>
+        <Button Grid.Row="2" Content="Студент" x:Name="btnStudent" Click="btnStudent_Click" Margin="32,30,65,32" Width="170"/>
+        <StackPanel VerticalAlignment="Top" Grid.ColumnSpan="3" Grid.Row="1" Margin="-96,41,96,0">
+            <TextBlock Text="Курсовая работа студента Батуллина Г.Р." FontSize="23" />
+            <TextBlock Text="Для начала работы нажмите одну из клавиш" FontSize="23" Margin="162,0"/>
+        </StackPanel>
+
     </Grid>
 </Page>

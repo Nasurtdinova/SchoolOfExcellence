@@ -29,22 +29,22 @@ namespace SchoolOfExcellence
 
         private void btnSelect_Click(object sender, RoutedEventArgs e)
         {
-            if (comboTeachers.SelectedItem != null && !string.IsNullOrEmpty(tbMaxCount.Text))
+            if (comboTeachers.SelectedItem != null)
             {
                 TeacherActivity teacherActivity = new TeacherActivity()
                 {
                     Activity = CurrentActivity,
                     Teacher = comboTeachers.SelectedItem as Teacher,
-                    MaxCount = Convert.ToInt32(tbMaxCount.Text),
+                    //MaxCount = Convert.ToInt32(tbMaxCount.Text),
                     IsDeleted = false
                 };
                 var teach = DataAccess.GetTeachersActivitiesTotal().Where(a => a.Activity == CurrentActivity && a.Teacher == teacherActivity.Teacher && a.IsDeleted == true).FirstOrDefault();
                 if (DataAccess.GetTeachersActivities().Where(a => a.Activity == CurrentActivity && a.Teacher == teacherActivity.Teacher).Count() != 0)
-                    MaterialMessageBox.ShowError("Этот учитель уже проводит этот кружок!");
+                    MaterialMessageBox.ShowError("Этот преподаватель уже ведет эту дисциплину!");
                 else if (teach != null)
                 {
                     teach.IsDeleted = false;
-                    teach.MaxCount = teacherActivity.MaxCount;
+                    //teach.MaxCount = teacherActivity.MaxCount;
                     Connection.BdConnection.SaveChanges();
                     Close();
                 }
@@ -71,7 +71,7 @@ namespace SchoolOfExcellence
 
         public void OnComboboxTextChanged(object sender, RoutedEventArgs e)
         {
-            comboTeachers.ItemsSource = DataAccess.GetTeachers().Where(a => a.User.FullName.ToLower().Contains(comboTeachers.Text.ToLower()));
+            comboTeachers.ItemsSource = DataAccess.GetTeachers().Where(a => a.FullName.ToLower().Contains(comboTeachers.Text.ToLower()));
         }
     }
 }

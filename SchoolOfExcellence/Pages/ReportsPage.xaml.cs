@@ -28,14 +28,14 @@ namespace SchoolOfExcellence
         {
             if (comboTypeReport.SelectedIndex == 0)
             {
-                dgPopularDestinations.ItemsSource = DataAccess.GetActivities().OrderByDescending(a => a.Count);
+                dgPopularDestinations.ItemsSource = DataAccess.GetGrades().OrderByDescending(a => a.Attendance);
                 dgActiveStudents.Visibility = Visibility.Collapsed;
                 dgPopularDestinations.Visibility = Visibility.Visible;
                 dgCountSubject.Visibility = Visibility.Collapsed;
             }
             else if (comboTypeReport.SelectedIndex == 1)
             {
-                dgActiveStudents.ItemsSource = DataAccess.GetStudents().OrderByDescending(a=>a.CountActivity);
+                dgActiveStudents.ItemsSource = DataAccess.GetStudents().OrderByDescending(a => a.Attendance);
                 dgActiveStudents.Visibility = Visibility.Visible;
                 dgPopularDestinations.Visibility = Visibility.Collapsed;
                 dgCountSubject.Visibility = Visibility.Collapsed;
@@ -63,13 +63,13 @@ namespace SchoolOfExcellence
                 worksheet.Cells[2][startRowIndex] = "Количество человек";
                 startRowIndex++;
 
-                var results = DataAccess.GetActivities().OrderByDescending(a => a.Count);
-                foreach (var result in results)
-                {
-                    worksheet.Cells[1][startRowIndex] = result.Name;
-                    worksheet.Cells[2][startRowIndex] = result.Count;
-                    startRowIndex++;
-                }
+                //var results = DataAccess.GetActivities().OrderByDescending(a => a.Count);
+                //foreach (var result in results)
+                //{
+                //    worksheet.Cells[1][startRowIndex] = result.Name;
+                //    worksheet.Cells[2][startRowIndex] = result.Count;
+                //    startRowIndex++;
+                //}
                 worksheet.Columns.AutoFit();
                 worksheet.Rows.AutoFit();
                 startRowIndex = 1;
@@ -89,20 +89,20 @@ namespace SchoolOfExcellence
                 worksheet.Cells[4][startRowIndex] = "Посещаемость кружков";
                 startRowIndex++;
 
-                var results = DataAccess.GetStudents().OrderByDescending(a => a.CountActivity);
-                foreach (var result in results)
-                {
-                    worksheet.Cells[1][startRowIndex] = result.FullName;
-                    worksheet.Cells[2][startRowIndex] = result.Grade.Name;
-                    worksheet.Cells[3][startRowIndex] = result.CountActivity;
-                    string attendance = string.Empty;
-                    foreach(var i in result.StudentActivityTrue)
-                    {
-                        attendance = attendance + $"{i.TeacherActivity.Activity.Name} {i.Attendance}" + Environment.NewLine;
-                    }
-                    worksheet.Cells[4][startRowIndex] = attendance;
-                    startRowIndex++;
-                }
+                //var results = DataAccess.GetStudents().OrderByDescending(a => a.CountActivity);
+                //foreach (var result in results)
+                //{
+                //    worksheet.Cells[1][startRowIndex] = result.FullName;
+                //    worksheet.Cells[2][startRowIndex] = result.Grade.Name;
+                //    worksheet.Cells[3][startRowIndex] = result.CountActivity;
+                //    string attendance = string.Empty;
+                //    foreach(var i in result.StudentActivityTrue)
+                //    {
+                //        attendance = attendance + $"{i.TeacherActivity.Activity.Name} {i.Attendance}" + Environment.NewLine;
+                //    }
+                //    worksheet.Cells[4][startRowIndex] = attendance;
+                //    startRowIndex++;
+                //}
                 worksheet.Columns.AutoFit();
                 worksheet.Rows.AutoFit();
                 startRowIndex = 1;
@@ -120,14 +120,14 @@ namespace SchoolOfExcellence
                 worksheet.Cells[3][startRowIndex] = "Количество не проведенных кружков";
                 startRowIndex++;
 
-                var results = DataAccess.GetTeachers().OrderByDescending(a => a.CountSubject);
-                foreach (var result in results)
-                {
-                    worksheet.Cells[1][startRowIndex] = result.User.FullName;
-                    worksheet.Cells[2][startRowIndex] = result.CountSubject;
-                    worksheet.Cells[3][startRowIndex] = result.CountNoSubject;
-                    startRowIndex++;
-                }
+                //var results = DataAccess.GetTeachers().OrderByDescending(a => a.CountSubject);
+                //foreach (var result in results)
+                //{
+                //    worksheet.Cells[1][startRowIndex] = result.User.FullName;
+                //    worksheet.Cells[2][startRowIndex] = result.CountSubject;
+                //    worksheet.Cells[3][startRowIndex] = result.CountNoSubject;
+                //    startRowIndex++;
+                //}
                 worksheet.Columns.AutoFit();
                 worksheet.Rows.AutoFit();
                 startRowIndex = 1;

@@ -14,10 +14,11 @@
             <RowDefinition Height="8*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Text="Кружки на сегодня" FontSize="25"></TextBlock>
+        <TextBlock Text="Занятия на сегодня" FontSize="25"></TextBlock>
         <DataGrid x:Name="dgTodayActivities" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дисциплина" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Группа" Binding="{Binding Grade.Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Описание" Width="*" Binding="{Binding TeacherActivity.Activity.Description}">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
@@ -29,7 +30,7 @@
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime,  StringFormat=hh\\:mm}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime,  StringFormat=hh\\:mm}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet}"></DataGridTextColumn>
                 <DataGridTemplateColumn Header="Проведен">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -42,7 +43,7 @@
                         <DataTemplate>
                             <StackPanel>
                                 <Button x:Name="btnMarkPresent" Visibility="{Binding VisibilityMark}" Click="btnMarkPresent_Click" Width="110" Content="Отметить"></Button>
-                                <TextBox Text="{Binding Reason}" AcceptsReturn="True" Width="7cm" ScrollViewer.VerticalScrollBarVisibility="Visible" x:Name="tbReason" Visibility="{Binding VisibilityReason}" TextChanged="tbReason_TextChanged"></TextBox>
+                                <TextBox Text="{Binding Reason}" AcceptsReturn="True" Width="4cm" ScrollViewer.VerticalScrollBarVisibility="Visible" x:Name="tbReason" Visibility="{Binding VisibilityReason}" TextChanged="tbReason_TextChanged"></TextBox>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

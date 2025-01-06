@@ -19,7 +19,7 @@
         <DataGrid x:Name="dgAttendance" Grid.Row="1" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True" CanUserSortColumns="True" CanUserReorderColumns="True" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding Student.FullName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Класс" Binding="{Binding Student.Grade.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Группа" Binding="{Binding Student.Grade.Name}"></DataGridTextColumn>
                 <DataGridCheckBoxColumn Header="Присутствовал" Binding="{Binding IsVisited}"></DataGridCheckBoxColumn>
                 <DataGridTextColumn Header="Причина" Binding="{Binding Reason}"/>
             </DataGrid.Columns>

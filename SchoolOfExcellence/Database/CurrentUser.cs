@@ -9,8 +9,10 @@ namespace SchoolOfExcellence
 {
     public static class CurrentUser
     {
-        public static User User { get; set; }
-        public static Headmaster Headmaster { get; set; }
+        //public static User User { get; set; }
+        //public static Headmaster Headmaster { get; set; }
         public static Teacher Teacher { get; set; }
+
+        public static Student Student { get; set; }
     }
 }

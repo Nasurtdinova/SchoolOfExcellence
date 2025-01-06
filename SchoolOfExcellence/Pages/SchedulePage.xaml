@@ -20,12 +20,12 @@
                 <DatePicker Name="dpDate" FontSize="20" SelectedDateChanged="dpDate_SelectedDateChanged"></DatePicker>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Кружок" Margin="20 0"></TextBlock>
-                <ComboBox Name="comboActivity" Width="300" SelectionChanged="comboActivity_SelectionChanged" DisplayMemberPath="Name"></ComboBox>
+                <TextBlock Text="Дисциплина" Margin="20 0"></TextBlock>
+                <ComboBox Name="comboActivity" Width="250" SelectionChanged="comboActivity_SelectionChanged" DisplayMemberPath="Name"></ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Учитель" Margin="20 0"></TextBlock>
-                <ComboBox Name="comboTeacher" Width="300" SelectionChanged="comboTeacher_SelectionChanged" DisplayMemberPath="User.FullName"></ComboBox>
+                <TextBlock Text="Преподаватель" Margin="20 0"></TextBlock>
+                <ComboBox Name="comboTeacher" Width="250" SelectionChanged="comboTeacher_SelectionChanged" DisplayMemberPath="FullName"></ComboBox>
             </StackPanel>
         </StackPanel>
         <ScrollViewer Grid.Row="1">
@@ -33,12 +33,13 @@
                 <TextBlock Text="Расписание" Margin="20" FontSize="25"></TextBlock>
                 <DataGrid x:Name="dgShedules" AutoGenerateColumns="False" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Width="*" Header="Кружок" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Учитель" Binding="{Binding TeacherActivity.Teacher.User.FullName}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="*" Header="Дисциплина" Binding="{Binding TeacherActivity.Activity.Name}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Преподаватель" Binding="{Binding TeacherActivity.Teacher.FullName}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Группа" Binding="{Binding Grade.Name}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Дата" Width="130" Binding="{Binding Date, StringFormat='dd.MM.yyyy'}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime,  StringFormat=hh\\:mm}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime,  StringFormat=hh\\:mm}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet.Name}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet}"></DataGridTextColumn>
                         <DataGridCheckBoxColumn Header="Проведен" Binding="{Binding IsConducted}"></DataGridCheckBoxColumn>
                     </DataGrid.Columns>
                 </DataGrid>

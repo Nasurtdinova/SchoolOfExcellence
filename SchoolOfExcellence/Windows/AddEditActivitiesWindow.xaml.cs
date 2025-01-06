@@ -27,12 +27,9 @@ namespace SchoolOfExcellence
             if (act != null)
             {
                 CurrentActivity = act;
-                var date= new DateTime(act.Duration.Value.Ticks);
-                tpDuration.SelectedTime = date;
-                lvTeachers.ItemsSource = DataAccess.GetTeachersInActivities(act.Id);
-                lvStudents.ItemsSource = DataAccess.GetStudentsInActivities(act.Id).Select(a=>a.Student).Distinct();
+                lvTeachers.ItemsSource = DataAccess.GetTeachersInActivities(act.Code);
             }
-            Title = CurrentActivity.Id == 0 ? "Добавление кружка" : "Редактирование кружка";
+            Title = CurrentActivity.Code == 0 ? "Добавление дисциплины" : "Редактирование дисциплины";
             DataContext = CurrentActivity;           
         }
 
@@ -42,14 +39,12 @@ namespace SchoolOfExcellence
             select.Show();
             select.Closed += (s, eventarg) =>
             {
-                lvTeachers.ItemsSource = DataAccess.GetTeachersInActivities(CurrentActivity.Id);
+                lvTeachers.ItemsSource = DataAccess.GetTeachersInActivities(CurrentActivity.Code);
             };
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            if (tpDuration.SelectedTime != null)
-                CurrentActivity.Duration = tpDuration.SelectedTime.Value.TimeOfDay;
             var results = new List<System.ComponentModel.DataAnnotations.ValidationResult>();
             var context = new ValidationContext(CurrentActivity);
 
@@ -69,12 +64,12 @@ namespace SchoolOfExcellence
         private void btnRemoveTeacher_Click(object sender, RoutedEventArgs e)
         {
             var a = (sender as Button).DataContext as TeacherActivity;
-            if (MessageBox.Show($"Вы точно хотите чтобы {a.Teacher.User.FullName} не проводил(-а) {a.Activity.Name}?", "Предупреждение", MessageBoxButton.YesNoCancel, MessageBoxImage.Stop) == MessageBoxResult.Yes)
+            if (MessageBox.Show($"Вы точно хотите чтобы {a.Teacher.FullName} не проводил(-а) {a.Activity.Name}?", "Предупреждение", MessageBoxButton.YesNoCancel, MessageBoxImage.Stop) == MessageBoxResult.Yes)
             {                
                 a.IsDeleted = true;
                 Connection.BdConnection.SaveChanges();
-                MaterialMessageBox.Show($"{a.Teacher.User.FullName} больше не проводит {a.Activity.Name}!");
-                lvTeachers.ItemsSource = DataAccess.GetTeachersInActivities(CurrentActivity.Id);
+                MaterialMessageBox.Show($"{a.Teacher.FullName} больше не проводит {a.Activity.Name}!");
+                lvTeachers.ItemsSource = DataAccess.GetTeachersInActivities(CurrentActivity.Code);
             }
         }
     }

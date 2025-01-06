@@ -12,12 +12,14 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
             <TextBlock Text="Выберите студента" Margin="20"></TextBlock>
             <ComboBox Name="comboStudent" TextBoxBase.TextChanged="OnComboboxTextChanged" IsEditable="True" DisplayMemberPath="FullName"></ComboBox>
+            <TextBlock Text="Группа" Margin="20"></TextBlock>
+            <ComboBox Name="comboGrade" IsEditable="True" DisplayMemberPath="Name"></ComboBox>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="btnSelect" Content="Выбрать" Click="btnSelect_Click"></Button>
+            <Button x:Name="btnSelect" Content="Добавить" Click="btnSelect_Click"></Button>
         </StackPanel>
     </Grid>
 </Window>

@@ -12,6 +12,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
             <RowDefinition Height="250"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
@@ -20,14 +21,18 @@
             <TextBox Text="{Binding FullName}" Name="tbName"></TextBox>
         </StackPanel>
         <StackPanel Grid.Row="1">
-            <TextBlock Text="Логин"></TextBlock>
-            <TextBox Text="{Binding Login}" Name="tbLogin"></TextBox>
+            <TextBlock Text="Номер телефона"></TextBlock>
+            <TextBox Text="{Binding PhoneNumber}" Name="tbPhone"></TextBox>
         </StackPanel>
         <StackPanel Grid.Row="2">
-            <TextBlock Text="Пароль"></TextBlock>
-            <PasswordBox x:Name="password"></PasswordBox>
+            <TextBlock Text="Стаж работы"></TextBlock>
+            <TextBox Text="{Binding Seniority}" Name="tbSeniority"></TextBox>
         </StackPanel>
         <StackPanel Grid.Row="3">
+            <TextBlock Text="Дата рождения"></TextBlock>
+            <DatePicker Grid.Column="1" Grid.Row="2" x:Name="dpDate" Width="400" FontSize="25"></DatePicker>
+        </StackPanel>
+        <StackPanel Grid.Row="4">
             <TextBlock Text="Фото"></TextBlock>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Image x:Name="imageTeacher" Width="200">

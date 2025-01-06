@@ -60,11 +60,11 @@ namespace SchoolOfExcellence
                 foreach (var j in i.TeacherActivity)
                 {
                     j.IsDeleted = true;
-                    foreach (var k in j.StudentActivity)
-                    {
-                        k.IsActive = false;
-                        Connection.BdConnection.SaveChanges();
-                    }
+                    //foreach (var k in j.StudentActivity)
+                    //{
+                    //    k.IsActive = false;
+                    //    Connection.BdConnection.SaveChanges();
+                    //}
                 }
                 Connection.BdConnection.SaveChanges();
                 MaterialMessageBox.Show("Кружок успешно удален!");

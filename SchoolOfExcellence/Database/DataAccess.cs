@@ -9,18 +9,6 @@ namespace SchoolOfExcellence
 {
     public static class DataAccess
     {
-        public static List<Cabinet> GetCabinets()
-        {
-            return new List<Cabinet>(Connection.BdConnection.Cabinet).ToList();
-        }
-
-        public static bool IsTrueLogin(string login)
-        {
-            if (GetUsers().Where(a => a.Login == login).Count() > 0)
-                return false;
-            else
-                return true;
-        }
 
         public static List<SkipVisit> GetSkipVisits()
         {
@@ -50,15 +38,15 @@ namespace SchoolOfExcellence
             return new List<Teacher>(Connection.BdConnection.Teacher).Where(a => a.IsActive == true).ToList();
         }
 
-        public static Teacher GetTeacher(int idUser)
+        public static List<Grade> GetGrades()
         {
-            return GetTeachers().Where(a => a.IdUser == idUser).FirstOrDefault();
+            return new List<Grade>(Connection.BdConnection.Grade).ToList();
         }
 
         public static void SaveTeacher(Teacher teacher)
         {
             teacher.IsActive = true;
-            if (teacher.Id == 0)
+            if (teacher.PersonnelNumber == 0)
                 Connection.BdConnection.Teacher.Add(teacher);
             Connection.BdConnection.SaveChanges();
         }
@@ -72,7 +60,7 @@ namespace SchoolOfExcellence
         public static void SaveActivity(Activity activity)
         {
             activity.IsActive = true;
-            if (activity.Id == 0)
+            if (activity.Code == 0)
                 Connection.BdConnection.Activity.Add(activity);
             Connection.BdConnection.SaveChanges();
         }
@@ -96,61 +84,19 @@ namespace SchoolOfExcellence
             return GetTeachersActivities().Where(a => a.IdTeacher == idTeacher).ToList();
         }
 
-        public static List<StudentActivity> GetStudentsActivities()
-        {
-            return new List<StudentActivity>(Connection.BdConnection.StudentActivity).Where(a => a.IsActive == true).ToList();
-        }
-
-        public static List<StudentActivity> GetStudentsActivitiesTotal()
-        {
-            return new List<StudentActivity>(Connection.BdConnection.StudentActivity).ToList();
-        }
-
-        public static List<StudentActivity> GetStudentsInActivities(int idActivity)
-        {
-            return GetStudentsActivities().Where(a => a.TeacherActivity.IdActivity == idActivity).ToList();
-        }
-
         public static List<Student> GetStudents()
         {
             return new List<Student>(Connection.BdConnection.Student).ToList();
         }
 
-        // headmaster
-        public static List<Headmaster> GetHeadmasters()
+        public static List<Student> GetStudentsInTeacher(int idTeacher)
         {
-            return new List<Headmaster>(Connection.BdConnection.Headmaster).ToList();
+            return GetStudents().Where(a => a.Grade.Curator == idTeacher).ToList();
         }
 
-        public static Headmaster GetHeadmaster(int idUser)
+        public static List<Student> GetStudentsInGrade(int? idGrade)
         {
-            return GetHeadmasters().Where(a => a.IdUser == idUser).FirstOrDefault();
-        }
-
-        // users
-        public static List<User> GetUsers()
-        {
-            return new List<User>(Connection.BdConnection.User).ToList();
-        }
-
-        public static bool IsCorrectUser(string email, string password)
-        {
-            var user = GetUsers().Where(a => email == a.Login && password == a.Password).FirstOrDefault();
-
-            if (user != null && user.IdRole == 2)
-            {
-                CurrentUser.User = user;
-                CurrentUser.Teacher = GetTeacher(CurrentUser.User.Id);
-                return true;
-            }
-            else if (user != null && user.IdRole == 1)
-            {
-                CurrentUser.User = user;
-                CurrentUser.Headmaster = GetHeadmaster(CurrentUser.User.Id);
-                return true;
-            }
-            else
-                return false;
+            return GetStudents().Where(a => a.Grade.Id == idGrade).ToList();
         }
     }
 }

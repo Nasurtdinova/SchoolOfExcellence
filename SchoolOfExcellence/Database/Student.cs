@@ -19,34 +19,33 @@ namespace SchoolOfExcellence.Database
         public Student()
         {
             this.SkipVisit = new HashSet<SkipVisit>();
-            this.StudentActivity = new HashSet<StudentActivity>();
         }
     
-        public int Id { get; set; }
+        public int PersonnelNumber { get; set; }
         public string FullName { get; set; }
+        public Nullable<System.DateTime> DateOfBirth { get; set; }
+        public string PhoneNumber { get; set; }
+        public Nullable<System.DateTime> DateStudy { get; set; }
         public Nullable<int> IdGrade { get; set; }
-        public int CountActivity => DataAccess.GetStudentsActivities().Where(a => a.IdStudent == Id && a.IsActive == true).Count();
+        public byte[] Image { get; set; }
+        public bool IsVisited { get; set; }
+        public string Reason { get; set; }
+
+        public virtual Grade Grade { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SkipVisit> SkipVisit { get; set; }
+
+        public string VisibilityReason => IsVisited ? "Collapsed" : "Visible";
+
         public string Attendance
         {
             get
             {
-                if (DataAccess.GetSkipVisits().Where(a => a.IdStudent == Id).Count() == 0)
+                if (DataAccess.GetSkipVisits().Where(a => a.IdStudent == PersonnelNumber).Count() == 0)
                     return "0%";
                 else
-                    return $"{DataAccess.GetSkipVisits().Where(a => a.IdStudent == Id && a.IsVisited == true).Count() * 100 / DataAccess.GetSkipVisits().Where(a => a.IdStudent == Id).Count()}%";
+                    return $"{DataAccess.GetSkipVisits().Where(a => a.IdStudent == PersonnelNumber && a.IsVisited == true).Count() * 100 / DataAccess.GetSkipVisits().Where(a => a.IdStudent == PersonnelNumber).Count()}%";
             }
         }
-        public bool IsVisited { get; set; }
-        public string Reason { get; set; }
-        public string VisibilityReason => IsVisited ? "Collapsed" : "Visible";
-        public virtual Grade Grade { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SkipVisit> SkipVisit { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StudentActivity> StudentActivity { get; set; }
-        public ICollection<StudentActivity> StudentActivityTrue { get
-            {
-                return StudentActivity.Where(a => a.IsActive == true).ToList();
-            }}
     }
 }

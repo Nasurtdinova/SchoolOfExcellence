@@ -14,27 +14,17 @@
             <RowDefinition Height="9*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Text="Кружки" FontSize="25"/>
+        <TextBlock Text="Дисциплины" FontSize="25" Margin="326,4,235,4" VerticalAlignment="Stretch" Width="239"/>
         <DataGrid x:Name="dgActivities" Grid.Row="1" Margin="5" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Наименование" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Описание" Width="*" ScrollViewer.VerticalScrollBarVisibility="Visible" Binding="{Binding Description}">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style>
-                            <Setter Property="TextBlock.TextWrapping" Value="Wrap"></Setter>
-                            <Setter Property="TextBlock.Height" Value="100"></Setter>
-                            <Setter Property="TextBlock.Width" Value="200"></Setter>
-                            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Visible"></Setter>
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <DataGridTemplateColumn Header="Учителя">
+                <DataGridTextColumn Header="Наименование" Width="*" Binding="{Binding Name}"/>
+                <DataGridTemplateColumn Header="Преподаватели">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ListView ItemsSource="{Binding TeacherActivityTrue}">
+                            <ListView ItemsSource="{Binding TeacherActivity}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Teacher.User.FullName}"></TextBlock>
+                                        <TextBlock Text="{Binding Teacher.FullName}"></TextBlock>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>

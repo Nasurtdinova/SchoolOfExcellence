@@ -17,47 +17,30 @@
         <StackPanel Orientation="Horizontal" Margin="20" HorizontalAlignment="Center">
             <TextBlock Text="Статистика" Margin="10"></TextBlock>
             <ComboBox Name="comboTypeReport" Width="600" SelectionChanged="comboTypeReport_SelectionChanged">
-                <ComboBoxItem>о наиболее востребованных направлениях деятельности</ComboBoxItem>
-                <ComboBoxItem>о наиболее активных учениках школы</ComboBoxItem>
-                <ComboBoxItem>о количестве проведенных занятий учителями</ComboBoxItem>
+                <ComboBoxItem>о посещаемости занятий по группам</ComboBoxItem>
+                <ComboBoxItem>о посещаемости занятий студентов техникума</ComboBoxItem>
+                <ComboBoxItem>о количестве проведенных занятий преподавателями</ComboBoxItem>
             </ComboBox>
             <Button x:Name="btnExcel" Content="Excel" Margin="5" Click="btnExcel_Click"></Button>
         </StackPanel>
         <TextBlock x:Name="tbNull" Grid.Row="1" Text="Выберите вид статистики!"></TextBlock>
         <DataGrid x:Name="dgPopularDestinations" Visibility="Collapsed" Grid.Row="1" IsReadOnly="True" AutoGenerateColumns="False"> 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Название" Width="*" Binding="{Binding Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Количество человек" Binding="{Binding Count}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Группа" Width="*" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Посещаемость" Binding="{Binding Attendance, TargetNullValue='0'}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="dgActiveStudents" Visibility="Collapsed" Grid.Row="1" IsReadOnly="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ФИО" Binding="{Binding FullName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Класс" Binding="{Binding Grade.Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Количество" Binding="{Binding CountActivity}"></DataGridTextColumn>
-                <DataGridTemplateColumn Header="Посещение кружков" Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <ListView ItemsSource="{Binding StudentActivityTrue}">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding TeacherActivity.Activity.Name}"></TextBlock>
-                                            <TextBlock Margin="10" Text="{Binding Attendance, TargetNullValue='0'}"></TextBlock>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <!--<DataGridTextColumn Header="Посещаемость" Binding="{Binding Attendance, TargetNullValue='0'}"></DataGridTextColumn>-->
+                <DataGridTextColumn Header="ФИО" Binding="{Binding FullName}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Группа" Binding="{Binding Grade.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Посещаемость" Binding="{Binding Attendance, TargetNullValue='0'}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="dgCountSubject" Visibility="Collapsed" Grid.Row="1" IsReadOnly="True" AutoGenerateColumns="False">
             
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding User.FullName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding FullName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Количество проведенных занятий" Binding="{Binding CountSubject}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Количество не проведенных занятий" Binding="{Binding CountNoSubject}">
                 </DataGridTextColumn>

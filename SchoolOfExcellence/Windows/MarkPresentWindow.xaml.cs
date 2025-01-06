@@ -34,7 +34,7 @@ namespace SchoolOfExcellence
             {
                 dgAddStudents.Visibility = Visibility.Visible;
                 dgEditStudents.Visibility = Visibility.Collapsed;
-                dgAddStudents.ItemsSource = CurrentSchedule.TeacherActivity.StudentActivity.Select(a => a.Student).ToList();
+                dgAddStudents.ItemsSource = DataAccess.GetStudentsInGrade(CurrentSchedule.IdGrade).ToList();
             }
         }
 
@@ -75,7 +75,7 @@ namespace SchoolOfExcellence
             }
             else
                 a.IsVisited = false;
-            dgAddStudents.ItemsSource = CurrentSchedule.TeacherActivity.StudentActivity.Select(b => b.Student).ToList();
+            dgAddStudents.ItemsSource = DataAccess.GetStudentsInGrade(CurrentSchedule.IdGrade).ToList();
         }
 
         private void checkMark_Click_1(object sender, RoutedEventArgs e)
@@ -91,16 +91,16 @@ namespace SchoolOfExcellence
             dgEditStudents.ItemsSource = DataAccess.GetSkipVisits().Where(b => b.Schedule == CurrentSchedule).ToList();
         }
 
-        private void tbReasonEdit_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var a = (sender as TextBox).DataContext as SkipVisit;
-            a.Reason= (sender as TextBox).Text;
-        }
+        //private void tbReasonEdit_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    var a = (sender as TextBox).DataContext as SkipVisit;
+        //    a.Reason= (sender as TextBox).Text;
+        //}
 
-        private void tbReasonAdd_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var a = (sender as TextBox).DataContext as Student;
-            a.Reason = (sender as TextBox).Text;
-        }
+        //private void tbReasonAdd_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    var a = (sender as TextBox).DataContext as SkipVisit;
+        //    a.Reason = (sender as TextBox).Text;
+        //}
     }
 }

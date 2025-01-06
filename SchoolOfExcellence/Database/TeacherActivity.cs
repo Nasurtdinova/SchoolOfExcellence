@@ -11,28 +11,24 @@ namespace SchoolOfExcellence.Database
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-
+    
     public partial class TeacherActivity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TeacherActivity()
         {
             this.Schedule = new HashSet<Schedule>();
-            this.StudentActivity = new HashSet<StudentActivity>();
         }
     
         public int Id { get; set; }
         public int IdTeacher { get; set; }
         public int IdActivity { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
-        public Nullable<int> MaxCount { get; set; }
-        public int Count => DataAccess.GetStudentsActivities().Where(a => a.IdTeacherActivity == Id).Count();
+        public Nullable<int> CountHour { get; set; }
+    
         public virtual Activity Activity { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Schedule> Schedule { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StudentActivity> StudentActivity { get; set; }
         public virtual Teacher Teacher { get; set; }
     }
 }
