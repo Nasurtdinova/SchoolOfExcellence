@@ -40,14 +40,12 @@ namespace SchoolOfExcellence
                 MaterialMessageBox.Show("Заполните дату!");
             else if (tbLessonStart.SelectedTime == null)
                 MaterialMessageBox.Show("Заполните время начала!");
-            else if (tbLessonEnd.SelectedTime == null)
-                MaterialMessageBox.Show("Заполните время окончания!");
             else
             {
                 if (DataAccess.GetSchedules().Where(a => a.Date.Value.Date == dpDate.SelectedDate.Value.Date && a.Cabinet == Convert.ToInt32(comboCabinet.Text) && a.LessonStartTime.Value.Ticks <= tbLessonStart.SelectedTime.Value.Ticks).Count() != 0)
                     MaterialMessageBox.ShowError("В этом кабинете в это время проводится другая дисциплина!");
                 else if (DataAccess.GetSchedules().Where(a => a.LessonStartTime == tbLessonStart.SelectedTime.Value.TimeOfDay && a.TeacherActivity == DataAccess.GetTeachersActivities().Where(b => b.Activity == comboActivity.SelectedItem as Activity && b.Teacher == comboTeachers.SelectedItem as Teacher).FirstOrDefault()).Count() != 0)
-                    MaterialMessageBox.ShowError("У этого преподавателя в это время уже есть дисциплина!");
+                    MaterialMessageBox.ShowError("У этого преподавателя в это время уже есть пара!");
                 else
                 {
                     Schedule sch = new Schedule()
@@ -57,7 +55,7 @@ namespace SchoolOfExcellence
                         Grade = comboGrades.SelectedItem as Grade,
                         Date = dpDate.SelectedDate,
                         IsConducted = false,
-                        LessonEndTime = tbLessonEnd.SelectedTime.Value.TimeOfDay,
+                        //LessonEndTime = tbLessonEnd.SelectedTime.Value.TimeOfDay,
                         LessonStartTime = tbLessonStart.SelectedTime.Value.TimeOfDay
                     };
                     DataAccess.AddSchedule(sch);
@@ -78,7 +76,7 @@ namespace SchoolOfExcellence
             var a = (sender as ComboBox).SelectedItem as Activity;
             comboTeachers.ItemsSource = DataAccess.GetTeachersInActivities(a.Code).Select(b=>b.Teacher);
 
-            tbLessonEnd.SelectedTime = tbLessonStart.SelectedTime + new TimeSpan(1,30,0);
+            //tbLessonEnd.SelectedTime = tbLessonStart.SelectedTime + new TimeSpan(1,30,0);
         }
 
         private void tbLessonStart_SelectedTimeChanged(object sender, RoutedPropertyChangedEventArgs<DateTime?> e)

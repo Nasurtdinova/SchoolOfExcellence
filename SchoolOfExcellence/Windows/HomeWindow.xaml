@@ -52,7 +52,7 @@
                 <ListViewItem Height="60" Name="ItemTodayActivity">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="LocalActivity" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Кружки на сегодня" Margin="10 0"/>
+                        <TextBlock Text="Занятия на сегодня" Margin="10 0"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60" Name="ItemMyGroups">

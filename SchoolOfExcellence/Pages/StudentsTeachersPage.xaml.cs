@@ -58,12 +58,47 @@ namespace SchoolOfExcellence
 
         private void dgTeachers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            CreateTeacherWindow edit = new CreateTeacherWindow((sender as DataGrid).SelectedItem as Teacher);
+            
+        }
+
+        private void btnRemoveTeacher_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы точно хотите уволить преподавателя?", "Предупреждение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                var i = (sender as Button).DataContext as Teacher;
+                i.IsActive = false;
+                Connection.BdConnection.SaveChanges();
+                MessageBox.Show("Преподаватель уволен!");
+                dgTeachers.ItemsSource = DataAccess.GetTeachers();
+            }
+        }
+
+        private void btnEditTeacher_Click(object sender, RoutedEventArgs e)
+        {
+            var i = (sender as Button).DataContext as Teacher;
+            CreateTeacherWindow edit = new CreateTeacherWindow(i);
             edit.Show();
             edit.Closed += (s, eventarg) =>
             {
                 dgTeachers.ItemsSource = DataAccess.GetTeachers();
             };
+        }
+
+        private void btnRemoveStudent_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы точно хотите отчислить студента?", "Предупреждение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                var i = (sender as Button).DataContext as Teacher;
+                i.IsActive = false;
+                Connection.BdConnection.SaveChanges();
+                MessageBox.Show("Студент отчислен!");
+                dgTeachers.ItemsSource = DataAccess.GetTeachers();
+            }
+        }
+
+        private void btnEditStudent_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

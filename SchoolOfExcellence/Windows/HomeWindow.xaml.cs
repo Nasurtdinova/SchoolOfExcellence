@@ -29,7 +29,7 @@ namespace SchoolOfExcellence
             {
                 //ItemSchedule.Visibility = Visibility.Collapsed;
                 ItemActivities.Visibility = Visibility.Collapsed;
-                ItemStudentsTeacher.Visibility = Visibility.Collapsed;
+                
             }
 
             if (CurrentUser.Student != null || CurrentUser.Teacher != null)
@@ -37,6 +37,7 @@ namespace SchoolOfExcellence
                 ItemReports.Visibility = Visibility.Collapsed;
                 ItemActivities.Visibility = Visibility.Collapsed;
                 ItemAttendance.Visibility = Visibility.Collapsed;
+                ItemStudentsTeacher.Visibility = Visibility.Collapsed;
             }
 
             if (CurrentUser.Student == null && CurrentUser.Teacher == null)

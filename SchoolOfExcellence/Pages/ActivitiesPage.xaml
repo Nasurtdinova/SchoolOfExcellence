@@ -21,7 +21,7 @@
                 <DataGridTemplateColumn Header="Преподаватели">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ListView ItemsSource="{Binding TeacherActivity}">
+                            <ListView ItemsSource="{Binding TeacherActivityNoDeleted}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Teacher.FullName}"></TextBlock>

@@ -11,7 +11,8 @@ namespace SchoolOfExcellence.Database
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public partial class Activity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -29,5 +30,7 @@ namespace SchoolOfExcellence.Database
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TeacherActivity> TeacherActivity { get; set; }
+
+        public virtual IEnumerable<TeacherActivity> TeacherActivityNoDeleted => TeacherActivity.Where(x => !x.IsDeleted.GetValueOrDefault());
     }
 }

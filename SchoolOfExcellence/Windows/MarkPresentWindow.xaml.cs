@@ -91,16 +91,16 @@ namespace SchoolOfExcellence
             dgEditStudents.ItemsSource = DataAccess.GetSkipVisits().Where(b => b.Schedule == CurrentSchedule).ToList();
         }
 
-        //private void tbReasonEdit_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-        //    var a = (sender as TextBox).DataContext as SkipVisit;
-        //    a.Reason= (sender as TextBox).Text;
-        //}
+        private void tbReasonEdit_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var a = (sender as TextBox).DataContext as SkipVisit;
+            a.Reason = (sender as TextBox).Text;
+        }
 
-        //private void tbReasonAdd_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-        //    var a = (sender as TextBox).DataContext as SkipVisit;
-        //    a.Reason = (sender as TextBox).Text;
-        //}
+        private void tbReasonAdd_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var a = (sender as TextBox).DataContext as SkipVisit;
+            a.Reason = (sender as TextBox).Text;
+        }
     }
 }

@@ -53,21 +53,16 @@ namespace SchoolOfExcellence
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Вы точно хотите удалить кружок?", "Предупреждение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Вы точно хотите удалить дисциплину?", "Предупреждение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 var i = (sender as Button).DataContext as Activity;
                 i.IsActive = false;
                 foreach (var j in i.TeacherActivity)
                 {
                     j.IsDeleted = true;
-                    //foreach (var k in j.StudentActivity)
-                    //{
-                    //    k.IsActive = false;
-                    //    Connection.BdConnection.SaveChanges();
-                    //}
                 }
                 Connection.BdConnection.SaveChanges();
-                MaterialMessageBox.Show("Кружок успешно удален!");
+                MaterialMessageBox.Show("Дисциплина успешно удалена!");
                 dgActivities.ItemsSource = DataAccess.GetActivities();
             }
         }

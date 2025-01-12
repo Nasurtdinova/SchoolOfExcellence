@@ -160,9 +160,6 @@
     <Compile Include="Pages\SchedulePage.xaml.cs">
       <DependentUpon>SchedulePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\SelectStudentWindow.xaml.cs">
-      <DependentUpon>SelectStudentWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\SelectTeacherWindow.xaml.cs">
       <DependentUpon>SelectTeacherWindow.xaml</DependentUpon>
     </Compile>
@@ -243,10 +240,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SchedulePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\SelectStudentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

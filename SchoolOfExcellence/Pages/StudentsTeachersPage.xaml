@@ -16,13 +16,23 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding FullName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Группа" Binding="{Binding Grade.Name}"></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel VerticalAlignment="Center">
+                                <Button x:Name="btnRemoveStudent" Margin="10" Width="100" Content="Отчислить" Click="btnRemoveStudent_Click"></Button>
+                                <Button x:Name="btnEditStudent" Width="170" Content="Редактировать" Click="btnEditStudent_Click"></Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel x:Name="teachers" Grid.Row="1">
-            <DataGrid x:Name="dgTeachers" Height="500" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="dgTeachers_SelectionChanged">
+            <DataGrid x:Name="dgTeachers" Height="500" AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding FullName}"></DataGridTextColumn>
-                    <DataGridTemplateColumn Header="Фотография" Width="400">
+                    <DataGridTemplateColumn Header="Фотография" Width="200">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Image Height="200">
@@ -47,6 +57,16 @@
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel VerticalAlignment="Center">
+                                    <Button x:Name="btnRemoveTeacher" Margin="10" Width="100" Content="Уволить" Click="btnRemoveTeacher_Click"></Button>
+                                    <Button x:Name="btnEditTeacher" Width="170" Content="Редактировать" Click="btnEditTeacher_Click"></Button>
+                                </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

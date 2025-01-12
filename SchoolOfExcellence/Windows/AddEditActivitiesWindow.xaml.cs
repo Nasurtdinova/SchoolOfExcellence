@@ -64,11 +64,11 @@ namespace SchoolOfExcellence
         private void btnRemoveTeacher_Click(object sender, RoutedEventArgs e)
         {
             var a = (sender as Button).DataContext as TeacherActivity;
-            if (MessageBox.Show($"Вы точно хотите чтобы {a.Teacher.FullName} не проводил(-а) {a.Activity.Name}?", "Предупреждение", MessageBoxButton.YesNoCancel, MessageBoxImage.Stop) == MessageBoxResult.Yes)
+            if (MessageBox.Show($"Вы точно хотите чтобы {a.Teacher.FullName} не вел(-а) {a.Activity.Name}?", "Предупреждение", MessageBoxButton.YesNoCancel, MessageBoxImage.Stop) == MessageBoxResult.Yes)
             {                
                 a.IsDeleted = true;
                 Connection.BdConnection.SaveChanges();
-                MaterialMessageBox.Show($"{a.Teacher.FullName} больше не проводит {a.Activity.Name}!");
+                MaterialMessageBox.Show($"{a.Teacher.FullName} больше не ведет {a.Activity.Name}!");
                 lvTeachers.ItemsSource = DataAccess.GetTeachersInActivities(CurrentActivity.Code);
             }
         }

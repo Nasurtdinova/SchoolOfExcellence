@@ -14,7 +14,7 @@
         <DataGrid x:Name="dgAddStudents" Visibility="Collapsed" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True" CanUserSortColumns="True" CanUserReorderColumns="True" > 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding FullName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Класс" Binding="{Binding Grade.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Группа" Binding="{Binding Grade.Name}"></DataGridTextColumn>
                 <DataGridTemplateColumn Header="Присутствовал">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -25,7 +25,7 @@
                 <DataGridTemplateColumn Header="Причина">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox x:Name="tbReasonAdd" Visibility="{Binding VisibilityReason}" AcceptsReturn="True" Height="2cm" ScrollViewer.VerticalScrollBarVisibility="Visible" Text="{Binding Reason}"></TextBox>
+                            <TextBox x:Name="tbReasonAdd" Visibility="{Binding VisibilityReason}" AcceptsReturn="True" Height="2cm" ScrollViewer.VerticalScrollBarVisibility="Visible" Text="{Binding Reason}" TextChanged="tbReasonAdd_TextChanged"></TextBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -34,7 +34,7 @@
         <DataGrid x:Name="dgEditStudents" Visibility="Collapsed" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True" CanUserSortColumns="True" CanUserReorderColumns="True" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding Student.FullName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Класс" Binding="{Binding Student.Grade.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Группа" Binding="{Binding Student.Grade.Name}"></DataGridTextColumn>
                 <DataGridTemplateColumn Header="Присутствовал">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -45,7 +45,7 @@
                 <DataGridTemplateColumn Header="Причина">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox x:Name="tbReasonEdit" AcceptsReturn="True" Height="2cm" ScrollViewer.VerticalScrollBarVisibility="Visible" Visibility="{Binding VisibilityReason}" Text="{Binding Reason, Mode=TwoWay}"></TextBox>
+                            <TextBox x:Name="tbReasonEdit" AcceptsReturn="True" Height="2cm" ScrollViewer.VerticalScrollBarVisibility="Visible" Visibility="{Binding VisibilityReason}" Text="{Binding Reason, Mode=TwoWay}" TextChanged="tbReasonEdit_TextChanged"></TextBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
