@@ -30,13 +30,13 @@ namespace SchoolOfExcellence
         private void radioStudents_Click(object sender, RoutedEventArgs e)
         {
             teachers.Visibility = Visibility.Collapsed;
-            dgStudents.Visibility = Visibility.Visible;
+            students.Visibility = Visibility.Visible;
             dgStudents.ItemsSource = DataAccess.GetStudents();
         }
 
         private void radioTeachers_Click(object sender, RoutedEventArgs e)
         {
-            dgStudents.Visibility = Visibility.Collapsed;
+            students.Visibility = Visibility.Collapsed;
             teachers.Visibility = Visibility.Visible;
             dgTeachers.ItemsSource = DataAccess.GetTeachers();
         }
@@ -98,7 +98,23 @@ namespace SchoolOfExcellence
 
         private void btnEditStudent_Click(object sender, RoutedEventArgs e)
         {
+            var i = (sender as Button).DataContext as Student;
+            AddEditStudentWindow edit = new AddEditStudentWindow(i);
+            edit.Show();
+            edit.Closed += (s, eventarg) =>
+            {
+                dgStudents.ItemsSource = DataAccess.GetStudents();
+            };
+        }
 
+        private void btnAddStudent_Click(object sender, RoutedEventArgs e)
+        {
+            AddEditStudentWindow create = new AddEditStudentWindow(null);
+            create.Show();
+            create.Closed += (s, eventarg) =>
+            {
+                dgStudents.ItemsSource = DataAccess.GetStudents();
+            };
         }
     }
 }

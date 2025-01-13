@@ -37,8 +37,8 @@
                         <DataGridTextColumn Header="Преподаватель" Binding="{Binding TeacherActivity.Teacher.FullName}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Группа" Binding="{Binding Grade.Name}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Дата" Width="130" Binding="{Binding Date, StringFormat='dd.MM.yyyy'}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Начало" Binding="{Binding LessonStartTime,  StringFormat=hh\\:mm}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Конец" Binding="{Binding LessonEndTime,  StringFormat=hh\\:mm}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Время" Binding="{Binding LessonStartTime,  StringFormat=hh\\:mm}"></DataGridTextColumn>
+                        
                         <DataGridTextColumn Header="Кабинет" Binding="{Binding Cabinet}"></DataGridTextColumn>
                         <DataGridCheckBoxColumn Header="Проведен" Binding="{Binding IsConducted}"></DataGridCheckBoxColumn>
                     </DataGrid.Columns>

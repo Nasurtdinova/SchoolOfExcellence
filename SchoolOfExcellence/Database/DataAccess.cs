@@ -51,6 +51,13 @@ namespace SchoolOfExcellence
             Connection.BdConnection.SaveChanges();
         }
 
+        public static void SaveStudent(Student teacher)
+        {
+            if (teacher.PersonnelNumber == 0)
+                Connection.BdConnection.Student.Add(teacher);
+            Connection.BdConnection.SaveChanges();
+        }
+
         // activities
         public static List<Activity> GetActivities()
         {

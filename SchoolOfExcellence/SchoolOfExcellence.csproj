@@ -126,6 +126,9 @@
     <Compile Include="Windows\AttendanceWindow.xaml.cs">
       <DependentUpon>AttendanceWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\AddEditStudentWindow.xaml.cs">
+      <DependentUpon>AddEditStudentWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\CreateTeacherWindow.xaml.cs">
       <DependentUpon>CreateTeacherWindow.xaml</DependentUpon>
     </Compile>
@@ -177,6 +180,10 @@
     <Page Include="Windows\AttendanceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AddEditStudentWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\CreateTeacherWindow.xaml">
       <SubType>Designer</SubType>

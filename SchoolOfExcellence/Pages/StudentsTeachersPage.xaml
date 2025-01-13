@@ -12,22 +12,29 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="7*"></RowDefinition>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="dgStudents" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False" IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding FullName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Группа" Binding="{Binding Grade.Name}"></DataGridTextColumn>
-                <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel VerticalAlignment="Center">
-                                <Button x:Name="btnRemoveStudent" Margin="10" Width="100" Content="Отчислить" Click="btnRemoveStudent_Click"></Button>
-                                <Button x:Name="btnEditStudent" Width="170" Content="Редактировать" Click="btnEditStudent_Click"></Button>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+        <StackPanel x:Name="students" Grid.Row="1">
+            <DataGrid x:Name="dgStudents" Height="500" ScrollViewer.VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding FullName}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Группа" Binding="{Binding Grade.Name}"></DataGridTextColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel VerticalAlignment="Center">
+                                    <Button x:Name="btnRemoveStudent" Margin="10" Width="100" Content="Отчислить" Click="btnRemoveStudent_Click"></Button>
+                                    <Button x:Name="btnEditStudent" Width="170" Content="Редактировать" Click="btnEditStudent_Click"></Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <Button x:Name="btnBack2" Content="Назад" Click="btnBack_Click"></Button>
+                <Button Content="Добавить" Name="btnAddStudent" Click="btnAddStudent_Click"></Button>
+            </StackPanel>
+        </StackPanel>
         <StackPanel x:Name="teachers" Grid.Row="1">
             <DataGrid x:Name="dgTeachers" Height="500" AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>

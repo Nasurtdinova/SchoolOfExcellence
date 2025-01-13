@@ -1,0 +1,57 @@
+﻿<Window x:Class="SchoolOfExcellence.AddEditStudentWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SchoolOfExcellence"
+      mc:Ignorable="d" 
+      MinHeight="650" MinWidth="800"
+      Title="AddEditStudentWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="250"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock Text="ФИО"></TextBlock>
+            <TextBox Text="{Binding FullName}" Name="tbName"></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Номер телефона"></TextBlock>
+            <TextBox Text="{Binding PhoneNumber}" Name="tbPhone"></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <TextBlock Text="Группа"></TextBlock>
+            <ComboBox Grid.Column="1" x:Name="comboGrade" SelectedItem="{Binding Grade}" DisplayMemberPath="Name"></ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Row="3">
+            <TextBlock Text="Дата рождения"></TextBlock>
+            <DatePicker x:Name="dpDate" Width="400" FontSize="25"></DatePicker>
+        </StackPanel>
+        <StackPanel Grid.Row="4">
+            <TextBlock Text="Дата поступления"></TextBlock>
+            <DatePicker x:Name="dpDateStudy" Width="400" FontSize="25"></DatePicker>
+        </StackPanel>
+        <StackPanel Grid.Row="5">
+            <TextBlock Text="Фото"></TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image x:Name="imageTeacher" Width="200">
+                    <Image.Source>
+                        <Binding Path="Image">
+                            <Binding.TargetNullValue>
+                                <BitmapImage UriSource="/SchoolOfExcellence;component/Images/ProfileIcon.png"></BitmapImage>
+                            </Binding.TargetNullValue>
+                        </Binding>
+                    </Image.Source>
+                </Image>
+                <Button x:Name="btnEditImage" Content="Изменить" Click="btnEditImage_Click"></Button>
+            </StackPanel>
+        </StackPanel>
+        <Button x:Name="btnSave" Content="Сохранить" Grid.Row="6" Click="btnSave_Click"></Button>
+    </Grid>
+</Window>
